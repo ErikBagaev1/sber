@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber/pages/history_page.dart';
 
 import 'pages/home_page.dart';
 
@@ -62,6 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
         index: selectedIndex,
         children: const [
           HomePage(),
+          Text('data'),
+          Text('data'),
+          Text('data'),
+          HistoryPage()
         ],
       ),
     );

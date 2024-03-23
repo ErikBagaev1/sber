@@ -25,7 +25,7 @@ class CardBalanceWidget extends StatelessWidget {
             Row(
               children: [
                 const Text(
-                  '10 303, 32  ₽',
+                  '10 303, 32 ₽',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,

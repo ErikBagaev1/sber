@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sber/pages/home_page.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import 'Expenses_card.dart';
 
@@ -38,93 +40,96 @@ class ExpensesList extends StatelessWidget {
           child: Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Row(
-                    children: [
-                      Expenses(
-                        cash: const Text(
-                          '17 137 ₽',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
+              child: Skeletonizer(
+                enabled: enabled,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Row(
+                      children: [
+                        Expenses(
+                          cash: const Text(
+                            '17 137 ₽',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        cardNumber: Text(
-                          'Все расходы из 6000 ₽',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[400],
+                          cardNumber: Text(
+                            'Все расходы из 6000 ₽',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[400],
+                            ),
                           ),
-                        ),
-                        widget: ClipOval(
-                          child: Container(
-                              color: const Color(0xFFEDEFEF),
-                              child: const Icon(
-                                Icons.person,
-                                size: 40,
-                              )),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      //====================================
-                      Expenses(
-                        cash: Text(
-                          'Перводы людям',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[400],
-                          ),
-                        ),
-                        cardNumber: const Text(
-                          '10 831 ₽',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                        widget: ClipOval(
+                          widget: ClipOval(
                             child: Container(
                                 color: const Color(0xFFEDEFEF),
                                 child: const Icon(
                                   Icons.person,
                                   size: 40,
-                                ))),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
+                                )),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        //====================================
+                        Expenses(
+                          cash: Text(
+                            'Перводы людям',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                          cardNumber: const Text(
+                            '10 831 ₽',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                          widget: ClipOval(
+                              child: Container(
+                                  color: const Color(0xFFEDEFEF),
+                                  child: const Icon(
+                                    Icons.person,
+                                    size: 40,
+                                  ))),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
 
-                      //====================================
-                      Expenses(
-                        cash: Text(
-                          'Рестораны и кафе',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[400],
+                        //====================================
+                        Expenses(
+                          cash: Text(
+                            'Рестораны и кафе',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[400],
+                            ),
                           ),
-                        ),
-                        cardNumber: const Text(
-                          '3 045 ₽',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
+                          cardNumber: const Text(
+                            '3 045 ₽',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
                           ),
+                          widget: ClipOval(
+                              child: Container(
+                                  color: const Color(0xFFEDEFEF),
+                                  child: const Icon(
+                                    Icons.person,
+                                    size: 40,
+                                  ))),
                         ),
-                        widget: ClipOval(
-                            child: Container(
-                                color: const Color(0xFFEDEFEF),
-                                child: const Icon(
-                                  Icons.person,
-                                  size: 40,
-                                ))),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

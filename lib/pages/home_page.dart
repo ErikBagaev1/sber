@@ -6,6 +6,8 @@ import 'package:sber/components/custom_app_bar.dart';
 import 'package:sber/components/expenses_list.dart';
 import 'package:sber/components/translation_cash.dart';
 
+bool enabled = false;
+
 class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
@@ -17,14 +19,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<void> _refresh() async {
-    // Ваш код для обновления данных
-    await Future.delayed(const Duration(milliseconds: 20), () {
-      // После одной секунды обновляем состояние, чтобы поле value изменилось с false на true
-      setState(() {
-        enabled = !(enabled);
-       
-      });
-    }); // Пример задержки
+    // Устанавливаем enabled в true
+    setState(() {
+      enabled = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 4));
+
+    setState(() {
+      enabled = false;
+    });
   }
 
   @override
@@ -34,6 +38,9 @@ class _HomePageState extends State<HomePage> {
         children: [
           Expanded(
             child: RefreshIndicator(
+              displacement: 80,
+              backgroundColor: Colors.black,
+              color: Colors.green,
               onRefresh: _refresh,
               child: ListView(
                 children: [
@@ -212,22 +219,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xFF435063),
-                  Color.fromARGB(255, 60, 69, 81),
-                  Color.fromARGB(255, 57, 66, 77),
-                  Color.fromARGB(255, 57, 66, 73),
-                  Color(0xFF333A45),
-                  Color(0xFF2F343C),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+          Column(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF435063),
+                      Color.fromARGB(255, 60, 69, 81),
+                      Color.fromARGB(255, 57, 66, 77),
+                      Color.fromARGB(255, 57, 66, 73),
+                      Color(0xFF333A45),
+                      Color(0xFF2F343C),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: const CustomAppBar(),
               ),
-            ),
-            child: const CustomAppBar(),
+            ],
           ),
         ],
       ),
