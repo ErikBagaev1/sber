@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sber/components/Expenses_card.dart';
 
 import 'components/card_balance.dart';
 import 'components/card_list.dart';
 import 'components/custom_app_bar.dart';
-import 'components/profile_cards.dart';
+import 'components/translation_cash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,86 +41,186 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(23),
-                  bottomRight: Radius.circular(23),
-                ),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.indigo[900]!,
-                    Colors.indigo[700]!,
-                    Colors.indigo[500]!,
-                    Colors.indigo[300]!
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  CustomAppBar(),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 22),
-                    child: CardBalanceWidget(),
+                    padding: const EdgeInsets.only(
+                        left: 8.0, right: 8, bottom: 8, top: 8),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(23),
+                          bottomRight: Radius.circular(23),
+                        ),
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.indigo[900]!,
+                            Colors.indigo[700]!,
+                            Colors.indigo[500]!,
+                            Colors.indigo[300]!
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: 16, right: 16, top: 70),
+                            child: CardBalanceWidget(),
+                          ),
+                          CardsList(),
+                          SizedBox(height: 24),
+                        ],
+                      ),
+                    ),
                   ),
-                  CardsList(),
-                  SizedBox(height: 24),
+                  Container(
+                    color: Colors.black,
+                    child: Column(
+                      children: [
+                        const TranslationCash(),
+                        Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    'Расходы в марте',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    'Все',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.green[700]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 200,
+                              child: Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 18.0),
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expenses(
+                                            cash: const Text(
+                                              '17 137 ₽',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            cardNumber: Text(
+                                              'Все расходы из 6000 ₽',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey[400],
+                                              ),
+                                            ),
+                                            widget: SizedBox(
+                                              height: 40,
+                                              child: ClipOval(
+                                                child: Image.network(
+                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          //====================================
+                                          Expenses(
+                                            cash: Text(
+                                              'Перводы людям',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey[400],
+                                              ),
+                                            ),
+                                            cardNumber: const Text(
+                                              '10 831 ₽',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            widget: SizedBox(
+                                              height: 40,
+                                              child: ClipOval(
+                                                child: Image.network(
+                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+
+                                          //====================================
+                                          Expenses(
+                                            cash: Text(
+                                              'Рестораны и кафе',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey[400],
+                                              ),
+                                            ),
+                                            cardNumber: const Text(
+                                              '3 045 ₽',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            widget: SizedBox(
+                                              height: 40,
+                                              child: ClipOval(
+                                                child: Image.network(
+                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-          Container(
-            color: Colors.black,
-            child: Column(
-              children: [
-                const SizedBox(height: 36),
-                SizedBox(
-                  child: Container(
-                      width: double.infinity,
-                      height: 200,
-                      color: Colors.black87,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                const Text(
-                                  'Переводы на Сбер',
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  'Все (19)',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.green[700]),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                            child: ProfileCards(),
-                          )
-                        ],
-                      )),
-                ),
-              ],
-            ),
-          ),
-        ],
+            const CustomAppBar(),
+          ],
+        ),
       ),
     );
   }

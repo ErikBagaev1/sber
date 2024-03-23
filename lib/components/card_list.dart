@@ -27,11 +27,13 @@ class CardsList extends StatelessWidget {
           ),
           SizedBox(width: 8),
           CardBlock(
+            widget: Icon(Icons.card_giftcard),
             cash: '10 303, 32  ₽',
             cardNumber: 'Master... ** 1111',
           ),
           SizedBox(width: 8),
           CardBlock(
+            widget: Icon(Icons.card_giftcard),
             cash: '7 834, 13S ₽',
             cardNumber: 'MIR ** 2034',
           ),

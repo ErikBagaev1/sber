@@ -18,14 +18,14 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 20),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Поиск',
                   hintStyle: const TextStyle(color: Colors.grey),
                   contentPadding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 16.0),
+                      vertical: 5.0, horizontal: 16.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(40.0),
                     borderSide: BorderSide.none,
@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
                   fillColor: const Color.fromRGBO(0, 0, 0, 0.4)),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 20),
           const Icon(
             Icons.flag,
             color: Colors.white,

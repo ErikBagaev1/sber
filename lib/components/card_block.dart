@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CardBlock extends StatelessWidget {
   final String cash;
   final String cardNumber;
+  final Widget widget;
   const CardBlock({
     super.key,
     required this.cash,
     required this.cardNumber,
+    required this.widget,
   });
 
   @override
@@ -22,7 +24,7 @@ class CardBlock extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(Icons.card_giftcard),
+            widget,
             const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
