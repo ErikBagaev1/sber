@@ -47,38 +47,34 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 8.0, right: 8, bottom: 8, top: 8),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(23),
-                          bottomRight: Radius.circular(23),
-                        ),
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.indigo[900]!,
-                            Colors.indigo[700]!,
-                            Colors.indigo[500]!,
-                            Colors.indigo[300]!
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(23),
+                        bottomRight: Radius.circular(23),
                       ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: 16, right: 16, top: 70),
-                            child: CardBalanceWidget(),
-                          ),
-                          CardsList(),
-                          SizedBox(height: 24),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.indigo[900]!,
+                          Colors.indigo[700]!,
+                          Colors.indigo[500]!,
+                          Colors.indigo[300]!
                         ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding:
+                              EdgeInsets.only(left: 16, right: 16, top: 70),
+                          child: CardBalanceWidget(),
+                        ),
+                        CardsList(),
+                        SizedBox(height: 24),
+                      ],
                     ),
                   ),
                   Container(
@@ -218,7 +214,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            const CustomAppBar(),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.indigo[900]!,
+                    Colors.indigo[800]!,
+                    Colors.indigo[700]!,
+                    Colors.indigo[600]!
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: const CustomAppBar(),
+            ),
           ],
         ),
       ),
