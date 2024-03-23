@@ -18,9 +18,18 @@ class CardBlock extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.grey.withOpacity(0.5),
-        ),
+            borderRadius: BorderRadius.circular(16),
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 82, 86, 101),
+                Color.fromARGB(255, 67, 72, 79),
+                Color.fromRGBO(63, 68, 76, 1),
+                Color.fromRGBO(62, 67, 73, 1),
+                Color.fromRGBO(58, 61, 70, 1),
+              ],
+            )),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

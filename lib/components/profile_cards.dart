@@ -17,10 +17,12 @@ class ProfileCards extends StatelessWidget {
                 height: 65,
                 width: 65,
                 child: ClipOval(
-                  child: Image.network(
-                    'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
-                  ),
-                ),
+                    child: Container(
+                        color: const Color(0xFFEDEFEF),
+                        child: const Icon(
+                          Icons.person,
+                          size: 40,
+                        ))),
               ),
               const SizedBox(
                 height: 10,

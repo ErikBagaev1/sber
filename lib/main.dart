@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sber/components/Expenses_card.dart';
 
-import 'components/card_balance.dart';
-import 'components/card_list.dart';
-import 'components/custom_app_bar.dart';
-import 'components/translation_cash.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,201 +33,60 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int selectedIndex = 0;
+  void _onItemTapped(int index) {
+    // new
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(23),
-                        bottomRight: Radius.circular(23),
-                      ),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.indigo[900]!,
-                          Colors.indigo[700]!,
-                          Colors.indigo[500]!,
-                          Colors.indigo[300]!
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 16, right: 16, top: 70),
-                          child: CardBalanceWidget(),
-                        ),
-                        CardsList(),
-                        SizedBox(height: 24),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    color: Colors.black,
-                    child: Column(
-                      children: [
-                        const TranslationCash(),
-                        Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Row(
-                                children: [
-                                  const Text(
-                                    'Расходы в марте',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    'Все',
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.green[700]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 200,
-                              child: Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 18.0),
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expenses(
-                                            cash: const Text(
-                                              '17 137 ₽',
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            cardNumber: Text(
-                                              'Все расходы из 6000 ₽',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey[400],
-                                              ),
-                                            ),
-                                            widget: SizedBox(
-                                              height: 40,
-                                              child: ClipOval(
-                                                child: Image.network(
-                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          //====================================
-                                          Expenses(
-                                            cash: Text(
-                                              'Перводы людям',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey[400],
-                                              ),
-                                            ),
-                                            cardNumber: const Text(
-                                              '10 831 ₽',
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            widget: SizedBox(
-                                              height: 40,
-                                              child: ClipOval(
-                                                child: Image.network(
-                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
+      bottomNavigationBar: BottomNavigationBar(
+        // showSelectedLabels: true,
+        // showUnselectedLabels: true,
+        // elevation: 0,
+        // enableFeedback: false,
 
-                                          //====================================
-                                          Expenses(
-                                            cash: Text(
-                                              'Рестораны и кафе',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.grey[400],
-                                              ),
-                                            ),
-                                            cardNumber: const Text(
-                                              '3 045 ₽',
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            widget: SizedBox(
-                                              height: 40,
-                                              child: ClipOval(
-                                                child: Image.network(
-                                                  'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.indigo[900]!,
-                    Colors.indigo[800]!,
-                    Colors.indigo[700]!,
-                    Colors.indigo[600]!
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: const CustomAppBar(),
-            ),
-          ],
-        ),
+        backgroundColor: const Color(0xFF1E1E1E),
+        selectedItemColor: const Color(0xFF18892C),
+        unselectedItemColor: const Color(0xFF888888),
+        items: items, type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndex, //New
+        onTap: _onItemTapped,
+      ),
+      backgroundColor: Colors.black,
+      body: IndexedStack(
+        index: selectedIndex,
+        children: const [
+          HomePage(),
+        ],
       ),
     );
   }
 }
+
+const items = <BottomNavigationBarItem>[
+  BottomNavigationBarItem(
+    icon: Icon(Icons.home_filled),
+    label: 'Главная',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.camera),
+    label: 'Накопления',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.chat),
+    label: 'Aссистент',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.chat),
+    label: 'Платежи',
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.watch_later),
+    label: 'Историяя',
+  ),
+];

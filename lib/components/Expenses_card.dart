@@ -22,7 +22,7 @@ class Expenses extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.grey.withOpacity(0.3),
+            color: const Color(0xFF1E1E1E),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

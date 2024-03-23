@@ -13,17 +13,16 @@ class CustomAppBar extends StatelessWidget {
             width: 40,
             height: 40,
             child: ClipOval(
-              child: Image.network(
-                'https://e7.pngegg.com/pngimages/183/983/png-clipart-computer-icons-user-profile-user-interface-ei-silhouette-user-profile.png',
-              ),
-            ),
+                child: Container(
+                    color: const Color(0xFFEDEFEF),
+                    child: const Icon(Icons.person))),
           ),
           const SizedBox(width: 20),
           Expanded(
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Поиск',
-                  hintStyle: const TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Color(0xFFB3BDC6)),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 5.0, horizontal: 16.0),
                   border: OutlineInputBorder(
@@ -37,12 +36,12 @@ class CustomAppBar extends StatelessWidget {
           const SizedBox(width: 20),
           const Icon(
             Icons.flag,
-            color: Colors.white,
+            color: Color(0xFFF0F9FF),
           ),
           const SizedBox(width: 4),
           const Icon(
             Icons.window_outlined,
-            color: Colors.white,
+            color: Color(0xFFF0F9FF),
           ),
         ],
       ),
