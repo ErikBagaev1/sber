@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:sber/components/Expenses_card.dart';
 import 'package:sber/components/card_balance.dart';
@@ -24,7 +26,9 @@ class _HomePageState extends State<HomePage> {
       enabled = true;
     });
 
-    await Future.delayed(const Duration(seconds: 4));
+    final random = Random();
+    final delaySeconds = random.nextInt(2) + 1;
+    await Future.delayed(Duration(seconds: delaySeconds));
 
     setState(() {
       enabled = false;

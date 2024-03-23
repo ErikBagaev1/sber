@@ -51,6 +51,7 @@ class HistoryAppBar extends StatelessWidget {
                       fillColor: const Color.fromRGBO(0, 0, 0, 0.4)),
                 ),
               ),
+              const SizedBox(width: 10),
             ],
           ),
         ));

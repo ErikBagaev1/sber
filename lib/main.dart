@@ -34,11 +34,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late final PageController pageController;
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(initialPage: 0);
+  }
+
   int selectedIndex = 0;
   void _onItemTapped(int index) {
     // new
     setState(() {
       selectedIndex = index;
+
+      pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     });
   }
 
@@ -59,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
       backgroundColor: Colors.black,
-      body: IndexedStack(
-        index: selectedIndex,
+      body: PageView(
+        controller: pageController,
         children: const [
           HomePage(),
           Text('data'),
@@ -91,7 +104,10 @@ const items = <BottomNavigationBarItem>[
     label: 'Платежи',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.watch_later),
-    label: 'Историяя',
+    icon: Padding(
+      padding: EdgeInsets.only(right: 8),
+      child: Icon(Icons.watch_later),
+    ),
+    label: 'История  ',
   ),
 ];

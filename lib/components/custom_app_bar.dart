@@ -22,7 +22,8 @@ class CustomAppBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Поиск',
-                  hintStyle: const TextStyle(color: Color(0xFFB3BDC6)),
+                  hintStyle:
+                      const TextStyle(color: Color(0xFFB3BDC6), fontSize: 14),
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 5.0, horizontal: 16.0),
                   border: OutlineInputBorder(
