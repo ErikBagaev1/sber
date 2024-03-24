@@ -82,18 +82,57 @@ class _HistoryPageState extends State<HistoryPage> {
                     end: Alignment.bottomRight,
                   ),
                 ),
-                child: Column(
+                child: const Column(
                   children: [
-                    const TitleHistory(),
-                    Center(
-                      child: isLoading
-                          ? const CircularProgressIndicator() // Отображаем индикатор загрузки, если isLoading равно true
-                          : const Text(
-                              'Loaded!'), // Отображаем контент, если isLoading равно false
-                    ),
+                    TitleHistory(),
                   ],
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 0,
+              ),
+              Row(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF2e2e2e),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 5),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Тип операций',
+                            style: TextStyle(color: Color(0xFFdedede)),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                            size: 24,
+                            Icons.keyboard_arrow_down_outlined,
+                            color: Colors.grey.withOpacity(0.5),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Center(
+                child: isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.only(top: 68.0),
+                        child: CircularProgressIndicator(
+                          color: Colors.green,
+                        ),
+                      )
+                    : const Text('Loaded!'),
+              ),
             ],
           ),
         ),
