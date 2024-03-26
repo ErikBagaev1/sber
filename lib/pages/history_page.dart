@@ -3,7 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:sber/components/history_appbar.dart';
 import 'package:sber/components/title_history.dart';
+import 'package:sber/models/check.dart';
 import 'package:sber/pages/home_page.dart';
+
+import '../components/select_bar.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -13,17 +16,18 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
+  List<Chek> _checks = []; // Список для хранения загруженных чеков
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
     setState(() {
-      enabled = true;
+      enabled1 = true;
     });
     final random = Random();
     final delaySeconds = random.nextInt(2) + 1;
     await Future.delayed(Duration(seconds: delaySeconds));
 
     setState(() {
-      enabled = false;
+      enabled1 = false;
     });
   }
 
@@ -34,6 +38,19 @@ class _HistoryPageState extends State<HistoryPage> {
     super.initState();
     // Вызов функции, которая изменяет состояние isLoading после случайного времени
     _simulateLoading();
+    _loadChecks();
+  }
+   // Метод для загрузки чеков из локального хранилища
+  void _loadChecks() async {
+    try {
+      List<Chek> loadedChecks = await CheckRepository.loadChecks();
+      setState(() {
+        _checks = loadedChecks;
+      });
+    } catch (e) {
+      // Обработка ошибок, если загрузка не удалась
+      print('Ошибка при загрузке чеков: $e');
+    }
   }
 
   // Функция, которая имитирует загрузку данных
@@ -73,55 +90,25 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFF435063),
-                      Color(0xFF37424F),
-                      Color(0xFF303743),
-                      Color(0xFF24272E),
+                      Color(0xFF3E4E5E),
+                      Color(0xFF272E38),
+                      Color.fromARGB(255, 35, 42, 51),
+                      Color(0xFF1E1F21),
+                      Color.fromARGB(255, 0, 0, 0),
                     ],
                     begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
                 child: const Column(
                   children: [
                     TitleHistory(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SelectBarList(),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              Row(
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF2e2e2e),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 5),
-                      child: Row(
-                        children: [
-                          const Text(
-                            'Тип операций',
-                            style: TextStyle(color: Color(0xFFdedede)),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            size: 24,
-                            Icons.keyboard_arrow_down_outlined,
-                            color: Colors.grey.withOpacity(0.5),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
               ),
               Center(
                 child: isLoading
@@ -131,7 +118,90 @@ class _HistoryPageState extends State<HistoryPage> {
                           color: Colors.green,
                         ),
                       )
-                    : const Text('Loaded!'),
+                    : const Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          DateChek(
+                            date: '22 марта, пт',
+                            cash: '1 190',
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 70.0, right: 30),
+                            child: Divider(
+                              thickness: 0.2,
+                            ),
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 70.0, right: 30),
+                            child: Divider(
+                              thickness: 0.2,
+                            ),
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          DateChek(
+                            date: '21 марта, пт',
+                            cash: '2 340',
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 70.0, right: 30),
+                            child: Divider(
+                              thickness: 0.2,
+                            ),
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 70.0, right: 30),
+                            child: Divider(
+                              thickness: 0.2,
+                            ),
+                          ),
+                          ChekHistory(
+                            fio: 'Заур Артурович Т.',
+                            type: 'Входящий перевод',
+                            cash: 300,
+                            icon: Icon(Icons.badge_outlined),
+                          )
+                        ],
+                      ),
               ),
             ],
           ),
@@ -139,5 +209,145 @@ class _HistoryPageState extends State<HistoryPage> {
         const HistoryAppBar()
       ],
     ));
+  }
+}
+
+class DateChek extends StatelessWidget {
+  final String date;
+  final String cash;
+  const DateChek({
+    super.key,
+    required this.date,
+    required this.cash,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        children: [
+          Text(
+            date,
+            style: const TextStyle(
+                fontSize: 22, fontWeight: FontWeight.w500, color: Colors.white),
+          ),
+          const Spacer(),
+          Text(
+            '$cash ₽',
+            style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF7d7d7d)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ChekHistory extends StatelessWidget {
+  final String fio;
+  final String type;
+  final int cash;
+  final Icon icon;
+  const ChekHistory({
+    super.key,
+    required this.fio,
+    required this.type,
+    required this.cash,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.access_time_outlined,
+                color: Colors.green,
+                size: 40,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    fio,
+                    style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                  Text(
+                    type,
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color(0xFF7d7d7d)),
+                  )
+                ],
+              ),
+              const Spacer(),
+              Column(
+                children: [
+                  Text(
+                    '$cash ₽',
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                  const Icon(
+                    Icons.restart_alt_outlined,
+                    color: Colors.green,
+                  )
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class SelectBarList extends StatelessWidget {
+  const SelectBarList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 18.0),
+      child: SizedBox(
+        height: 50,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: const [
+            Row(
+              children: [
+                SelectBar(text: 'Тип операций'),
+                SizedBox(
+                  width: 10,
+                ),
+                SelectBar(text: 'Период'),
+                SizedBox(
+                  width: 10,
+                ),
+                SelectBar(text: 'Карты и счета')
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

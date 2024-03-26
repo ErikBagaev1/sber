@@ -41,7 +41,7 @@ class ExpensesList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: Skeletonizer(
-                enabled: enabled,
+                enabled: enabled1,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [

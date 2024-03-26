@@ -8,20 +8,19 @@ class HistoryAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF435063),
-              Color.fromARGB(255, 60, 69, 81),
-              Color.fromARGB(255, 57, 66, 77),
-              Color.fromARGB(255, 57, 66, 73),
-              Color(0xFF333A45),
-              Color(0xFF2F343C),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
+        decoration: const BoxDecoration(color: Colors.transparent
+            // gradient: LinearGradient(
+            //   colors: [
+            //     Color(0xFF3E4E5E),
+            //     Color(0xFF3E4E5E),
+            //     Color(0xFF272E38),
+            //     Color.fromARGB(255, 35, 42, 51),
+            //     Color(0xFF1E1F21),
+            //   ],
+            //   begin: Alignment.topLeft,
+            //   end: Alignment.bottomCenter,
+            // ),
+            ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           child: Row(

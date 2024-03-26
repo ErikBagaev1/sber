@@ -50,14 +50,14 @@ class TitleHistory extends StatelessWidget {
         height: 150,
         child: Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            padding: const EdgeInsets.only(left: 18.0),
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
                 Row(
                   children: [
                     Skeletonizer(
-                      enabled: enabled,
+                      enabled: enabled1 ? true : false,
                       child: SizedBox(
                         height: 130,
                         width: 220,

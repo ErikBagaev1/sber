@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/history_page.dart';
 
 import 'pages/home_page.dart';
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: const [
           HomePage(),
           Text('data'),
-          Text('data'),
+          ChekAdd(),
           Text('data'),
           HistoryPage()
         ],

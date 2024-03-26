@@ -8,7 +8,7 @@ import 'package:sber/components/custom_app_bar.dart';
 import 'package:sber/components/expenses_list.dart';
 import 'package:sber/components/translation_cash.dart';
 
-bool enabled = false;
+bool enabled1 = false;
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
     setState(() {
-      enabled = true;
+      enabled1 = true;
     });
 
     final random = Random();
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     await Future.delayed(Duration(seconds: delaySeconds));
 
     setState(() {
-      enabled = false;
+      enabled1 = false;
     });
   }
 
