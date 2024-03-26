@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 class DateChek extends StatelessWidget {
   final String date;
   final String cash;
@@ -49,7 +49,7 @@ class ChekHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedCash = NumberFormat.decimalPattern().format(cash);
+    // final formattedCash = NumberFormat.decimalPattern().format(cash);
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
       child: Column(
