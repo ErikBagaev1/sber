@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sber/pages/add_chek_page.dart';
+import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
 
 import 'pages/home_page.dart';
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: pageController,
         children: const [
           HomePage(),
-          Text('data'),
+          ClearDataScreen(),
           ChekAdd(),
           Text('data'),
           HistoryPage()

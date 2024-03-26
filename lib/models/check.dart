@@ -55,9 +55,10 @@ class CheckRepository {
   // Метод для загрузки списка экземпляров класса Chek из SharedPreferences
   static Future<List<Chek>> loadChecks() async {
     final prefs = await SharedPreferences.getInstance();
-    final jsonString = prefs.getString(_key);
-    if (jsonString != null) {
-      final jsonList = jsonDecode(jsonString) as List<dynamic>;
+    final jsonStringList = prefs.getStringList(_key);
+    if (jsonStringList != null) {
+      final jsonList =
+          jsonStringList.map((jsonString) => jsonDecode(jsonString)).toList();
       return jsonList.map((json) => Chek.fromJson(json)).toList();
     } else {
       return [];
@@ -68,5 +69,11 @@ class CheckRepository {
   static List<Chek> sortChecksByDate(List<Chek> checks) {
     checks.sort((a, b) => a.date.compareTo(b.date));
     return checks;
+  }
+
+// Метод для очистки данных в SharedPreferences
+  Future<void> clearSharedPreferences() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
   }
 }

@@ -20,6 +20,7 @@ class _ChekAddState extends State<ChekAdd> {
   final TextEditingController _cashController = TextEditingController();
   String _selectedStatus = listStatus.first;
   String _selectedBank = listBanks.first;
+  String _successMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +74,33 @@ class _ChekAddState extends State<ChekAdd> {
               print('Иконка: ${newCheck.icon}');
 
               CheckRepository.saveCheck(newCheck);
+              setState(() {
+                _successMessage = 'Чек успешно добавлен!';
+              });
+
+              // Очищаем поля ввода после успешного добавления
+              _dateController.clear();
+              _fioController.clear();
+              _cashController.clear();
+
+              // Задержка перед скрытием сообщения
+              Future.delayed(const Duration(seconds: 2), () {
+                setState(() {
+                  _successMessage = '';
+                });
+              });
             },
             child: const Text('Добавить чек'),
           ),
+          // Отображаем сообщение об успешном добавлении
+          if (_successMessage.isNotEmpty)
+            Text(
+              _successMessage,
+              style: const TextStyle(
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
         ],
       ),
     );
@@ -97,8 +122,10 @@ class AddChekTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextField(
+        style: const TextStyle(color: Color.fromARGB(211, 27, 234, 9)),
         controller: controller,
         decoration: InputDecoration(
+          focusColor: const Color(0xFFB3BDC6),
           hintText: text,
           hintStyle: const TextStyle(color: Color(0xFFB3BDC6), fontSize: 14),
           contentPadding:
@@ -108,7 +135,7 @@ class AddChekTextField extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: const Color.fromARGB(102, 149, 146, 146),
+          fillColor: const Color.fromARGB(102, 75, 76, 75),
         ),
       ),
     );
@@ -133,12 +160,16 @@ class DropdownButtonExample extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: DropdownButton<String>(
         isExpanded: true,
+        dropdownColor: const Color.fromARGB(255, 75, 76, 75),
         value: initialValue,
         onChanged: onChanged,
         items: dropdown.map((String value) {
           return DropdownMenuItem<String>(
             value: value,
-            child: Text(value),
+            child: Text(
+              value,
+              style: const TextStyle(color: Color.fromARGB(211, 27, 234, 9)),
+            ),
           );
         }).toList(),
       ),

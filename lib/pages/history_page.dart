@@ -16,7 +16,8 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  List<Chek> _checks = []; // Список для хранения загруженных чеков
+  final bool _isFirstLoad = true;
+  List<Chek> _checks = [];
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
     setState(() {
@@ -40,13 +41,19 @@ class _HistoryPageState extends State<HistoryPage> {
     _simulateLoading();
     _loadChecks();
   }
-   // Метод для загрузки чеков из локального хранилища
+
+  // Метод для загрузки чеков из локального хранилища
   void _loadChecks() async {
     try {
       List<Chek> loadedChecks = await CheckRepository.loadChecks();
       setState(() {
         _checks = loadedChecks;
       });
+      print('Загруженные чеки:');
+      print(_checks.length);
+      for (var check in _checks) {
+        print('Дата: ${check.date}, ФИО: ${check.fio}, Сумма: ${check.cash}');
+      }
     } catch (e) {
       // Обработка ошибок, если загрузка не удалась
       print('Ошибка при загрузке чеков: $e');
@@ -72,143 +79,74 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Stack(
-      children: [
-        RefreshIndicator(
-          backgroundColor: Colors.black,
-          color: Colors.green,
-          onRefresh: _refresh,
-          displacement: 40,
-          edgeOffset: 300.0,
-          child: ListView(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(23),
-                    bottomRight: Radius.circular(23),
-                  ),
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF3E4E5E),
-                      Color(0xFF272E38),
-                      Color.fromARGB(255, 35, 42, 51),
-                      Color(0xFF1E1F21),
-                      Color.fromARGB(255, 0, 0, 0),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomCenter,
-                  ),
-                ),
-                child: const Column(
+      child: Stack(
+        children: [
+          RefreshIndicator(
+            // Ваш код здесь...
+            backgroundColor: Colors.black,
+            color: Colors.green,
+            onRefresh: _refresh,
+            displacement: 40,
+            edgeOffset: 300.0,
+            child: ListView.builder(
+              itemCount: _checks.length,
+              itemBuilder: (context, index) {
+                // Создаем виджет DateChek для каждого элемента списка чеков
+                return Column(
                   children: [
-                    TitleHistory(),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    SelectBarList(),
-                  ],
-                ),
-              ),
-              Center(
-                child: isLoading
-                    ? const Padding(
-                        padding: EdgeInsets.only(top: 68.0),
-                        child: CircularProgressIndicator(
-                          color: Colors.green,
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(23),
+                          bottomRight: Radius.circular(23),
                         ),
-                      )
-                    : const Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
-                          ),
-                          DateChek(
-                            date: '22 марта, пт',
-                            cash: '1 190',
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 70.0, right: 30),
-                            child: Divider(
-                              thickness: 0.2,
-                            ),
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 70.0, right: 30),
-                            child: Divider(
-                              thickness: 0.2,
-                            ),
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          DateChek(
-                            date: '21 марта, пт',
-                            cash: '2 340',
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 70.0, right: 30),
-                            child: Divider(
-                              thickness: 0.2,
-                            ),
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 70.0, right: 30),
-                            child: Divider(
-                              thickness: 0.2,
-                            ),
-                          ),
-                          ChekHistory(
-                            fio: 'Заур Артурович Т.',
-                            type: 'Входящий перевод',
-                            cash: 300,
-                            icon: Icon(Icons.badge_outlined),
-                          )
-                        ],
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF3E4E5E),
+                            Color(0xFF272E38),
+                            Color.fromARGB(255, 35, 42, 51),
+                            Color(0xFF1E1F21),
+                            Color.fromARGB(255, 0, 0, 0),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomCenter,
+                        ),
                       ),
-              ),
-            ],
+                      child: (index == 0)
+                          ? const Column(
+                              children: [
+                                TitleHistory(),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                SelectBarList(),
+                              ],
+                            )
+                          : const SizedBox(),
+                    ),
+                    Center(
+                        child: isLoading
+                            ? const Padding(
+                                padding: EdgeInsets.only(top: 68.0),
+                                child: CircularProgressIndicator(
+                                  color: Colors.green,
+                                ),
+                              )
+                            : DateChek(
+                                date: _checks[index].date,
+                                cash: _checks[index].cash,
+                              )),
+                  ],
+                );
+              },
+            ),
           ),
-        ),
-        const HistoryAppBar()
-      ],
-    ));
+          // Показываем Container только при первой загрузке
+
+          const HistoryAppBar(),
+        ],
+      ),
+    );
   }
 }
 

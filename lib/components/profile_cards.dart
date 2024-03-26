@@ -14,14 +14,14 @@ class ProfileCards extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 65,
-                width: 65,
+                height: 55,
+                width: 55,
                 child: ClipOval(
                     child: Container(
                         color: const Color(0xFFEDEFEF),
                         child: const Icon(
                           Icons.person,
-                          size: 40,
+                          size: 30,
                         ))),
               ),
               const SizedBox(
