@@ -9,13 +9,11 @@ class CardsList extends StatefulWidget {
   State<CardsList> createState() => _CardsListState();
 }
 
-
-
 class _CardsListState extends State<CardsList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 170,
+      height: 160,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -41,7 +39,7 @@ class _CardsListState extends State<CardsList> {
           SizedBox(width: 8),
           CardBlock(
             widget: Icon(Icons.card_giftcard),
-            cash: '7 834, 13S ₽',
+            cash: '7 834, 13 ₽',
             cardNumber: 'MIR ** 2034',
           ),
           SizedBox(width: 8),

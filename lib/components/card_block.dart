@@ -41,7 +41,7 @@ class CardBlock extends StatelessWidget {
                 Text(
                   cash,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 17,
                     color: Colors.white,
                   ),
                 ),

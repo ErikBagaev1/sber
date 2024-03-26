@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // showSelectedLabels: true,
         // showUnselectedLabels: true,
         // elevation: 0,
-        // enableFeedback: false,
+        enableFeedback: true,
 
         backgroundColor: const Color(0xFF1E1E1E),
         selectedItemColor: const Color(0xFF18892C),

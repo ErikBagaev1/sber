@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/pages/home_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -13,6 +14,8 @@ class TitleHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final incomingP = formatNumberWithSpaces(int.parse(incoming));
+    final outgoingP = formatNumberWithSpaces(int.parse(outgoing));
     return Column(children: [
       const SizedBox(
         height: 70,
@@ -102,7 +105,7 @@ class TitleHistory extends StatelessWidget {
                                       height: 5,
                                     ),
                                     Text(
-                                      '$incoming ₽',
+                                      '$incomingP ₽',
                                       style: const TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -115,7 +118,7 @@ class TitleHistory extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          '+ $outgoing ₽',
+                                          '+ $outgoingP ₽',
                                           style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,

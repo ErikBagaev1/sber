@@ -14,8 +14,8 @@ class Expenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
-      width: 160,
+      height: 170,
+      width: 150,
       child: AspectRatio(
         aspectRatio: 1,
         child: Container(

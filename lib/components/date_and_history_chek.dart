@@ -1,5 +1,22 @@
 import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
+
+String formatNumberWithSpaces(int number) {
+  String formattedString = number.toString();
+  String result = '';
+  int count = 0;
+
+  // Проходим по строке справа налево и добавляем пробел каждые 3 символа
+  for (int i = formattedString.length - 1; i >= 0; i--) {
+    result = formattedString[i] + result;
+    count++;
+    if (count % 3 == 0 && i > 0) {
+      result = ' $result';
+    }
+  }
+
+  return result;
+}
+
 class DateChek extends StatelessWidget {
   final String date;
   final String cash;
@@ -11,6 +28,7 @@ class DateChek extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedCash = formatNumberWithSpaces(int.parse(cash));
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
       child: Row(
@@ -22,7 +40,7 @@ class DateChek extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '$cash ₽',
+            '$formattedCash ₽',
             style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w500,
@@ -49,7 +67,7 @@ class ChekHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final formattedCash = NumberFormat.decimalPattern().format(cash);
+    final formattedCash = formatNumberWithSpaces(cash);
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
       child: Column(
@@ -89,16 +107,16 @@ class ChekHistory extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '$cash ₽',
+                      '$formattedCash ₽',
                       style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
-                    const Icon(
-                      Icons.restart_alt_outlined,
-                      color: Colors.green,
-                    )
+                    // const Icon(
+                    //   Icons.restart_alt_outlined,
+                    //   color: Colors.green,
+                    // )
                   ],
                 ),
               if (type != 'Исходящий перевод') // Проверяем статус чека
@@ -106,7 +124,7 @@ class ChekHistory extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '+ $cash ₽',
+                      '+$formattedCash ₽',
                       style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,

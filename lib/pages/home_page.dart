@@ -114,6 +114,25 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 30.0, vertical: 5),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Сервисы',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                  Spacer(),
+                                ],
+                              ),
+                            ),
                             SizedBox(
                               height: 200,
                               child: Expanded(
