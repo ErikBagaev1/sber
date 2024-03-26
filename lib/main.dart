@@ -49,11 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       selectedIndex = index;
 
-      pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+      pageController.jumpToPage(index);
     });
   }
 

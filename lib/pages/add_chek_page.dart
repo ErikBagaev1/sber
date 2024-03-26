@@ -21,6 +21,15 @@ class _ChekAddState extends State<ChekAdd> {
   String _selectedStatus = listStatus.first;
   String _selectedBank = listBanks.first;
   String _successMessage = '';
+  @override
+  void dispose() {
+    _dateController.dispose();
+    _fioController.dispose();
+    _cashController.dispose();
+
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

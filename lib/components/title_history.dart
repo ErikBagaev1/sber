@@ -3,8 +3,12 @@ import 'package:sber/pages/home_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class TitleHistory extends StatelessWidget {
+  final String incoming;
+  final String outgoing;
   const TitleHistory({
     super.key,
+    required this.incoming,
+    required this.outgoing,
   });
 
   @override
@@ -97,9 +101,9 @@ class TitleHistory extends StatelessWidget {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    const Text(
-                                      '17 923 ₽',
-                                      style: TextStyle(
+                                    Text(
+                                      '$incoming ₽',
+                                      style: const TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
@@ -108,11 +112,11 @@ class TitleHistory extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Row(
+                                    Row(
                                       children: [
                                         Text(
-                                          '+ 20 600 ₽',
-                                          style: TextStyle(
+                                          '+ $outgoing ₽',
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.green,
