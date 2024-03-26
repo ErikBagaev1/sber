@@ -43,13 +43,9 @@ class CardBalanceWidget extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        const Icon(Icons.remove_red_eye, color: Colors.white),
-        const SizedBox(width: 8),
-        const Text(
-          '...',
-          style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+        const Icon(Icons.visibility_off, color: Colors.white),
+        const SizedBox(width: 15),
+        const Icon(Icons.more_horiz, color: Colors.white)
       ],
     );
   }

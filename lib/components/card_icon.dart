@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CardIconWidget extends StatelessWidget {
-  final Icon icon;
+  final String svg;
   const CardIconWidget({
     super.key,
-    required this.icon,
+    required this.svg,
   });
 
   @override
@@ -27,7 +28,7 @@ class CardIconWidget extends StatelessWidget {
                   Color.fromRGBO(58, 61, 70, 1),
                 ],
               )),
-          child: icon,
+          child: SvgPicture.asset(svg),
         ),
       ),
     );

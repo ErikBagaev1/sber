@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -15,7 +16,10 @@ class CustomAppBar extends StatelessWidget {
             child: ClipOval(
                 child: Container(
                     color: const Color(0xFFEDEFEF),
-                    child: const Icon(Icons.person))),
+                    child: const Icon(
+                      Icons.person,
+                      color: Color(0xFFc1c4c9),
+                    ))),
           ),
           const SizedBox(width: 20),
           Expanded(
@@ -35,14 +39,16 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-          const Icon(
-            Icons.flag,
-            color: Color(0xFFF0F9FF),
+          SvgPicture.asset(
+            'assets/Flag.svg',
+            width: 25,
+            height: 25,
           ),
-          const SizedBox(width: 4),
-          const Icon(
-            Icons.window_outlined,
-            color: Color(0xFFF0F9FF),
+          const SizedBox(width: 15),
+          SvgPicture.asset(
+            'assets/Окно.svg',
+            width: 25,
+            height: 25,
           ),
         ],
       ),

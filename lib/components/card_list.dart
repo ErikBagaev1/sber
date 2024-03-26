@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sber/components/card_block.dart';
 import 'package:sber/components/card_icon.dart';
 
@@ -17,50 +18,56 @@ class _CardsListState extends State<CardsList> {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: const [
-          SizedBox(width: 16),
-          Column(
+        children: [
+          const SizedBox(width: 16),
+          const Column(
             children: [
               CardIconWidget(
-                icon: Icon(Icons.qr_code_rounded),
+                svg: 'assets/Component.svg',
               ),
               SizedBox(height: 8),
               CardIconWidget(
-                icon: Icon(Icons.shield_outlined),
+                svg: 'assets/Done.svg',
               ),
             ],
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           CardBlock(
-            widget: Icon(Icons.card_giftcard),
+            widget: SvgPicture.asset(
+              'assets/Card.svg',
+              width: 30,
+            ),
             cash: '10 303, 32  ₽',
             cardNumber: 'Master... ** 1111',
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           CardBlock(
-            widget: Icon(Icons.card_giftcard),
+            widget: SvgPicture.asset(
+              'assets/CardViza.svg',
+              width: 30,
+            ),
             cash: '7 834, 13 ₽',
             cardNumber: 'MIR ** 2034',
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           CardBlock(
-            widget: Icon(Icons.card_giftcard),
+            widget: SvgPicture.asset(
+              'assets/CardViza.svg',
+              width: 30,
+            ),
             cash: '7 834, 13S ₽',
             cardNumber: 'MIR ** 2034',
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           CardBlock(
-            widget: Icon(Icons.card_giftcard),
+            widget: SvgPicture.asset(
+              'assets/CardViza.svg',
+              width: 30,
+            ),
             cash: '7 834, 13S ₽',
             cardNumber: 'MIR ** 2034',
           ),
-          SizedBox(width: 8),
-          CardBlock(
-            widget: Icon(Icons.card_giftcard),
-            cash: '7 834, 13S ₽',
-            cardNumber: 'MIR ** 2034',
-          ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
         ],
       ),
     );

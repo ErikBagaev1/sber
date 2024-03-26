@@ -3,53 +3,55 @@ import 'package:flutter/material.dart';
 class ProfileCards extends StatelessWidget {
   final String text;
   final String text2;
-  const ProfileCards({super.key, required this.text, required this.text2});
+  final String iconText;
+  const ProfileCards(
+      {super.key,
+      required this.text,
+      required this.text2,
+      required this.iconText});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 55,
-                width: 55,
-                child: ClipOval(
-                    child: Container(
-                        color: const Color(0xFFEDEFEF),
-                        child: const Icon(
-                          Icons.person,
-                          size: 30,
-                        ))),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                text,
-                softWrap: true,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                text2,
-                softWrap: true,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              )
-            ],
-          ),
+        Column(
+          children: [
+            SizedBox(
+              height: 55,
+              width: 55,
+              child: ClipOval(
+                  child: Container(
+                      color: const Color(0xFF383838),
+                      child: Center(
+                          child: Text(
+                        iconText,
+                        style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF8c8c8c)),
+                      )))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              text,
+              softWrap: true,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(color: Colors.white, fontSize: 12),
+            ),
+            Text(
+              text2,
+              softWrap: true,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(color: Colors.white, fontSize: 12),
+            )
+          ],
         ),
         const SizedBox(
-          width: 80,
+          width: 65,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -57,7 +59,7 @@ class ProfileCards extends StatelessWidget {
               Icon(
                 Icons.close,
                 color: Colors.grey,
-                size: 18,
+                size: 15,
               )
             ],
           ),

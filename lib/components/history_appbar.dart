@@ -39,7 +39,10 @@ class HistoryAppBar extends StatelessWidget {
                 child: ClipOval(
                     child: Container(
                         color: const Color(0xFFEDEFEF),
-                        child: const Icon(Icons.person))),
+                        child: const Icon(
+                          Icons.person,
+                          color: Color(0xFFc1c4c9),
+                        ))),
               ),
               const SizedBox(width: 20),
               Expanded(

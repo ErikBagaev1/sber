@@ -55,126 +55,125 @@ class TitleHistory extends StatelessWidget {
       ),
       SizedBox(
         height: 150,
-        child: Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                Row(
-                  children: [
-                    Skeletonizer(
-                      enabled: enabled1 ? true : false,
-                      child: SizedBox(
-                        height: 130,
-                        width: 220,
-                        child: AspectRatio(
-                          aspectRatio: 1.8,
-                          child: Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: const Color(0xFF1E1E1E),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Расходы в марте',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey[400],
-                                          ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18.0),
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: [
+              Row(
+                children: [
+                  Skeletonizer(
+                    enabled: enabled1 ? true : false,
+                    child: SizedBox(
+                      height: 130,
+                      width: 220,
+                      child: AspectRatio(
+                        aspectRatio: 1.8,
+                        child: Container(
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: const Color(0xFF1E1E1E),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Расходы в марте',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey[400],
                                         ),
-                                        const Spacer(),
-                                        Skeleton.ignore(
-                                          child: Icon(
-                                            size: 16,
-                                            Icons.arrow_forward_ios_rounded,
-                                            color: Colors.grey.withOpacity(0.5),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      '$incomingP ₽',
-                                      style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          '+ $outgoingP ₽',
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green,
-                                          ),
+                                      const Spacer(),
+                                      Skeleton.ignore(
+                                        child: Icon(
+                                          size: 16,
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: Colors.grey.withOpacity(0.5),
                                         ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    '$incomingP ₽',
+                                    style: const TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '+ $outgoingP ₽',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const CardHistory(
+                    icon: Icon(
+                      Icons
+                          .error_outline, // Иконка восклицательного знака без заливки
+                      color: Colors.grey, // Цвет иконки
+                      size: 34, // Размер иконки
                     ),
-                    const CardHistory(
-                      icon: Icon(
-                        Icons
-                            .error_outline, // Иконка восклицательного знака без заливки
-                        color: Colors.grey, // Цвет иконки
-                        size: 34, // Размер иконки
-                      ),
-                      text: 'Укажите свой телефон',
+                    text: 'Укажите свой телефон',
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const CardHistory(
+                    icon: Icon(
+                      Icons
+                          .monetization_on, // Иконка восклицательного знака без заливки
+                      color: Colors.grey, // Цвет иконки
+                      size: 34, // Размер иконки
                     ),
-                    const SizedBox(
-                      width: 10,
+                    text: 'Деньги за покупки',
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const CardHistory(
+                    icon: Icon(
+                      Icons
+                          .error_outline, // Иконка восклицательного знака без заливки
+                      color: Colors.grey, // Цвет иконки
+                      size: 34, // Размер иконки
                     ),
-                    const CardHistory(
-                      icon: Icon(
-                        Icons
-                            .monetization_on, // Иконка восклицательного знака без заливки
-                        color: Colors.grey, // Цвет иконки
-                        size: 34, // Размер иконки
-                      ),
-                      text: 'Деньги за покупки',
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const CardHistory(
-                      icon: Icon(
-                        Icons
-                            .error_outline, // Иконка восклицательного знака без заливки
-                        color: Colors.grey, // Цвет иконки
-                        size: 34, // Размер иконки
-                      ),
-                      text: 'Выписки и справки',
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    text: 'Выписки и справки',
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       )
