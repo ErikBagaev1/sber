@@ -72,7 +72,7 @@ class _ChekAddState extends State<ChekAdd> {
               final newCheck = Chek(
                 date: _dateController.text,
                 fio: _fioController.text,
-                cash: _cashController.text,
+                cash: double.parse(_cashController.text),
                 status: _selectedStatus,
                 icon: _selectedBank,
               );

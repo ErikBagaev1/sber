@@ -24,13 +24,13 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   // final bool _isFirstLoad = true;
   String calculateTotalCashForStatus(String status) {
-    int totalCash = 0;
+    double totalCash = 0;
 
     // Проходим по всем чекам
     for (var check in _checks) {
       // Если статус чека совпадает с заданным статусом, добавляем его сумму к общей сумме
       if (check.status == status) {
-        totalCash += int.parse(check.cash);
+        totalCash += check.cash;
       }
     }
 
@@ -86,13 +86,13 @@ class _HistoryPageState extends State<HistoryPage> {
   }
 
   String calculateTotalCashForDate(String currentDate) {
-    int totalCash = 0;
+    double totalCash = 0;
 
     // Проходим по всем чекам
     for (var check in _checks) {
       // Если дата чека совпадает с текущей датой, добавляем его сумму к общей сумме
       if (check.date == currentDate) {
-        totalCash += int.parse(check.cash);
+        totalCash += check.cash;
       }
     }
 
@@ -103,9 +103,7 @@ class _HistoryPageState extends State<HistoryPage> {
   void filterChecksByAmount(int amount) {
     setState(() {
       // Фильтруем чеки на основе введенной суммы
-      _newChecks = _checks
-          .where((check) => check.cash.contains(amount.toString()))
-          .toList();
+      _newChecks = _checks.where((check) => check.cash == amount).toList();
       _checks = _newChecks;
     });
   }
@@ -175,7 +173,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 if (searchAmount != null) {
                   filteredChecks = filteredChecks
                       // ignore: unrelated_type_equality_checks
-                      .where((check) => int.parse(check.cash) == searchAmount)
+                      .where((check) => check.cash == searchAmount)
                       .toList();
                 }
                 // Создаем виджеты ChekHistory для отфильтрованных чеков
@@ -183,7 +181,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     .map((check) => ChekHistory(
                           fio: check.fio,
                           type: check.status,
-                          cash: int.parse(check.cash),
+                          cash: check.cash,
                           icon: const Icon(Icons.abc),
                         ))
                     .toList();

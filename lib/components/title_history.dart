@@ -14,8 +14,10 @@ class TitleHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final incomingP = formatNumberWithSpaces(int.parse(incoming));
-    final outgoingP = formatNumberWithSpaces(int.parse(outgoing));
+    final incomingP = formatIntNumberWithSpaces(int.parse(
+        (((double.parse(outgoing)).round()).toString()).replaceAll('.', '')));
+    final outgoingP = formatIntNumberWithSpaces(int.parse(
+        (((double.parse(incoming)).round()).toString()).replaceAll('.', '')));
     return Column(children: [
       const SizedBox(
         height: 70,

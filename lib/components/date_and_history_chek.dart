@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-String formatNumberWithSpaces(int number) {
+String formatNumberWithSpaces(double number) {
   String formattedString = number.toString();
   String result = '';
   int count = 0;
@@ -14,7 +14,24 @@ String formatNumberWithSpaces(int number) {
       result = ' $result';
     }
   }
+  result = result.replaceAll(' .', ',');
+  return result;
+}
 
+String formatIntNumberWithSpaces(int number) {
+  String formattedString = number.toString();
+  String result = '';
+  int count = 0;
+
+  // Проходим по строке справа налево и добавляем пробел каждые 3 символа
+  for (int i = formattedString.length - 1; i >= 0; i--) {
+    result = formattedString[i] + result;
+    count++;
+    if (count % 3 == 0 && i > 0) {
+      result = ' $result';
+    }
+  }
+  result = result.replaceAll(' .', ',');
   return result;
 }
 
@@ -29,15 +46,34 @@ class DateChek extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedCash = formatNumberWithSpaces(int.parse(cash));
+    final formattedCash = formatIntNumberWithSpaces(int.parse(
+        (((double.parse(cash)).round()).toString()).replaceAll('.', '')));
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
       child: Row(
         children: [
-          Text(
-            date,
-            style: const TextStyle(
-                fontSize: 22, fontWeight: FontWeight.w500, color: Colors.white),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: date.substring(0, 2), // Получаем первые два символа
+                  style: const TextStyle(
+                    fontSize:
+                        25, // Новый размер шрифта для первых двух символов
+                    fontWeight: FontWeight.w500, // Жирный шрифт
+                    color: Colors.white, // Цвет текста
+                  ),
+                ),
+                TextSpan(
+                  text: date.substring(2), // Получаем оставшуюся часть строки
+                  style: const TextStyle(
+                    fontSize: 20, // Размер шрифта для остальной части
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
           const Spacer(),
           Text(
@@ -56,7 +92,7 @@ class DateChek extends StatelessWidget {
 class ChekHistory extends StatelessWidget {
   final String fio;
   final String type;
-  final int cash;
+  final double cash;
   final Icon icon;
   const ChekHistory({
     super.key,

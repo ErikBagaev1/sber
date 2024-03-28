@@ -6,7 +6,7 @@ class Chek {
   final String icon;
   final String fio;
   final String status;
-  final String cash;
+  final double cash;
 
   final String date;
 
