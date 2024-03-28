@@ -38,27 +38,27 @@ class ExpensesList extends StatelessWidget {
         ),
         SizedBox(
           height: 200,
-          child: Skeletonizer(
-            enabled: enabled1,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 18,
-                    ),
-                    Expenses(
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: [
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 18,
+                  ),
+                  Skeletonizer(
+                    enabled: enabled1 ? true : false,
+                    child: Expenses(
                       cash: const Text(
-                        '17 137 ₽',
+                        '0 ₽',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                         ),
                       ),
                       cardNumber: Text(
-                        'Все расходы из 6000 ₽',
+                        'Все расходы \nиз 0 ₽',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey[400],
@@ -69,59 +69,59 @@ class ExpensesList extends StatelessWidget {
                         width: 40,
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    //====================================
-                    Expenses(
-                      cash: Text(
-                        'Перводы людям',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      cardNumber: const Text(
-                        '10 831 ₽',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                      widget: SvgPicture.asset(
-                        'assets/Перевод.svg',
-                        width: 40,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  //====================================
+                  Expenses(
+                    cash: Text(
+                      'Перводы людям',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[400],
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    cardNumber: const Text(
+                      '0 ₽',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
                     ),
+                    widget: SvgPicture.asset(
+                      'assets/Перевод.svg',
+                      width: 40,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
 
-                    //====================================
-                    Expenses(
-                      cash: Text(
-                        'Рестораны и кафе',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      cardNumber: const Text(
-                        '3 045 ₽',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                      widget: SvgPicture.asset(
-                        'assets/Food.svg',
-                        width: 40,
+                  //====================================
+                  Expenses(
+                    cash: Text(
+                      'Рестораны и кафе',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[400],
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                    cardNumber: const Text(
+                      '0 ₽',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                    widget: SvgPicture.asset(
+                      'assets/Food.svg',
+                      width: 40,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         )
       ],

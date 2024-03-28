@@ -9,6 +9,8 @@ import 'package:sber/pages/home_page.dart';
 
 import '../components/select_bar.dart';
 
+bool inserach = true;
+bool? isSearching;
 String? incoming;
 String? outgoing;
 
@@ -39,7 +41,6 @@ class _HistoryPageState extends State<HistoryPage> {
   List<Chek> _checks = [];
   List<Chek> _newChecks = [];
   Future<void> _refresh() async {
-    // Устанавливаем enabled в true
     setState(() {
       enabled1 = true;
     });
@@ -119,9 +120,13 @@ class _HistoryPageState extends State<HistoryPage> {
   // Функция, которая имитирует загрузку данных
   Future<void> _simulateLoading() async {
     // Генерация случайного времени от 1 до 2 секунд
+
     final random = Random();
     final delaySeconds = random.nextInt(2) + 1;
 
+    setState(() {
+      enabled1 = true;
+    });
     // Задержка на случайное время
     await Future.delayed(Duration(seconds: delaySeconds));
 
@@ -129,13 +134,14 @@ class _HistoryPageState extends State<HistoryPage> {
 
     setState(() {
       isLoading = false;
+      enabled1 = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // Сортируем список чеков по дате
-    _checks.sort((a, b) => a.date.compareTo(b.date));
+    _checks.sort((a, b) => b.date.compareTo(a.date));
 
     // Создаем список уникальных дат
     List<String> uniqueDates =
@@ -168,6 +174,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     .toList();
                 if (searchAmount != null) {
                   filteredChecks = filteredChecks
+                      // ignore: unrelated_type_equality_checks
                       .where((check) => int.parse(check.cash) == searchAmount)
                       .toList();
                 }
@@ -184,7 +191,11 @@ class _HistoryPageState extends State<HistoryPage> {
                 // Возвращаем виджеты в списке
                 return Column(
                   children: [
-                    if (index == 0)
+                    if (index == 0 && !inserach)
+                      const SizedBox(
+                        height: 70,
+                      ),
+                    if (index == 0 && (inserach))
                       Container(
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -193,18 +204,24 @@ class _HistoryPageState extends State<HistoryPage> {
                           ),
                           gradient: LinearGradient(
                             colors: [
-                              Color(0xFF3E4E5E),
-                              Color(0xFF272E38),
-                              Color.fromARGB(255, 35, 42, 51),
-                              Color(0xFF1E1F21),
-                              Color.fromARGB(255, 0, 0, 0),
+                              Color(0xFF0e0e0e),
+                              Color(0xFF0f0f0f),
+                              Color(0xFF111110),
+                              Color(0xFF131312),
+                              Color(0xFF151514),
+                              // Color(0xFF171716),
+                              // Color(0xFF191918),
+                              // Color(0xFF1b1b1a),
+                              // Color(0xFF1d1d1b),
+                              // Color(0xFF1f1f1d),
                             ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomCenter,
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
                           ),
                         ),
                         child: Column(
                           children: [
+                            // Показываем HistoryAppBar только если не идет поиск
                             TitleHistory(
                               incoming: incoming!,
                               outgoing: outgoing!,
@@ -213,6 +230,9 @@ class _HistoryPageState extends State<HistoryPage> {
                               height: 30,
                             ),
                             const SelectBarList(),
+                            const SizedBox(
+                              height: 10,
+                            ),
                           ],
                         ),
                       ),

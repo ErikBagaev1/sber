@@ -11,8 +11,8 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 40,
-            height: 40,
+            width: 35,
+            height: 35,
             child: ClipOval(
                 child: Container(
                     color: const Color(0xFFEDEFEF),
@@ -26,10 +26,11 @@ class CustomAppBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Поиск',
+                  isDense: true,
                   hintStyle:
                       const TextStyle(color: Color(0xFFB3BDC6), fontSize: 14),
                   contentPadding: const EdgeInsets.symmetric(
-                      vertical: 5.0, horizontal: 16.0),
+                      vertical: 8.0, horizontal: 16.0),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(40.0),
                     borderSide: BorderSide.none,
@@ -41,14 +42,14 @@ class CustomAppBar extends StatelessWidget {
           const SizedBox(width: 20),
           SvgPicture.asset(
             'assets/Flag.svg',
-            width: 25,
-            height: 25,
+            width: 20,
+            height: 20,
           ),
           const SizedBox(width: 15),
           SvgPicture.asset(
             'assets/Окно.svg',
-            width: 25,
-            height: 25,
+            width: 20,
+            height: 20,
           ),
         ],
       ),

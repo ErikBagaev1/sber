@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 String formatNumberWithSpaces(int number) {
   String formattedString = number.toString();
@@ -42,8 +43,8 @@ class DateChek extends StatelessWidget {
           Text(
             '$formattedCash ₽',
             style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
                 color: Color(0xFF7d7d7d)),
           ),
         ],
@@ -74,11 +75,34 @@ class ChekHistory extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(
-                Icons.access_time_outlined,
-                color: Colors.green,
-                size: 40,
-              ),
+              if (type == 'Входящий перевод') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/Перевод.svg',
+                      width: 40,
+                    )
+                    // const Icon(
+                    //   Icons.restart_alt_outlined,
+                    //   color: Colors.green,
+                    // )
+                  ],
+                ),
+              if (type != 'Входящий перевод') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/перевод_.svg',
+                      width: 40,
+                    )
+                    // const Icon(
+                    //   Icons.restart_alt_outlined,
+                    //   color: Colors.green,
+                    // )
+                  ],
+                ),
               const SizedBox(
                 width: 10,
               ),
@@ -104,7 +128,8 @@ class ChekHistory extends StatelessWidget {
               const Spacer(),
               if (type != 'Входящий перевод') // Проверяем статус чека
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       '$formattedCash ₽',
@@ -113,6 +138,7 @@ class ChekHistory extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
+                    const Text('')
                     // const Icon(
                     //   Icons.restart_alt_outlined,
                     //   color: Colors.green,
@@ -121,7 +147,8 @@ class ChekHistory extends StatelessWidget {
                 ),
               if (type != 'Исходящий перевод') // Проверяем статус чека
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       '+$formattedCash ₽',
@@ -130,6 +157,7 @@ class ChekHistory extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: Colors.green),
                     ),
+                    const Text('')
                   ],
                 ),
             ],

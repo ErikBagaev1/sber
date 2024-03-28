@@ -14,9 +14,9 @@ class CardBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1,
+      aspectRatio: 1.1,
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             gradient: const LinearGradient(
@@ -33,7 +33,10 @@ class CardBlock extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            widget,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: widget,
+            ),
             const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

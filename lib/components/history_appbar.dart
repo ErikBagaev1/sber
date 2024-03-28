@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../pages/history_page.dart';
+
 TextEditingController? searchAmount;
 
-class HistoryAppBar extends StatelessWidget {
+class HistoryAppBar extends StatefulWidget {
   final Function(int) onSearchAmountChanged; // Объявляем callback
   final VoidCallback resetCheck; // Объявляем callback
 
@@ -13,20 +15,21 @@ class HistoryAppBar extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<HistoryAppBar> createState() => _HistoryAppBarState();
+}
+
+class _HistoryAppBarState extends State<HistoryAppBar> {
+  bool isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
           // color: Colors.transparent,
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF3E4E5E),
-              Color(0xFF3E4E5E),
-              Color(0xFF272E38),
-              Color.fromARGB(255, 35, 42, 51),
-              Color(0xFF1E1F21),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomCenter,
+            colors: [Color(0xFF151515), Color(0xFF151515)],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
           ),
         ),
         child: Padding(
@@ -34,8 +37,8 @@ class HistoryAppBar extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                width: 40,
-                height: 40,
+                width: 35,
+                height: 35,
                 child: ClipOval(
                     child: Container(
                         color: const Color(0xFFEDEFEF),
@@ -44,32 +47,45 @@ class HistoryAppBar extends StatelessWidget {
                           color: Color(0xFFc1c4c9),
                         ))),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 10),
               Expanded(
                 child: TextField(
                   style:
                       const TextStyle(color: Color(0xFFB3BDC6), fontSize: 14),
                   onChanged: (value) {
+                    setState(() {
+                      isLoading = true;
+                      inserach = true;
+                    });
+
                     if (value.isNotEmpty) {
-                      onSearchAmountChanged(
-                          int.parse(value)); // Передаем значение вместо int
+                      setState(() {
+                        inserach = false;
+                      });
+
+                      widget.onSearchAmountChanged(int.parse(value));
                     } else {
-                      resetCheck();
+                      widget.resetCheck();
+
+                      setState(() {
+                        inserach = true;
+                      });
                     }
                   },
                   controller: searchAmount,
                   decoration: InputDecoration(
                       hintText: 'Поиск',
+                      isDense: true,
                       hintStyle: const TextStyle(
                           color: Color(0xFFB3BDC6), fontSize: 14),
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16.0),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 16.0),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40.0),
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      fillColor: const Color.fromRGBO(0, 0, 0, 0.4)),
+                      fillColor: Colors.black87),
                 ),
               ),
               const SizedBox(width: 10),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Сбербанк',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Сбербанк'),
@@ -84,24 +87,55 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-const items = <BottomNavigationBarItem>[
-  BottomNavigationBarItem(
+final items = <BottomNavigationBarItem>[
+  const BottomNavigationBarItem(
     icon: Icon(Icons.home_filled),
     label: 'Главная',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.camera),
+    icon: Container(
+      width: 25, // Ширина фона
+      height: 20, // Высота фона
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Color(0xFF8a8a8a), // Цвет фона
+      ),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 3.0),
+        child: Icon(
+          Icons.signal_cellular_alt,
+          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+        ),
+      ),
+    ),
     label: 'Накопления',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.chat),
+    icon: SvgPicture.asset(
+      'assets/Ассистент.svg',
+      width: 25,
+    ),
     label: 'Aссистент',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.chat),
+    icon: Container(
+      width: 20, // Ширина фона
+      height: 20, // Высота фона
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Color(0xFF8a8a8a), // Цвет фона
+      ),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 3.0),
+        child: Icon(
+          Icons.arrow_forward,
+          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+        ),
+      ),
+    ),
     label: 'Платежи',
   ),
-  BottomNavigationBarItem(
+  const BottomNavigationBarItem(
     icon: Padding(
       padding: EdgeInsets.only(right: 8),
       child: Icon(Icons.watch_later),

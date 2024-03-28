@@ -14,7 +14,7 @@ class _CardsListState extends State<CardsList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
+      height: 150,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -28,6 +28,8 @@ class _CardsListState extends State<CardsList> {
               SizedBox(height: 8),
               CardIconWidget(
                 svg: 'assets/Done.svg',
+                
+                
               ),
             ],
           ),

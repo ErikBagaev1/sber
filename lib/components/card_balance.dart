@@ -10,6 +10,7 @@ class CardBalanceWidget extends StatelessWidget {
     return Row(
       children: [
         Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
@@ -25,7 +26,7 @@ class CardBalanceWidget extends StatelessWidget {
             Row(
               children: [
                 const Text(
-                  '10 303, 32 ₽',
+                  '10 303,32 ₽',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -43,9 +44,17 @@ class CardBalanceWidget extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        const Icon(Icons.visibility_off, color: Colors.white),
-        const SizedBox(width: 15),
-        const Icon(Icons.more_horiz, color: Colors.white)
+        const Icon(
+          Icons.visibility_off,
+          color: Colors.white,
+          size: 20,
+        ),
+        const SizedBox(width: 17),
+        const Icon(
+          Icons.more_horiz,
+          color: Colors.white,
+          size: 20,
+        )
       ],
     );
   }

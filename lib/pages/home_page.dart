@@ -7,7 +7,8 @@ import 'package:sber/components/card_balance.dart';
 import 'package:sber/components/card_list.dart';
 import 'package:sber/components/custom_app_bar.dart';
 import 'package:sber/components/expenses_list.dart';
-import 'package:sber/components/translation_cash.dart';
+
+import '../components/translation_cash.dart';
 
 bool enabled1 = false;
 
@@ -133,86 +134,84 @@ class _HomePageState extends State<HomePage> {
                           ),
                           SizedBox(
                             height: 200,
-                            child: Expanded(
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 18,
-                                      ),
-                                      Expenses(
-                                          cash: const Text(
-                                            'Оформить ',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.white,
-                                            ),
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Row(
+                                  children: [
+                                    const SizedBox(
+                                      width: 18,
+                                    ),
+                                    Expenses(
+                                        cash: const Text(
+                                          'Оформить ',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white,
                                           ),
-                                          cardNumber: Text(
-                                            '''Карту, вклад \nкредит и другое''',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey[400],
-                                            ),
+                                        ),
+                                        cardNumber: Text(
+                                          '''Карту, вклад \nкредит и другое''',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[400],
                                           ),
-                                          widget: SvgPicture.asset(
-                                            'assets/Plus.svg',
-                                            width: 30,
-                                          )),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      //====================================
-                                      Expenses(
-                                          cash: Text(
-                                            '',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey[400],
-                                            ),
-                                          ),
-                                          cardNumber: const Text(
-                                            'Все \nсервисы',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          widget: SvgPicture.asset(
-                                            'assets/Виджет.svg',
-                                            width: 30,
-                                          )),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-
-                                      //====================================
-                                      Expenses(
+                                        ),
+                                        widget: SvgPicture.asset(
+                                          'assets/Plus.svg',
+                                          width: 30,
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    //====================================
+                                    Expenses(
                                         cash: Text(
-                                          'Рестораны и кафе',
+                                          '',
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.grey[400],
                                           ),
                                         ),
                                         cardNumber: const Text(
-                                          '3 045 ₽',
+                                          'Все \nсервисы',
                                           style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.white,
                                           ),
                                         ),
                                         widget: SvgPicture.asset(
-                                          'assets/Star.svg',
+                                          'assets/Виджет.svg',
                                           width: 30,
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+
+                                    //====================================
+                                    Expenses(
+                                      cash: Text(
+                                        'Рестораны и кафе',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey[400],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                      cardNumber: const Text(
+                                        '3 045 ₽',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      widget: SvgPicture.asset(
+                                        'assets/Star.svg',
+                                        width: 30,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           )
                         ],

@@ -64,14 +64,16 @@ class TitleHistory extends StatelessWidget {
               Row(
                 children: [
                   Skeletonizer(
+                    textBoneBorderRadius:
+                        const TextBoneBorderRadius.fromHeightFactor(.10),
                     enabled: enabled1 ? true : false,
                     child: SizedBox(
-                      height: 130,
+                      height: 110,
                       width: 220,
                       child: AspectRatio(
                         aspectRatio: 1.8,
                         child: Container(
-                          padding: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: const Color(0xFF1E1E1E),
@@ -115,17 +117,28 @@ class TitleHistory extends StatelessWidget {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '+ $outgoingP ₽',
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.green,
+                                  Skeleton.unite(
+                                    borderRadius: BorderRadius.circular(4),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          '+ $outgoingP ₽',
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.green,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        const Text(
+                                          ' зачислений',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),
@@ -194,11 +207,12 @@ class CardHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 150,
-      height: 130,
+      height: 110,
       child: AspectRatio(
         aspectRatio: 1.1,
         child: Container(
-          padding: const EdgeInsets.all(15),
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: const Color(0xFF1E1E1E),

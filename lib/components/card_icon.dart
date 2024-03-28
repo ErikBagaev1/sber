@@ -12,9 +12,9 @@ class CardIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: AspectRatio(
-        aspectRatio: 1,
+        aspectRatio: 10 / 11,
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               gradient: const LinearGradient(
