@@ -1,21 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-String formatNumberWithSpaces(double number) {
-  String formattedString = number.toString();
-  String result = '';
-  int count = 0;
+String formatNumberWithSpaces(double numberString) {
+  // Разделяем число на дробную и целую части
+  List<String> parts = numberString.toString().split('.');
+  String integerPart = parts[0]; // Целая часть числа
 
-  // Проходим по строке справа налево и добавляем пробел каждые 3 символа
-  for (int i = formattedString.length - 1; i >= 0; i--) {
-    result = formattedString[i] + result;
-    count++;
-    if (count % 3 == 0 && i > 0) {
-      result = ' $result';
+  // Форматируем целую часть числа
+  String formattedIntegerPart =
+      formatIntNumberWithSpaces(int.parse(integerPart));
+
+  if (parts.length > 1) {
+    // Если есть дробная часть числа
+    String decimalPart = parts[1];
+    String formattedDecimalPart =
+        formatIntNumberWithSpaces(int.parse(decimalPart));
+
+    // Убираем незначащие нули справа от дробной части
+    int endIndex = formattedDecimalPart.length - 1;
+    while (endIndex >= 0 && formattedDecimalPart[endIndex] == '0') {
+      endIndex--;
     }
+    formattedDecimalPart = formattedDecimalPart.substring(0, endIndex + 1);
+
+    // Собираем результат, если дробная часть не пустая
+    if (formattedDecimalPart.isNotEmpty) {
+      return '$formattedIntegerPart,$formattedDecimalPart';
+    } else {
+      // Если дробная часть пустая, возвращаем только целую часть
+      return formattedIntegerPart;
+    }
+  } else {
+    // Если нет дробной части, возвращаем только целую часть
+    return formattedIntegerPart;
   }
-  result = result.replaceAll(' .', ',');
-  return result;
 }
 
 String formatIntNumberWithSpaces(int number) {
