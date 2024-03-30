@@ -5,7 +5,7 @@ import '../pages/history_page.dart';
 TextEditingController? searchAmount;
 
 class HistoryAppBar extends StatefulWidget {
-  final Function(double) onSearchAmountChanged; // Объявляем callback
+  final Function(String) onSearchAmountChanged; // Объявляем callback
   final VoidCallback resetCheck; // Объявляем callback
 
   const HistoryAppBar({
@@ -63,13 +63,12 @@ class _HistoryAppBarState extends State<HistoryAppBar> {
                         inserach = false;
                       });
 
-                      widget.onSearchAmountChanged(double.parse(value));
+                      widget.onSearchAmountChanged(value);
                     } else {
-                      widget.resetCheck();
-
                       setState(() {
                         inserach = true;
                       });
+                      widget.resetCheck();
                     }
                   },
                   controller: searchAmount,

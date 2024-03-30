@@ -23,6 +23,7 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   // final bool _isFirstLoad = true;
+
   String calculateTotalCashForStatus(String status) {
     double totalCash = 0;
 
@@ -100,12 +101,40 @@ class _HistoryPageState extends State<HistoryPage> {
     return '$totalCash';
   }
 
-  void filterChecksByAmount(double amount) {
+  // void filterChecksByAmount(double amount) {
+  //   setState(() {
+  //     // Фильтруем чеки на основе введенной суммы
+  //     _newChecks = _checks
+  //         .where((check) => (check.cash - amount).abs() < 0.0001)
+  //         .toList();
+  //     _checks = _newChecks;
+  //   });
+  // }
+  void filterChecks(String searchText) {
     setState(() {
-      // Фильтруем чеки на основе введенной суммы
-      _newChecks = _checks.where((check) => check.cash == amount).toList();
+      // Фильтруем чеки на основе введенного текста
+      _newChecks = _checks.where((check) {
+        // Получаем строковое представление суммы чека и имени
+        String cashString = check.cash.toString().toLowerCase();
+        String name = check.fio.toLowerCase();
+
+        // Проверяем, начинается ли строка с цифры или буквы
+        bool isNumericSearch = isNumeric(searchText[0]);
+
+        if (isNumericSearch) {
+          // Поиск по сумме чека (cash)
+          return cashString.startsWith(searchText.toLowerCase());
+        } else {
+          // Поиск по имени (fio)
+          return name.startsWith(searchText.toLowerCase());
+        }
+      }).toList();
       _checks = _newChecks;
     });
+  }
+
+  bool isNumeric(String str) {
+    return double.tryParse(str) != null;
   }
 
   String outCalculateTotalCashForDate(String currentDate, String status) {
@@ -275,7 +304,7 @@ class _HistoryPageState extends State<HistoryPage> {
           // Показываем Container только при первой загрузке
 
           HistoryAppBar(
-            onSearchAmountChanged: filterChecksByAmount,
+            onSearchAmountChanged: filterChecks,
             resetCheck: resetChecks,
           ),
         ],
