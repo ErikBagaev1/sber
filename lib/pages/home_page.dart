@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           RefreshIndicator(
             displacement: 80,
             backgroundColor: Colors.black,
-            color: Colors.green,
+            color: const Color(0xFF08A652),
             onRefresh: _refresh,
             child: ListView(
               children: [
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.grey.withOpacity(0.5),
                                 ),
                                 const Spacer(),
-                                Icon(Icons.add, color: Colors.green[700]),
+                                const Icon(Icons.add, color: Color(0xFF08A652)),
                               ],
                             ),
                           ),

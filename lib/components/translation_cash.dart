@@ -36,7 +36,7 @@ class TranslationCash extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
-                              color: Colors.green[700]),
+                              color: Color(0xFF08A652)),
                         ),
                       ],
                     ),

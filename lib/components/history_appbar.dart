@@ -5,7 +5,7 @@ import '../pages/history_page.dart';
 TextEditingController? searchAmount;
 
 class HistoryAppBar extends StatefulWidget {
-  final Function(int) onSearchAmountChanged; // Объявляем callback
+  final Function(double) onSearchAmountChanged; // Объявляем callback
   final VoidCallback resetCheck; // Объявляем callback
 
   const HistoryAppBar({
@@ -63,7 +63,7 @@ class _HistoryAppBarState extends State<HistoryAppBar> {
                         inserach = false;
                       });
 
-                      widget.onSearchAmountChanged(int.parse(value));
+                      widget.onSearchAmountChanged(double.parse(value));
                     } else {
                       widget.resetCheck();
 
@@ -81,7 +81,7 @@ class _HistoryAppBarState extends State<HistoryAppBar> {
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 16.0),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40.0),
+                        borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none,
                       ),
                       filled: true,

@@ -69,10 +69,21 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  fonts:
+    - family: SPB
+      fonts:
+        - asset: fonts/SB Sans Text Bold.ttf
+          weight: 900
+        - asset: fonts/SB Sans Text Medium.ttf
+          weight: 700
+        - asset: fonts/SB Sans Text Semibold.ttf
+          weight: 500
+        - asset: fonts/SB Sans Text.ttf
+          weight: 300
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/banks/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

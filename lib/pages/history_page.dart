@@ -100,12 +100,28 @@ class _HistoryPageState extends State<HistoryPage> {
     return '$totalCash';
   }
 
-  void filterChecksByAmount(int amount) {
+  void filterChecksByAmount(double amount) {
     setState(() {
       // Фильтруем чеки на основе введенной суммы
       _newChecks = _checks.where((check) => check.cash == amount).toList();
       _checks = _newChecks;
     });
+  }
+
+  String outCalculateTotalCashForDate(String currentDate, String status) {
+    double totalCash = 0;
+
+    // Проходим по всем чекам
+    for (var check in _checks) {
+      // Если дата чека совпадает с текущей датой и статус чека равен указанному статусу,
+      // добавляем его сумму к общей сумме
+      if (check.date == currentDate && check.status == status) {
+        totalCash += check.cash;
+      }
+    }
+
+    // Возвращаем строковое представление общей суммы
+    return '$totalCash';
   }
 
   void resetChecks() {
@@ -150,7 +166,7 @@ class _HistoryPageState extends State<HistoryPage> {
         children: [
           RefreshIndicator(
             backgroundColor: Colors.black,
-            color: Colors.green,
+            color: const Color(0xFF08A652),
             onRefresh: _refresh,
             displacement: 40,
             edgeOffset: 300.0,
@@ -159,11 +175,13 @@ class _HistoryPageState extends State<HistoryPage> {
               itemBuilder: (context, index) {
                 // Получаем текущую дату
                 String currentDate = uniqueDates[index];
-
+                var outSum = outCalculateTotalCashForDate(
+                    currentDate, 'Исходящий перевод');
                 // Создаем виджет DateChek для текущей даты
                 Widget dateChek = DateChek(
                   date: currentDate,
                   cash: calculateTotalCashForDate(currentDate),
+                  totalCash: outSum,
                 );
 
                 // Фильтруем чеки по текущей дате
@@ -182,7 +200,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           fio: check.fio,
                           type: check.status,
                           cash: check.cash,
-                          icon: const Icon(Icons.abc),
+                          icon: check.icon,
                         ))
                     .toList();
 
@@ -224,9 +242,7 @@ class _HistoryPageState extends State<HistoryPage> {
                               incoming: incoming!,
                               outgoing: outgoing!,
                             ),
-                            const SizedBox(
-                              height: 30,
-                            ),
+
                             const SelectBarList(),
                             const SizedBox(
                               height: 10,
@@ -241,7 +257,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                     ? const Padding(
                                         padding: EdgeInsets.only(top: 68.0),
                                         child: CircularProgressIndicator(
-                                          color: Colors.green,
+                                          color: Color(0xFF08A652),
                                         ),
                                       )
                                     : const Text(''))

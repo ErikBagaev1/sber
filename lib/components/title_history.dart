@@ -35,8 +35,9 @@ class TitleHistory extends StatelessWidget {
                       'История',
                       style: TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
                         color: Colors.white,
+                        fontFamily: 'SPB',
                       ),
                     ),
                     SizedBox(width: 12),
@@ -128,7 +129,7 @@ class TitleHistory extends StatelessWidget {
                                           style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.green,
+                                            color: Color(0xFF08A652),
                                           ),
                                         ),
                                         const Text(
@@ -208,7 +209,7 @@ class CardHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 130,
       height: 110,
       child: AspectRatio(
         aspectRatio: 1.1,

@@ -56,16 +56,20 @@ String formatIntNumberWithSpaces(int number) {
 class DateChek extends StatelessWidget {
   final String date;
   final String cash;
+  final String totalCash;
+
   const DateChek({
     super.key,
     required this.date,
     required this.cash,
+    required this.totalCash,
   });
 
   @override
   Widget build(BuildContext context) {
     final formattedCash = formatIntNumberWithSpaces(int.parse(
-        (((double.parse(cash)).round()).toString()).replaceAll('.', '')));
+        (((double.parse(totalCash)).round()).toString()).replaceAll('.', '')));
+
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20, top: 20),
       child: Row(
@@ -111,7 +115,7 @@ class ChekHistory extends StatelessWidget {
   final String fio;
   final String type;
   final double cash;
-  final Icon icon;
+  final String icon;
   const ChekHistory({
     super.key,
     required this.fio,
@@ -129,7 +133,9 @@ class ChekHistory extends StatelessWidget {
         children: [
           Row(
             children: [
-              if (type == 'Входящий перевод') // Проверяем статус чека
+              // Если входящий перевод из сбербанка
+              if (type == 'Входящий перевод' &&
+                  icon == 'Сбербанк') // Проверяем статус чека
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -137,13 +143,11 @@ class ChekHistory extends StatelessWidget {
                       'assets/Перевод.svg',
                       width: 40,
                     )
-                    // const Icon(
-                    //   Icons.restart_alt_outlined,
-                    //   color: Colors.green,
-                    // )
                   ],
                 ),
-              if (type != 'Входящий перевод') // Проверяем статус чека
+              // Если исходящий перевод из сбербанка
+              if (type == 'Исходящий перевод' &&
+                  icon == 'Сбербанк') // Проверяем статус чека
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -151,10 +155,127 @@ class ChekHistory extends StatelessWidget {
                       'assets/перевод_.svg',
                       width: 40,
                     )
-                    // const Icon(
-                    //   Icons.restart_alt_outlined,
-                    //   color: Colors.green,
-                    // )
+                  ],
+                ),
+
+              // Если  перевод из OZON банка
+              if (icon == 'OZON') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/озон.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Альфа банка
+              if (icon == 'Альфа банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/альфа.jpg',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из вТБ банка
+              if (icon == 'ВТБ') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/втб.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Тинькоф
+              if (icon == 'Тинькоф') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/тиньк.jpg',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Райфайзен банк
+              if (icon == 'Райфайзен банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/райф.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Газпром банк
+              if (icon == 'Газпром банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/газпром.jpg',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Зенит банк
+              if (icon == 'Зенит банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/зенит.jpg',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Открытие банк
+              if (icon == 'Открытие банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/зенит.jpg',
+                        width: 40,
+                      ),
+                    )
                   ],
                 ),
               const SizedBox(
@@ -182,8 +303,8 @@ class ChekHistory extends StatelessWidget {
               const Spacer(),
               if (type != 'Входящий перевод') // Проверяем статус чека
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       '$formattedCash ₽',
@@ -192,26 +313,25 @@ class ChekHistory extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
-                    const Text('')
-                    // const Icon(
-                    //   Icons.restart_alt_outlined,
-                    //   color: Colors.green,
-                    // )
+                    const Icon(
+                      Icons.restart_alt_outlined,
+                      color: Color(0xFF08A652),
+                    )
                   ],
                 ),
               if (type != 'Исходящий перевод') // Проверяем статус чека
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
                       '+$formattedCash ₽',
                       style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
-                          color: Colors.green),
+                          color: Color(0xFF08A652)),
                     ),
-                    const Text('')
+                    const Text(''),
                   ],
                 ),
             ],

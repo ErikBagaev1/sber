@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:sber/models/check.dart';
 
-const List<String> listBanks = <String>['Сбербанк', 'Тинькоф', 'ВТБ', 'ОЗОН'];
+const List<String> listBanks = <String>[
+  'Сбербанк',
+  'Тинькоф',
+  'ВТБ',
+  'OZON',
+  'Альфа банк',
+  'Почта банк',
+  'Зенит банк',
+  'Райфайзен банк',
+  'Открытие банк',
+  'Россельхоз банк',
+  'УБРиР банк',
+  'Совкомбанк',
+  'Росбанк',
+  'РНКБ банк',
+  'Сургут банк',
+  'Газпром банк',
+  'Уралсиб банк',
+];
 const List<String> listStatus = <String>[
   'Входящий перевод',
   'Исходящий перевод',
@@ -106,7 +124,7 @@ class _ChekAddState extends State<ChekAdd> {
             Text(
               _successMessage,
               style: const TextStyle(
-                color: Colors.green,
+                color: Color(0xFF08A652),
                 fontWeight: FontWeight.bold,
               ),
             ),

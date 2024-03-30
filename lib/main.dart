@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Сбербанк',
       theme: ThemeData(
+        fontFamily: 'SPB',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
@@ -66,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         enableFeedback: true,
 
         backgroundColor: const Color(0xFF1E1E1E),
-        selectedItemColor: const Color(0xFF18892C),
+        selectedItemColor: const Color(0xFF08A652),
         unselectedItemColor: const Color(0xFF888888),
         items: items, type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex, //New

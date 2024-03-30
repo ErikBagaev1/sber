@@ -14,24 +14,24 @@ class ExpensesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             children: [
-              const Text(
+              Text(
                 'Расходы в марте',
                 style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
               ),
-              const Spacer(),
+              Spacer(),
               Text(
                 'Все',
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
-                    color: Colors.green[700]),
+                    color: Color(0xFF08A652)),
               ),
             ],
           ),
