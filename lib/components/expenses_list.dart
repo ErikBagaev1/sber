@@ -1,14 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sber/models/check.dart';
 import 'package:sber/pages/home_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import 'Expenses_card.dart';
 
-class ExpensesList extends StatelessWidget {
+String? incoming;
+String? outgoing;
+List<Chek> _checks = [];
+
+class ExpensesList extends StatefulWidget {
   const ExpensesList({
     super.key,
   });
+
+  @override
+  State<ExpensesList> createState() => _ExpensesListState();
+}
+
+class _ExpensesListState extends State<ExpensesList> {
+  @override
+  void initState() {
+    super.initState();
+
+    _loadChecks();
+  }
+
+  // Метод для загрузки чеков из локального хранилища
+  void _loadChecks() async {
+    try {
+      List<Chek> loadedChecks = await CheckRepository.loadChecks();
+
+      setState(() {
+        _checks = loadedChecks;
+      });
+
+      outgoing = calculateTotalCashForStatus('Исходящий перевод');
+      // print('Загруженные чеки:');
+      // print(_checks.length);
+      // for (var check in _checks) {
+      //   print('Дата: ${check.date}, ФИО: ${check.fio}, Сумма: ${check.cash}');
+      // }
+    } catch (e) {
+      // Обработка ошибок, если загрузка не удалась
+      // ignore: avoid_print
+      print('Ошибка при загрузке чеков: $e');
+    }
+  }
+
+  String calculateTotalCashForStatus(String status) {
+    double totalCash = 0;
+
+    // Проходим по всем чекам
+    for (var check in _checks) {
+      // Если статус чека совпадает с заданным статусом, добавляем его сумму к общей сумме
+      if (check.status == status) {
+        totalCash += check.cash;
+      }
+    }
+
+    // Возвращаем строковое представление общей суммы
+    return '$totalCash';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +104,9 @@ class ExpensesList extends StatelessWidget {
                   Skeletonizer(
                     enabled: enabled1 ? true : false,
                     child: Expenses(
-                      cash: const Text(
-                        '0 ₽',
-                        style: TextStyle(
+                      cash: Text(
+                        '$outgoing ₽',
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                         ),
@@ -82,15 +136,15 @@ class ExpensesList extends StatelessWidget {
                         color: Colors.grey[400],
                       ),
                     ),
-                    cardNumber: const Text(
-                      '0 ₽',
-                      style: TextStyle(
+                    cardNumber: Text(
+                      '${double.parse(outgoing ?? '0') - 120} ₽',
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
                     widget: SvgPicture.asset(
-                      'assets/Перевод.svg',
+                      'assets/Переводы.svg',
                       width: 40,
                     ),
                   ),

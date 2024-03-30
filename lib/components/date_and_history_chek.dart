@@ -369,7 +369,7 @@ class ChekHistory extends StatelessWidget {
                   ],
                 ),
               // Если  перевод из убрил
-              if (icon == 'Убрил банк') // Проверяем статус чека
+              if (icon == 'УБРиР банк') // Проверяем статус чека
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -377,7 +377,7 @@ class ChekHistory extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           20), // Установите радиус, чтобы получить круглую форму
                       child: Image.asset(
-                        'assets/banks/УБРиР.png',
+                        'assets/banks/убрир.jpg',
                         width: 40,
                       ),
                     )
@@ -398,18 +398,27 @@ class ChekHistory extends StatelessWidget {
                     )
                   ],
                 ),
+
               const SizedBox(
                 width: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    fio,
-                    style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
+                  Row(
+                    children: [
+                      Text(
+                        fio,
+                        softWrap: true,
+                        overflow: TextOverflow
+                            .ellipsis, // добавлено для случая переполнения
+                        maxLines: 2,
+                        style: const TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white),
+                      ),
+                    ],
                   ),
                   Text(
                     type,

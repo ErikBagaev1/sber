@@ -35,7 +35,7 @@ class TitleHistory extends StatelessWidget {
                       'История',
                       style: TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w500,
                         color: Colors.white,
                         fontFamily: 'SPB',
                       ),
@@ -58,190 +58,188 @@ class TitleHistory extends StatelessWidget {
       ),
       SizedBox(
         height: 150,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 18.0),
-          child: ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    height: 110,
-                    width: 220,
-                    child: AspectRatio(
-                      aspectRatio: 1.8,
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: const Color(0xFF1E1E1E),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            enabled1
-                                ? Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SkeletonContainer(
-                                            text: 'Расходы в марте',
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF313131),
-                                            ),
-                                            width: 110,
-                                            height: 20,
-                                            borderRadius:
-                                                BorderRadius.circular(4),
+        child: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          children: [
+            Row(
+              children: [
+                const SizedBox(
+                  width: 18,
+                ),
+                SizedBox(
+                  height: 110,
+                  width: 220,
+                  child: AspectRatio(
+                    aspectRatio: 1.8,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: const Color(0xFF1E1E1E),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          enabled1
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SkeletonContainer(
+                                          text: 'Расходы в марте',
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF313131),
                                           ),
-                                          const Spacer(),
-                                          Icon(
-                                            size: 16,
-                                            Icons.arrow_forward_ios_rounded,
-                                            color: Colors.grey.withOpacity(0.5),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      SkeletonContainer(
-                                        text: '$incomingP ₽',
-                                        style: const TextStyle(
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFF313131)),
-                                        width: 110,
-                                        height: 27,
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SkeletonContainer(
-                                            text: 'Расходы в марте',
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xFF313131),
-                                            ),
-                                            width: 110,
-                                            height: 20,
-                                            borderRadius:
-                                                BorderRadius.circular(4),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  )
-                                : Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Расходы в марте',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey[400],
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                          Icon(
-                                            size: 16,
-                                            Icons.arrow_forward_ios_rounded,
-                                            color: Colors.grey.withOpacity(0.5),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        '$incomingP ₽',
-                                        style: const TextStyle(
+                                          width: 110,
+                                          height: 20,
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                        ),
+                                        const Spacer(),
+                                        Icon(
+                                          size: 16,
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: Colors.grey.withOpacity(0.5),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    SkeletonContainer(
+                                      text: '$incomingP ₽',
+                                      style: const TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                          color: Color(0xFF313131)),
+                                      width: 110,
+                                      height: 27,
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        SkeletonContainer(
+                                          text: 'Расходы в марте',
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF313131),
+                                          ),
+                                          width: 110,
+                                          height: 20,
+                                          borderRadius:
+                                              BorderRadius.circular(4),
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '+ $outgoingP ₽',
-                                            style: const TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xFF08A652),
-                                            ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Расходы в марте',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[400],
+                                            fontWeight: FontWeight.w500,
                                           ),
-                                          const Text(
-                                            ' зачислений',
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
+                                        ),
+                                        const Spacer(),
+                                        Icon(
+                                          size: 16,
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: Colors.grey.withOpacity(0.5),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      '$incomingP ₽',
+                                      style: const TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
                                       ),
-                                    ],
-                                  ),
-                          ],
-                        ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          '+$outgoingP ₽',
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xFF08A652),
+                                          ),
+                                        ),
+                                        const Text(
+                                          ' зачислений',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                        ],
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const CardHistory(
+                  icon: Icon(
+                    Icons
+                        .error_outline, // Иконка восклицательного знака без заливки
+                    color: Colors.grey, // Цвет иконки
+                    size: 34, // Размер иконки
                   ),
-                  const CardHistory(
-                    icon: Icon(
-                      Icons
-                          .error_outline, // Иконка восклицательного знака без заливки
-                      color: Colors.grey, // Цвет иконки
-                      size: 34, // Размер иконки
-                    ),
-                    text: 'Укажите свой телефон',
+                  text: 'Укажите свой телефон',
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const CardHistory(
+                  icon: Icon(
+                    Icons
+                        .monetization_on, // Иконка восклицательного знака без заливки
+                    color: Colors.grey, // Цвет иконки
+                    size: 34, // Размер иконки
                   ),
-                  const SizedBox(
-                    width: 10,
+                  text: 'Деньги за покупки',
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const CardHistory(
+                  icon: Icon(
+                    Icons
+                        .error_outline, // Иконка восклицательного знака без заливки
+                    color: Colors.grey, // Цвет иконки
+                    size: 34, // Размер иконки
                   ),
-                  const CardHistory(
-                    icon: Icon(
-                      Icons
-                          .monetization_on, // Иконка восклицательного знака без заливки
-                      color: Colors.grey, // Цвет иконки
-                      size: 34, // Размер иконки
-                    ),
-                    text: 'Деньги за покупки',
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  const CardHistory(
-                    icon: Icon(
-                      Icons
-                          .error_outline, // Иконка восклицательного знака без заливки
-                      color: Colors.grey, // Цвет иконки
-                      size: 34, // Размер иконки
-                    ),
-                    text: 'Выписки и справки',
-                  ),
-                ],
-              ),
-            ],
-          ),
+                  text: 'Выписки и справки',
+                ),
+              ],
+            ),
+          ],
         ),
       )
     ]);
@@ -285,7 +283,7 @@ class CardHistory extends StatelessWidget {
                     text,
                     style: const TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
                   ),
