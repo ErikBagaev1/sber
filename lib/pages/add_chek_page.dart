@@ -13,7 +13,7 @@ const List<String> listBanks = <String>[
   'Открытие банк',
   'Россельхоз банк',
   'УБРиР банк',
-  'Совкомбанк',
+  'Совком банк',
   'Росбанк',
   'РНКБ банк',
   'Сургут банк',
@@ -94,11 +94,6 @@ class _ChekAddState extends State<ChekAdd> {
                 status: _selectedStatus,
                 icon: _selectedBank,
               );
-              print('Дата: ${newCheck.date}');
-              print('ФИО: ${newCheck.fio}');
-              print('Сумма: ${newCheck.cash}');
-              print('Статус: ${newCheck.status}');
-              print('Иконка: ${newCheck.icon}');
 
               CheckRepository.saveCheck(newCheck);
               setState(() {

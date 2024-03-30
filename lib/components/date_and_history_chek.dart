@@ -272,7 +272,127 @@ class ChekHistory extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           20), // Установите радиус, чтобы получить круглую форму
                       child: Image.asset(
-                        'assets/banks/зенит.jpg',
+                        'assets/banks/открытие.webp',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Почта банк
+              if (icon == 'Почта банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/почта.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из рнкб
+              if (icon == 'РНКБ банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/рнкб.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из росбанк
+              if (icon == 'Росбанк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/росбанк.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из россельхоз
+              if (icon == 'Россельхоз банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/россельхоз.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из россельхоз
+              if (icon == 'Совком банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/совком.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из сургут
+              if (icon == 'Сургут банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/сургут.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из убрил
+              if (icon == 'Убрил банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/УБРиР.png',
+                        width: 40,
+                      ),
+                    )
+                  ],
+                ),
+              // Если  перевод из Уралсиб
+              if (icon == 'Уралсиб банк') // Проверяем статус чека
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          20), // Установите радиус, чтобы получить круглую форму
+                      child: Image.asset(
+                        'assets/banks/уралсиб.png',
                         width: 40,
                       ),
                     )
@@ -313,9 +433,9 @@ class ChekHistory extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
-                    const Icon(
-                      Icons.restart_alt_outlined,
-                      color: Color(0xFF08A652),
+                    SvgPicture.asset(
+                      'assets/arrow.svg',
+                      width: 18,
                     )
                   ],
                 ),

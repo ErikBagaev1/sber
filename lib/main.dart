@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
+import 'package:skeletons/skeletons.dart';
 
 import 'pages/home_page.dart';
 
@@ -15,17 +16,35 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Сбербанк',
-      theme: ThemeData(
-        fontFamily: 'SPB',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        useMaterial3: true,
+    return SkeletonTheme(
+      // themeMode: ThemeMode.light,
+      shimmerGradient: const LinearGradient(
+        colors: [
+          Color(0xFFD8E3E7),
+          Color(0xFFC8D5DA),
+          Color(0xFFD8E3E7),
+        ],
       ),
-      home: const MyHomePage(title: 'Сбербанк'),
+      darkShimmerGradient: const LinearGradient(
+        colors: [
+          Color(0xFFD8E3E7),
+          Color(0xFFC8D5DA),
+          Color(0xFFD8E3E7),
+        ],
+        tileMode: TileMode.clamp,
+      ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Сбербанк',
+        theme: ThemeData(
+          fontFamily: 'SPB',
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Сбербанк'),
+      ),
     );
   }
 }
@@ -91,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
 final items = <BottomNavigationBarItem>[
   const BottomNavigationBarItem(
     icon: Icon(Icons.home_filled),
-    label: 'Главная',
+    label: 'Главный',
   ),
   BottomNavigationBarItem(
     icon: Container(

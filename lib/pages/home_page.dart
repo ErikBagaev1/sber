@@ -22,6 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // final totalSum = calculateTotalCashForStatus('Исходящий перевод');
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
     setState(() {
