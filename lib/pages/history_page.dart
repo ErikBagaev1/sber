@@ -189,7 +189,7 @@ class _HistoryPageState extends State<HistoryPage> {
     // Создаем список уникальных дат
     List<String> uniqueDates =
         _checks.map((check) => check.date).toSet().toList();
-
+    uniqueDates.sort((a, b) => b.compareTo(a));
     return SafeArea(
       child: Stack(
         children: [
@@ -231,6 +231,8 @@ class _HistoryPageState extends State<HistoryPage> {
                           cash: check.cash,
                           icon: check.icon,
                         ))
+                    .toList()
+                    .reversed
                     .toList();
 
                 // Возвращаем виджеты в списке
