@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sber/models/profile.dart';
 
 class CardBalanceWidget extends StatelessWidget {
+  final CreditCard myCreditCard;
   const CardBalanceWidget({
     super.key,
+    required this.myCreditCard,
   });
 
   @override
@@ -25,9 +28,9 @@ class CardBalanceWidget extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text(
-                  '10 303,32 ₽',
-                  style: TextStyle(
+                Text(
+                  '${myCreditCard.balance} ₽',
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

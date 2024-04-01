@@ -14,12 +14,11 @@ class CardsList extends StatefulWidget {
 }
 
 class _CardsListState extends State<CardsList> {
-  late CreditCard myCreditCard;
+  CreditCard? myCreditCard;
   Future<void> initializeCreditCard() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       myCreditCard = CreditCard.fromSharedPreferences(prefs);
-      print(myCreditCard.balance);
     });
   }
 
@@ -32,6 +31,12 @@ class _CardsListState extends State<CardsList> {
 
   @override
   Widget build(BuildContext context) {
+    if (myCreditCard == null) {
+      // Если myCreditCard еще не инициализирована, показываем индикатор загрузки
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     return Container(
       height: 150,
       padding: const EdgeInsets.symmetric(vertical: 8),
@@ -57,7 +62,7 @@ class _CardsListState extends State<CardsList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AboutCards(myCreditCard: myCreditCard),
+                  builder: (context) => AboutCards(myCreditCard: myCreditCard!),
                 ),
               );
             },
@@ -66,8 +71,10 @@ class _CardsListState extends State<CardsList> {
                 'assets/Card.svg',
                 width: 30,
               ),
-              cash: '10 303, 32  ₽',
-              cardNumber: 'Master... ** 1111',
+              cash: '${myCreditCard?.balance ?? ''} ₽',
+              cardNumber:
+                  '${(myCreditCard?.provider.length ?? 4) > 6 ? '${myCreditCard?.provider.substring(0, 6)}...' // обрезаем до 6 символов и добавляем многоточие
+                      : myCreditCard?.provider} ** ${myCreditCard?.balance.substring((myCreditCard?.balance.length ?? 3) - 4)}',
             ),
           ),
           const SizedBox(width: 8),

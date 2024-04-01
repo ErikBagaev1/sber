@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sber/models/profile.dart';
 import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletons/skeletons.dart';
 
 import 'pages/add_profile_data.dart';
@@ -60,20 +62,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late Future<CreditCard> creditCardFuture;
   late final PageController pageController;
+
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: 0);
+    creditCardFuture = initializeCreditCard();
+    pageController = PageController(initialPage: 3);
   }
 
-  int selectedIndex = 0;
+  int selectedIndex = 3;
+  Future<CreditCard> initializeCreditCard() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return CreditCard.fromSharedPreferences(prefs);
+  }
+
   void _onItemTapped(int index) {
-    // new
     setState(() {
       selectedIndex = index;
-
       pageController.jumpToPage(index);
+      initializeCreditCard();
     });
   }
 
@@ -94,15 +103,34 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
       backgroundColor: Colors.black,
-      body: PageView(
-        controller: pageController,
-        children: const [
-          HomePage(),
-          ClearDataScreen(),
-          ChekAdd(),
-          AddProfileData(),
-          HistoryPage()
-        ],
+      body: FutureBuilder<CreditCard>(
+        future: creditCardFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            // Если данные загружаются, отображаем индикатор загрузки
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            // Если произошла ошибка при загрузке данных, отображаем сообщение об ошибке
+            return Center(
+              child: Text('Ошибка при загрузке данных: ${snapshot.error}'),
+            );
+          } else {
+            // Если данные успешно загружены, отображаем страницу с данными
+            CreditCard myCreditCard = snapshot.data!;
+            return PageView(
+              controller: pageController,
+              children: [
+                HomePage(myCreditCard: myCreditCard),
+                const ClearDataScreen(),
+                const ChekAdd(),
+                const AddProfileData(),
+                const HistoryPage(),
+              ],
+            );
+          }
+        },
       ),
     );
   }
