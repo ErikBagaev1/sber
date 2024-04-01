@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sber/components/card_block.dart';
 import 'package:sber/components/card_icon.dart';
+import 'package:sber/pages/about_cards.dart';
 
 class CardsList extends StatefulWidget {
   const CardsList({super.key});
@@ -28,48 +29,49 @@ class _CardsListState extends State<CardsList> {
               SizedBox(height: 8),
               CardIconWidget(
                 svg: 'assets/Done.svg',
-                
-                
               ),
             ],
           ),
           const SizedBox(width: 8),
-          CardBlock(
-            widget: SvgPicture.asset(
-              'assets/Card.svg',
-              width: 30,
+          InkWell(
+            borderRadius: BorderRadius.circular(8),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AboutCards(),
+                ),
+              );
+            },
+            child: CardBlock(
+              widget: SvgPicture.asset(
+                'assets/Card.svg',
+                width: 30,
+              ),
+              cash: '10 303, 32  ₽',
+              cardNumber: 'Master... ** 1111',
             ),
-            cash: '10 303, 32  ₽',
-            cardNumber: 'Master... ** 1111',
           ),
           const SizedBox(width: 8),
-          CardBlock(
-            widget: SvgPicture.asset(
-              'assets/CardViza.svg',
-              width: 30,
+          const CardBlock(
+            widget: Icon(
+              Icons.published_with_changes_outlined,
+              color: Colors.green,
+              size: 30,
             ),
-            cash: '7 834, 13 ₽',
-            cardNumber: 'MIR ** 2034',
+            cash: '0',
+            cardNumber: 'СберСпасибо',
           ),
           const SizedBox(width: 8),
-          CardBlock(
-            widget: SvgPicture.asset(
-              'assets/CardViza.svg',
-              width: 30,
+          const CardBlock(
+            widget: Icon(
+              Icons.add_circle_outline_outlined,
+              color: Colors.white,
+              size: 30,
             ),
-            cash: '7 834, 13S ₽',
-            cardNumber: 'MIR ** 2034',
+            cash: 'Оформить',
+            cardNumber: 'карту или счет',
           ),
-          const SizedBox(width: 8),
-          CardBlock(
-            widget: SvgPicture.asset(
-              'assets/CardViza.svg',
-              width: 30,
-            ),
-            cash: '7 834, 13S ₽',
-            cardNumber: 'MIR ** 2034',
-          ),
-          const SizedBox(width: 16),
         ],
       ),
     );

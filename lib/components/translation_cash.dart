@@ -19,18 +19,18 @@ class TranslationCash extends StatelessWidget {
               color: Colors.black87,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        const Text(
+                        Text(
                           'Переводы на Сбер',
                           style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w500,
                               color: Colors.white),
                         ),
-                        const Spacer(),
+                        Spacer(),
                         Text(
                           'Все (19)',
                           style: TextStyle(
