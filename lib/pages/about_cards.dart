@@ -1,41 +1,116 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:sber/models/profile.dart';
 
 class AboutCards extends StatefulWidget {
-  const AboutCards({super.key});
+  final CreditCard myCreditCard;
+  const AboutCards({super.key, required this.myCreditCard});
 
   @override
   State<AboutCards> createState() => _AboutCardsState();
 }
 
-class _AboutCardsState extends State<AboutCards> {
+class _AboutCardsState extends State<AboutCards>
+    with SingleTickerProviderStateMixin {
+  bool isFlipped = false;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  bool _isFront = true;
+
+  void _flipCard() {
+    if (_controller.status != AnimationStatus.forward) {
+      if (_isFront) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+      _isFront = !_isFront;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
+      ..addListener(() {
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Color(0xfff4f4f4)),
         backgroundColor: const Color(0xFF121212),
-        title: const Text(
-          'MIR',
-          style:
-              TextStyle(color: Color(0xfff4f4f4), fontWeight: FontWeight.w700),
+        title: Text(
+          widget.myCreditCard.provider,
+          style: const TextStyle(
+              color: Color(0xfff4f4f4), fontWeight: FontWeight.w700),
         ),
       ),
       backgroundColor: const Color(0xFF121212),
       body: Column(
         children: [
-          const SizedBox(
+          SizedBox(
             height: 250,
             child: Padding(
-              padding: EdgeInsets.only(top: 8.0, right: 8),
-              child: AboutCardsData(
-                bacgcolor: Color(0xff1e1e1e),
-                numberCards: '8921 2123 4213 2345',
-                dateCards: '02/2026',
-              ),
-            ),
+                padding: const EdgeInsets.only(top: 8.0, right: 8),
+                child: GestureDetector(
+                  onTap: _flipCard,
+                  child: Transform(
+                    transform: Matrix4.rotationY((_animation.value) * pi),
+                    alignment: Alignment.center,
+                    child: _isFront
+                        ? AboutCardsData(
+                            balance: widget.myCreditCard.balance,
+                            bacgcolor: const Color(0xff1e1e1e),
+                            numberCards: widget.myCreditCard.cardNumber,
+                            dateCards: widget.myCreditCard.expirationDate,
+                          )
+                        : Transform(
+                            transform: Matrix4.rotationY(pi),
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 360,
+                              height: 230,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15)),
+                            )),
+                  ),
+                )),
           ),
           const SizedBox(
-            height: 100,
+            height: 30,
+          ),
+          Column(
+            children: [
+              Text('${widget.myCreditCard.balance} ₽',
+                  style: const TextStyle(
+                      color: Color(0xfff4f4f4),
+                      fontSize: 21,
+                      fontWeight: FontWeight.w500)),
+              const Text(
+                'Карта в рублях',
+                style: TextStyle(color: Color(0xff898989), fontSize: 14),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 20,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -203,12 +278,14 @@ class _AboutCardsState extends State<AboutCards> {
 class AboutCardsData extends StatefulWidget {
   final String numberCards;
   final String dateCards;
+  final String balance;
   final Color bacgcolor;
   const AboutCardsData({
     super.key,
     required this.numberCards,
     required this.dateCards,
     required this.bacgcolor,
+    required this.balance,
   });
 
   @override
@@ -216,8 +293,8 @@ class AboutCardsData extends StatefulWidget {
 }
 
 class _AboutCardsDataState extends State<AboutCardsData> {
-  bool isCardNumberHidden = false;
-  bool isCardCvcHidden = false;
+  bool isCardNumberHidden = true;
+  bool isCardCvcHidden = true;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -473,7 +550,7 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                     style: TextStyle(color: Color(0xff898989), fontSize: 14),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

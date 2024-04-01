@@ -5,6 +5,7 @@ import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
 import 'package:skeletons/skeletons.dart';
 
+import 'pages/add_profile_data.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
           HomePage(),
           ClearDataScreen(),
           ChekAdd(),
-          Text('data'),
+          AddProfileData(),
           HistoryPage()
         ],
       ),

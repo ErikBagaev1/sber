@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sber/components/card_block.dart';
 import 'package:sber/components/card_icon.dart';
+import 'package:sber/models/profile.dart';
 import 'package:sber/pages/about_cards.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CardsList extends StatefulWidget {
   const CardsList({super.key});
@@ -12,6 +14,22 @@ class CardsList extends StatefulWidget {
 }
 
 class _CardsListState extends State<CardsList> {
+  late CreditCard myCreditCard;
+  Future<void> initializeCreditCard() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      myCreditCard = CreditCard.fromSharedPreferences(prefs);
+      print(myCreditCard.balance);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initializeCreditCard();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +57,7 @@ class _CardsListState extends State<CardsList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AboutCards(),
+                  builder: (context) => AboutCards(myCreditCard: myCreditCard),
                 ),
               );
             },

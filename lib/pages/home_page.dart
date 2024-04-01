@@ -7,6 +7,8 @@ import 'package:sber/components/card_balance.dart';
 import 'package:sber/components/card_list.dart';
 import 'package:sber/components/custom_app_bar.dart';
 import 'package:sber/components/expenses_list.dart';
+import 'package:sber/models/profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/translation_cash.dart';
 
@@ -22,6 +24,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   // final totalSum = calculateTotalCashForStatus('Исходящий перевод');
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
@@ -37,6 +40,8 @@ class _HomePageState extends State<HomePage> {
       enabled1 = false;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
