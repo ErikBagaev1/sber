@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:sber/theme/colors.dart';
 
+import '../components/sceleton.dart';
 import '../models/profile.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   final CreditCard myCreditCard;
   const ProfilePage({super.key, required this.myCreditCard});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Делаем задержку на 2 секунды, затем переключаем isLoading на false
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +60,7 @@ class ProfilePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            myCreditCard.name,
+                            widget.myCreditCard.name,
                             style: const TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 24,
@@ -75,51 +94,84 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconCards(
-                              color: GREEN_MEDIUM,
-                              text: 'Подписки',
-                              icon: Icon(
-                                Icons.shopping_bag_outlined,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            IconCards(
-                              color: BODY_DARK_GRAY,
-                              text: 'СберПрайм',
-                              icon: Icon(
-                                Icons.shopping_bag_outlined,
-                                size: 30,
-                                color: Color(0xff5b5b5c),
-                              ),
-                            ),
-                            IconCards(
-                              color: GREEN_MEDIUM,
-                              text: 'Уведомления',
-                              icon: Icon(
-                                Icons.shopping_bag_outlined,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
-                            IconCards(
-                              color: GREEN_MEDIUM,
-                              text: 'Страховки',
-                              icon: Icon(
-                                Icons.shopping_bag_outlined,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                      Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 20),
+                          child: isLoading
+                              ? Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SkeletonIconContainer(
+                                      width: 70,
+                                      height: 70,
+                                      borderRadius: BorderRadius.circular(20),
+                                      text: '',
+                                      style: const TextStyle(),
+                                    ),
+                                    SkeletonIconContainer(
+                                      width: 70,
+                                      height: 70,
+                                      borderRadius: BorderRadius.circular(20),
+                                      text: '',
+                                      style: const TextStyle(),
+                                    ),
+                                    SkeletonIconContainer(
+                                      width: 70,
+                                      height: 70,
+                                      borderRadius: BorderRadius.circular(20),
+                                      text: '',
+                                      style: const TextStyle(),
+                                    ),
+                                    SkeletonIconContainer(
+                                      width: 70,
+                                      height: 70,
+                                      borderRadius: BorderRadius.circular(20),
+                                      text: '',
+                                      style: const TextStyle(),
+                                    ),
+                                  ],
+                                )
+                              : const Row(
+                                  children: [
+                                    IconCards(
+                                      color: GREEN_MEDIUM,
+                                      text: 'Подписки',
+                                      icon: Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconCards(
+                                      color: BODY_DARK_GRAY,
+                                      text: 'СберПрайм',
+                                      icon: Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 30,
+                                        color: Color(0xff5b5b5c),
+                                      ),
+                                    ),
+                                    IconCards(
+                                      color: GREEN_MEDIUM,
+                                      text: 'Уведомления',
+                                      icon: Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    IconCards(
+                                      color: GREEN_MEDIUM,
+                                      text: 'Страховки',
+                                      icon: Icon(
+                                        Icons.shopping_bag_outlined,
+                                        size: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                )),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30.0),
                         child: Container(

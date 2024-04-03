@@ -70,3 +70,72 @@ class _SkeletonContainerState extends State<SkeletonContainer>
     super.dispose();
   }
 }
+
+class SkeletonIconContainer extends StatefulWidget {
+  final String text;
+  final TextStyle style;
+  final double width;
+  final double height;
+  final BorderRadius borderRadius;
+  final Color color;
+  final Duration duration;
+
+  const SkeletonIconContainer({
+    Key? key,
+    required this.width,
+    required this.height,
+    this.borderRadius = BorderRadius.zero,
+    this.color = const Color(0xFF313131),
+    this.duration = const Duration(milliseconds: 1200),
+    required this.text,
+    required this.style,
+  }) : super(key: key);
+
+  @override
+  _SkeletonIconContainerState createState() => _SkeletonIconContainerState();
+}
+
+class _SkeletonIconContainerState extends State<SkeletonIconContainer>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    )..repeat(reverse: true);
+    _animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(_controller);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Opacity(
+          opacity: _animation.value,
+          child: Container(
+            width: widget.width,
+            height: widget.height,
+            decoration: BoxDecoration(
+              borderRadius: widget.borderRadius,
+              color: widget.color,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}
