@@ -40,6 +40,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Сбербанк',
         theme: ThemeData(
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(
+              letterSpacing:
+                  -0.5, // Здесь задайте нужное вам значение для letterSpacing
+            ),
+            // Добавьте другие стили, если нужно
+          ),
           fontFamily: 'SPB',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           splashColor: Colors.transparent,

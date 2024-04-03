@@ -75,6 +75,7 @@ class _ExpensesListState extends State<ExpensesList> {
               Text(
                 'Расходы в марте',
                 style: TextStyle(
+                    letterSpacing: -0.5,
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
@@ -83,6 +84,7 @@ class _ExpensesListState extends State<ExpensesList> {
               Text(
                 'Все',
                 style: TextStyle(
+                    letterSpacing: -0.5,
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
                     color: Color(0xFF08A652)),

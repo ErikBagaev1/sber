@@ -26,6 +26,7 @@ class TranslationCash extends StatelessWidget {
                         Text(
                           'Переводы на Сбер',
                           style: TextStyle(
+                              letterSpacing: -0.5,
                               fontSize: 22,
                               fontWeight: FontWeight.w500,
                               color: Colors.white),
@@ -34,6 +35,7 @@ class TranslationCash extends StatelessWidget {
                         Text(
                           'Все (19)',
                           style: TextStyle(
+                              letterSpacing: -0.5,
                               fontSize: 17,
                               fontWeight: FontWeight.w500,
                               color: Color(0xFF08A652)),

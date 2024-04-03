@@ -185,6 +185,7 @@ class _HomePageState extends State<HomePage> {
                                   const Text(
                                     'Кредиты',
                                     style: TextStyle(
+                                        letterSpacing: -0.5,
                                         fontSize: 22,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white),

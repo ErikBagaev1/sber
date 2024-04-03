@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber/pages/number_page.dart';
 import 'package:sber/theme/colors.dart';
 
 import '../components/sceleton.dart';
@@ -69,23 +70,59 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Документы и Сбер ID',
-                              style: TextStyle(
-                                  color: GREEN_LITE,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300),
-                              textAlign: TextAlign.center,
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        NumberPage(
+                                      myCreditCard: widget.myCreditCard,
+                                    ),
+                                    transitionDuration: const Duration(
+                                        milliseconds:
+                                            200), // Длительность анимации
+                                    reverseTransitionDuration: const Duration(
+                                        milliseconds:
+                                            200), // Длительность обратной анимации при возврате
+                                    transitionsBuilder: (context, animation,
+                                        secondaryAnimation, child) {
+                                      const begin = Offset(0.0, 1.0);
+                                      const end = Offset.zero;
+                                      const curve = Curves
+                                          .easeOutCubic; // Кривая анимации
+                                      var tween = Tween(begin: begin, end: end)
+                                          .chain(CurveTween(curve: curve));
+                                      var offsetAnimation =
+                                          animation.drive(tween);
+                                      return SlideTransition(
+                                        position: offsetAnimation,
+                                        child: child,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'Документы и Сбер ID',
+                                style: TextStyle(
+                                    letterSpacing: -0.5,
+                                    color: GREEN_LITE,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
-                            Icon(
+                            const Icon(
                               weight: 30,
                               size: 16,
                               Icons.arrow_forward_ios_rounded,
@@ -189,6 +226,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Text(
                                       'Привилегии и сервисы',
                                       style: TextStyle(
+                                          letterSpacing: -0.5,
                                           color: GREEN_MEDIUM,
                                           fontSize: 22,
                                           fontWeight: FontWeight.w600),
@@ -231,6 +269,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         Text(
                                           'Бонусы и скидки',
                                           style: TextStyle(
+                                              letterSpacing: -0.5,
                                               color: Color(0xffffffff),
                                               fontSize: 18,
                                               fontWeight: FontWeight.w500),
@@ -238,6 +277,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         Text(
                                           'Для тех кто, кто получает зарплату,\nпенсию и соцподдержку',
                                           style: TextStyle(
+                                              letterSpacing: -0.5,
                                               color: TEXT_GRAY,
                                               fontSize: 12,
                                               fontWeight: FontWeight.w500),
@@ -346,6 +386,7 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Text(
               'Что нового',
               style: TextStyle(
+                  letterSpacing: -0.5,
                   color: Color(0xffffffff),
                   fontSize: 24,
                   fontWeight: FontWeight.w500),
