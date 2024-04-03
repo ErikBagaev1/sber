@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CreditCard {
   String cardNumber;
   String cvc;
-  String balance;
+  String name;
   String provider;
   String expirationDate;
   String phoneNumber;
@@ -11,7 +11,7 @@ class CreditCard {
   CreditCard({
     required this.cardNumber,
     required this.provider,
-    required this.balance,
+    required this.name,
     required this.cvc,
     required this.expirationDate,
     required this.phoneNumber,
@@ -21,7 +21,7 @@ class CreditCard {
     return CreditCard(
       cardNumber: prefs.getString('cardNumber') ?? '',
       provider: prefs.getString('provider') ?? '',
-      balance: prefs.getString('balance') ?? '',
+      name: prefs.getString('balance') ?? '',
       cvc: prefs.getString('cvc') ?? '',
       expirationDate: prefs.getString('expirationDate') ?? '',
       phoneNumber: prefs.getString('phoneNumber') ?? '',

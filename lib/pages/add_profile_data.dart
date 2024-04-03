@@ -60,7 +60,7 @@ class _AddProfileDataState extends State<AddProfileData> {
             ),
             TextField(
               controller: balanceController,
-              decoration: const InputDecoration(labelText: 'Баланс'),
+              decoration: const InputDecoration(labelText: 'Имя'),
             ),
             TextField(
               controller: expirationDateController,

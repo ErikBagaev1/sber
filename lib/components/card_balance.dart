@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sber/models/profile.dart';
 
 class CardBalanceWidget extends StatelessWidget {
+  final String balance;
   final CreditCard myCreditCard;
   const CardBalanceWidget({
     super.key,
     required this.myCreditCard,
+    required this.balance,
   });
 
   @override
@@ -16,33 +18,29 @@ class CardBalanceWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'В кошельке',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
             Row(
               children: [
-                Text(
-                  '${myCreditCard.balance} ₽',
-                  style: const TextStyle(
-                    fontSize: 22,
+                const Text(
+                  'Кошелёк',
+                  style: TextStyle(
+                    fontSize: 21,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(width: 12),
-                Icon(
-                  size: 16,
-                  Icons.arrow_forward_ios_rounded,
-                  color: Colors.grey.withOpacity(0.5),
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: Icon(
+                    size: 16,
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.grey.withOpacity(0.7),
+                  ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 8,
             ),
           ],
         ),

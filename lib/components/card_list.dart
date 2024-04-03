@@ -7,7 +7,8 @@ import 'package:sber/pages/about_cards.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CardsList extends StatefulWidget {
-  const CardsList({super.key});
+  final String balance;
+  const CardsList({super.key, required this.balance});
 
   @override
   State<CardsList> createState() => _CardsListState();
@@ -62,7 +63,8 @@ class _CardsListState extends State<CardsList> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AboutCards(myCreditCard: myCreditCard!),
+                  builder: (context) => AboutCards(
+                      myCreditCard: myCreditCard!, balance: widget.balance),
                 ),
               );
             },
@@ -71,10 +73,10 @@ class _CardsListState extends State<CardsList> {
                 'assets/Card.svg',
                 width: 30,
               ),
-              cash: '${myCreditCard?.balance ?? ''} ₽',
+              cash: '${widget.balance} ₽',
               cardNumber:
                   '${(myCreditCard?.provider.length ?? 4) > 6 ? '${myCreditCard?.provider.substring(0, 6)}...' // обрезаем до 6 символов и добавляем многоточие
-                      : myCreditCard?.provider} ** ${myCreditCard?.balance.substring((myCreditCard?.balance.length ?? 3) - 4)}',
+                      : myCreditCard?.provider} ** ${myCreditCard?.cardNumber.substring((myCreditCard?.cardNumber.length ?? 3) - 4)}',
             ),
           ),
           const SizedBox(width: 8),

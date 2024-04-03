@@ -1,11 +1,14 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
 
 class AboutCards extends StatefulWidget {
+  final String balance;
   final CreditCard myCreditCard;
-  const AboutCards({super.key, required this.myCreditCard});
+  const AboutCards(
+      {super.key, required this.myCreditCard, required this.balance});
 
   @override
   State<AboutCards> createState() => _AboutCardsState();
@@ -34,7 +37,7 @@ class _AboutCardsState extends State<AboutCards>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 400),
     );
 
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
@@ -75,7 +78,7 @@ class _AboutCardsState extends State<AboutCards>
                     alignment: Alignment.center,
                     child: _isFront
                         ? AboutCardsData(
-                            balance: widget.myCreditCard.balance,
+                            balance: widget.myCreditCard.name,
                             bacgcolor: const Color(0xff1e1e1e),
                             numberCards: widget.myCreditCard.cardNumber,
                             dateCards: widget.myCreditCard.expirationDate,
@@ -87,8 +90,44 @@ class _AboutCardsState extends State<AboutCards>
                               width: 360,
                               height: 230,
                               decoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                    colors: [
+                                      Color.fromARGB(255, 169, 191, 208),
+                                      Color.fromARGB(255, 112, 134, 150),
+                                      Color.fromARGB(255, 83, 100, 112),
+                                      Color.fromARGB(255, 83, 100, 112),
+                                      Color.fromARGB(255, 112, 134, 150),
+                                      Color.fromARGB(255, 169, 191, 208),
+                                      // Color(0xFF171716),
+                                      // Color(0xFF191918),
+                                      // Color(0xFF1b1b1a),
+                                      // Color(0xFF1d1d1b),
+                                      // Color(0xFF1f1f1d),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15)),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 25.0, vertical: 25),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/Сбер.svg',
+                                          width: 50,
+                                        ),
+                                        const Text('sberpay')
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             )),
                   ),
                 )),
@@ -98,7 +137,7 @@ class _AboutCardsState extends State<AboutCards>
           ),
           Column(
             children: [
-              Text('${widget.myCreditCard.balance} ₽',
+              Text('${widget.balance} ₽',
                   style: const TextStyle(
                       color: Color(0xfff4f4f4),
                       fontSize: 21,

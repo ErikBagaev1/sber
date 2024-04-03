@@ -10,8 +10,12 @@ import 'package:sber/components/expenses_list.dart';
 import 'package:sber/models/profile.dart';
 
 import '../components/translation_cash.dart';
+import '../models/check.dart';
 
 bool enabled1 = false;
+String? incoming;
+String? outgoing;
+List<Chek> _checks = [];
 
 class HomePage extends StatefulWidget {
   final CreditCard myCreditCard;
@@ -25,7 +29,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final totalSum = calculateTotalCashForStatus('Исходящий перевод');
+  void _loadChecks() async {
+    try {
+      List<Chek> loadedChecks = await CheckRepository.loadChecks();
+
+      setState(() {
+        _checks = loadedChecks;
+      });
+
+      outgoing = calculateTotalCashForStatus('Исходящий перевод');
+      incoming = calculateTotalCashForStatus('Входящий перевод');
+      // print('Загруженные чеки:');
+      // print(_checks.length);
+      // for (var check in _checks) {
+      //   print('Дата: ${check.date}, ФИО: ${check.fio}, Сумма: ${check.cash}');
+      // }
+    } catch (e) {
+      // Обработка ошибок, если загрузка не удалась
+      // ignore: avoid_print
+      print('Ошибка при загрузке чеков: $e');
+    }
+  }
+
+  String calculateTotalCashForStatus(String status) {
+    double totalCash = 0;
+
+    // Проходим по всем чекам
+    for (var check in _checks) {
+      // Если статус чека совпадает с заданным статусом, добавляем его сумму к общей сумме
+      if (check.status == status) {
+        totalCash += check.cash;
+      }
+    }
+
+    // Возвращаем строковое представление общей суммы
+    return '$totalCash';
+  }
+
   Future<void> _refresh() async {
     // Устанавливаем enabled в true
     setState(() {
@@ -48,6 +88,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // Устанавливаем состояние загрузки в true при запуске виджета
     _startLoading();
+    _loadChecks();
   }
 
   // Функция для начала загрузки
@@ -110,9 +151,17 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(
                               left: 16, right: 16, top: 70),
                           child: CardBalanceWidget(
-                              myCreditCard: widget.myCreditCard),
+                            myCreditCard: widget.myCreditCard,
+                            balance: (double.parse(incoming ?? '0') -
+                                    double.parse(outgoing ?? '0'))
+                                .toString(),
+                          ),
                         ),
-                        const CardsList(),
+                        CardsList(
+                          balance: (double.parse(incoming ?? '0') -
+                                  double.parse(outgoing ?? '0'))
+                              .toString(),
+                        ),
                         const SizedBox(height: 24),
                       ],
                     ),
@@ -279,7 +328,9 @@ class _HomePageState extends State<HomePage> {
                     end: Alignment.bottomRight,
                   ),
                 ),
-                child: const CustomAppBar(),
+                child: CustomAppBar(
+                  myCreditCard: widget.myCreditCard,
+                ),
               ),
             ],
           ),
