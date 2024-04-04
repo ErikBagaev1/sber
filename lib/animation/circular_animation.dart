@@ -18,25 +18,31 @@ class _CircleAnimationState extends State<CircleAnimation>
   void initState() {
     super.initState();
 
-    // Создаем контроллер анимации
     _controller = AnimationController(
       vsync: this,
-      duration:
-          const Duration(milliseconds: 1000), // Общая длительность анимации
+      duration: const Duration(
+          milliseconds:
+              1000), // Увеличиваем общую длительность анимации до 2 секунд
     );
 
-    // Создаем кривые анимации для каждого круга с разной продолжительностью
-    _animation1 = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.0, 0.4), // 40% от общей длительности
+    // Увеличение размеров кругов
+    _animation1 = Tween<double>(begin: 0.0, end: 80.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 1.0, curve: Curves.easeInOut),
+      ),
     );
-    _animation2 = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.3, 0.7), // 40% от общей длительности
+    _animation2 = Tween<double>(begin: 0.0, end: 60.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.2, 1, curve: Curves.easeInOut),
+      ),
     );
-    _animation3 = CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.6, 1.0), // 40% от общей длительности
+    _animation3 = Tween<double>(begin: 0.0, end: 40.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 1, curve: Curves.easeInOut),
+      ),
     );
 
     // Запускаем анимацию
@@ -45,7 +51,7 @@ class _CircleAnimationState extends State<CircleAnimation>
 
   @override
   void dispose() {
-    _controller.dispose(); // Освобождаем ресурсы контроллера анимации
+    _controller.dispose();
     super.dispose();
   }
 
@@ -58,12 +64,12 @@ class _CircleAnimationState extends State<CircleAnimation>
           return Stack(
             alignment: Alignment.center,
             children: [
-              _buildCircle(const Color(0xff464749),
-                  80 * _animation1.value), // Меньший круг
-              _buildCircle(const Color(0xff919193),
-                  60 * _animation2.value), // Средний круг
+              _buildCircle(
+                  const Color(0xff464749), _animation1.value), // Меньший круг
+              _buildCircle(
+                  const Color(0xff919193), _animation2.value), // Средний круг
               _buildCircle(const Color(0xffffffff),
-                  40 * _animation3.value), // Наибольший круг
+                  _animation3.value), // Наибольший круг
             ],
           );
         },
