@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
 
+import '../components/sceleton.dart';
+
 class AboutCards extends StatefulWidget {
   final String balance;
   final CreditCard myCreditCard;
@@ -32,6 +34,8 @@ class _AboutCardsState extends State<AboutCards>
     }
   }
 
+  bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +43,11 @@ class _AboutCardsState extends State<AboutCards>
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
-
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
       ..addListener(() {
         setState(() {});
@@ -58,11 +66,22 @@ class _AboutCardsState extends State<AboutCards>
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Color(0xfff4f4f4)),
         backgroundColor: const Color(0xFF121212),
-        title: Text(
-          widget.myCreditCard.provider,
-          style: const TextStyle(
-              color: Color(0xfff4f4f4), fontWeight: FontWeight.w700),
-        ),
+        title: isLoading
+            ? SkeletonContainer(
+                width: 90,
+                height: 30,
+                text: widget.myCreditCard.provider,
+                style: const TextStyle(
+                  fontSize: 21,
+                  color: Color(0xFF313131),
+                ),
+                borderRadius: BorderRadius.circular(10),
+              )
+            : Text(
+                widget.myCreditCard.provider,
+                style: const TextStyle(
+                    color: Color(0xfff4f4f4), fontWeight: FontWeight.w700),
+              ),
       ),
       backgroundColor: const Color(0xFF121212),
       body: Column(
@@ -72,65 +91,73 @@ class _AboutCardsState extends State<AboutCards>
             child: Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8),
                 child: GestureDetector(
-                  onTap: _flipCard,
-                  child: Transform(
-                    transform: Matrix4.rotationY((_animation.value) * pi),
-                    alignment: Alignment.center,
-                    child: _isFront
-                        ? AboutCardsData(
-                            balance: widget.myCreditCard.name,
-                            bacgcolor: const Color(0xff1e1e1e),
-                            numberCards: widget.myCreditCard.cardNumber,
-                            dateCards: widget.myCreditCard.expirationDate,
-                          )
-                        : Transform(
-                            transform: Matrix4.rotationY(pi),
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: 360,
-                              height: 230,
-                              decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color.fromARGB(255, 169, 191, 208),
-                                      Color.fromARGB(255, 112, 134, 150),
-                                      Color.fromARGB(255, 83, 100, 112),
-                                      Color.fromARGB(255, 83, 100, 112),
-                                      Color.fromARGB(255, 112, 134, 150),
-                                      Color.fromARGB(255, 169, 191, 208),
-                                      // Color(0xFF171716),
-                                      // Color(0xFF191918),
-                                      // Color(0xFF1b1b1a),
-                                      // Color(0xFF1d1d1b),
-                                      // Color(0xFF1f1f1d),
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15)),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 25.0, vertical: 25),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/Сбер.svg',
-                                          width: 50,
-                                        ),
-                                        const Text('sberpay')
-                                      ],
-                                    ),
-                                  )
-                                ],
+                    onTap: _flipCard,
+                    child: Transform(
+                      transform: Matrix4.rotationY((_animation.value) * pi),
+                      alignment: Alignment.center,
+                      child: isLoading
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: SkeletonIconContainer(
+                                width: 400,
+                                height: 200,
+                                borderRadius: BorderRadius.circular(20),
+                                text: '',
+                                style: const TextStyle(),
                               ),
-                            )),
-                  ),
-                )),
+                            )
+                          : _isFront
+                              ? Container(
+                                  width: 360,
+                                  height: 230,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      colors: [
+                                        Color.fromARGB(255, 169, 191, 208),
+                                        Color.fromARGB(255, 112, 134, 150),
+                                        Color.fromARGB(255, 83, 100, 112),
+                                        Color.fromARGB(255, 83, 100, 112),
+                                        Color.fromARGB(255, 112, 134, 150),
+                                        Color.fromARGB(255, 169, 191, 208),
+                                      ],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 25.0, vertical: 25),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SvgPicture.asset(
+                                              'assets/Сбер.svg',
+                                              width: 50,
+                                            ),
+                                            const Text('sberpay')
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Transform(
+                                  transform: Matrix4.rotationY(-pi),
+                                  alignment: Alignment.center,
+                                  child: AboutCardsData(
+                                    balance: widget.myCreditCard.name,
+                                    bacgcolor: const Color(0xff1e1e1e),
+                                    numberCards: widget.myCreditCard.cardNumber,
+                                    dateCards:
+                                        widget.myCreditCard.expirationDate,
+                                  ),
+                                ),
+                    ))),
           ),
           const SizedBox(
             height: 30,

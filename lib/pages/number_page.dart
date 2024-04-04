@@ -10,6 +10,7 @@ class NumberPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         iconTheme: const IconThemeData(color: GREEN_MEDIUM),
         backgroundColor: BODY_DARK_GRAY,
         title: const Text(

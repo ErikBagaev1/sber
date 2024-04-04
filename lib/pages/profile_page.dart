@@ -30,8 +30,10 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: BODY_DARK_GRAY,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         iconTheme: const IconThemeData(color: Color(0xfff4f4f4)),
         backgroundColor: BODY_DARK_GRAY,
         actions: const [
@@ -42,6 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       ),
       body: ListView(
+        primary: false,
         children: [
           Stack(
             children: [
@@ -391,7 +394,216 @@ class _ProfilePageState extends State<ProfilePage> {
                   fontSize: 24,
                   fontWeight: FontWeight.w500),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                isLoading
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          SkeletonIconContainer(
+                            width: 250,
+                            height: 195,
+                            borderRadius: BorderRadius.circular(20),
+                            text: '',
+                            style: const TextStyle(),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SkeletonIconContainer(
+                            width: 250,
+                            height: 195,
+                            borderRadius: BorderRadius.circular(20),
+                            text: '',
+                            style: const TextStyle(),
+                          ),
+                          SkeletonIconContainer(
+                            width: 250,
+                            height: 195,
+                            borderRadius: BorderRadius.circular(20),
+                            text: '',
+                            style: const TextStyle(),
+                          ),
+                          SkeletonIconContainer(
+                            width: 70,
+                            height: 70,
+                            borderRadius: BorderRadius.circular(20),
+                            text: '',
+                            style: const TextStyle(),
+                          ),
+                        ],
+                      )
+                    : const Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          WhatNew(
+                            textWhite:
+                                'Приложения СберБанк \nОнлайн помогут установит...',
+                            textGray: '26 марта * читать 2 минуты',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          WhatNew(
+                            textWhite:
+                                'Приложения СберБанк \nОнлайн помогут установит...',
+                            textGray: '26 марта * читать 2 минуты',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          WhatNew(
+                            textWhite:
+                                'Приложения СберБанк \nОнлайн помогут установит...',
+                            textGray: '26 марта * читать 2 минуты',
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          WhatNew(
+                            textWhite:
+                                'Приложения СберБанк \nОнлайн помогут установит...',
+                            textGray: '26 марта * читать 2 минуты',
+                          ),
+                        ],
+                      )
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 15.0, top: 30),
+            child: Text(
+              'Близкие',
+              style: TextStyle(
+                  letterSpacing: -0.5,
+                  color: Color(0xffffffff),
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: const Color(0xff333132),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: BODY_DARK_GRAY,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(6.0),
+                            child: Icon(
+                              Icons.add_rounded,
+                              size: 25,
+                              color: GREEN_MEDIUM,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Добавьте близких, с которыми хотите \nвести общий бюджет или защитить \nих от мошенников',
+                          style: TextStyle(
+                              letterSpacing: -0.5,
+                              color: TEXT_GRAY,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WhatNew extends StatelessWidget {
+  final String textWhite;
+  final String textGray;
+
+  const WhatNew({
+    super.key,
+    required this.textWhite,
+    required this.textGray,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: const Color(0xff333132),
+          borderRadius: BorderRadiusDirectional.circular(15)),
+      height: 195,
+      width: 250,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+                color: GREEN_LITE,
+                borderRadius: BorderRadiusDirectional.only(
+                    topEnd: Radius.circular(15),
+                    topStart: Radius.circular(15))),
+            height: 125,
+            width: 250,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              textWhite,
+              style: const TextStyle(
+                  letterSpacing: -0.5,
+                  color: Color(0xffffffff),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text(
+              textGray,
+              style: const TextStyle(
+                  letterSpacing: -0.5,
+                  color: TEXT_GRAY,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
         ],
       ),
     );

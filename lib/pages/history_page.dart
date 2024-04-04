@@ -5,6 +5,8 @@ import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/components/history_appbar.dart';
 import 'package:sber/components/title_history.dart';
 import 'package:sber/models/check.dart';
+import 'package:sber/models/profile.dart';
+import 'package:sber/pages/chek_about.dart';
 import 'package:sber/pages/home_page.dart';
 
 import '../components/select_bar.dart';
@@ -15,7 +17,8 @@ String? incoming;
 String? outgoing;
 
 class HistoryPage extends StatefulWidget {
-  const HistoryPage({super.key});
+  final CreditCard myCreditCard;
+  const HistoryPage({super.key, required this.myCreditCard});
 
   @override
   State<HistoryPage> createState() => _HistoryPageState();
@@ -225,11 +228,27 @@ class _HistoryPageState extends State<HistoryPage> {
                 }
                 // Создаем виджеты ChekHistory для отфильтрованных чеков
                 List<Widget> chekHistoryWidgets = filteredChecks
-                    .map((check) => ChekHistory(
-                          fio: check.fio,
-                          type: check.status,
-                          cash: check.cash,
-                          icon: check.icon,
+                    .map((check) => InkWell(
+                          onTap: () {
+                            // При нажатии на чек открываем экран с подробной информацией о чеке
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CheckDetailsScreen(
+                                  check: check,
+                                  myCreditCart: widget.myCreditCard,
+                                ),
+                              ),
+                            );
+                          },
+                          splashColor: Colors.grey, // Цвет всплеска при нажатии
+                          highlightColor: Colors.transparent,
+                          child: ChekHistory(
+                            fio: check.fio,
+                            type: check.status,
+                            cash: check.cash,
+                            icon: check.icon,
+                          ),
                         ))
                     .toList()
                     .reversed
@@ -256,11 +275,6 @@ class _HistoryPageState extends State<HistoryPage> {
                               Color(0xFF111110),
                               Color(0xFF131312),
                               Color(0xFF151514),
-                              // Color(0xFF171716),
-                              // Color(0xFF191918),
-                              // Color(0xFF1b1b1a),
-                              // Color(0xFF1d1d1b),
-                              // Color(0xFF1f1f1d),
                             ],
                             begin: Alignment.bottomCenter,
                             end: Alignment.topCenter,

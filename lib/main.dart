@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const ClearDataScreen(),
                 const ChekAdd(),
                 const AddProfileData(),
-                const HistoryPage(),
+                HistoryPage(myCreditCard: myCreditCard),
               ],
             );
           }
