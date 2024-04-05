@@ -7,6 +7,7 @@ class CreditCard {
   String provider;
   String expirationDate;
   String phoneNumber;
+  String email; // Добавленное поле для email
 
   CreditCard({
     required this.cardNumber,
@@ -15,9 +16,11 @@ class CreditCard {
     required this.cvc,
     required this.expirationDate,
     required this.phoneNumber,
+    required this.email, // Поле email добавлено в конструктор
   });
 
   factory CreditCard.fromSharedPreferences(SharedPreferences prefs) {
+   
     return CreditCard(
       cardNumber: prefs.getString('cardNumber') ?? '',
       provider: prefs.getString('provider') ?? '',
@@ -25,6 +28,8 @@ class CreditCard {
       cvc: prefs.getString('cvc') ?? '',
       expirationDate: prefs.getString('expirationDate') ?? '',
       phoneNumber: prefs.getString('phoneNumber') ?? '',
+      email: prefs.getString('email') ??
+          '', // Получение email из SharedPreferences
     );
   }
 }

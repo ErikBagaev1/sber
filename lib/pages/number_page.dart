@@ -496,12 +496,12 @@ class _NumberPageState extends State<NumberPage> {
                 ),
           isLoading
               ? const SizedBox()
-              : const Padding(
-                  padding: EdgeInsets.only(left: 10.0),
+              : Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Column(
+                      const Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -516,12 +516,12 @@ class _NumberPageState extends State<NumberPage> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
-                        'noutilus_gray@gmail.com',
-                        style: TextStyle(
+                        widget.myCreditCard.email,
+                        style: const TextStyle(
                             letterSpacing: -0.5,
                             color: Color(0xffffffff),
                             fontSize: 18,

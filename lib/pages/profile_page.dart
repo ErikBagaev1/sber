@@ -187,14 +187,18 @@ class _ProfilePageState extends State<ProfilePage> {
                                         alignment: Alignment.topRight,
                                         children: [
                                           Center(
-                                            child: IconCards(
-                                              color: BODY_DARK_GRAY,
-                                              text: 'СберПрайм',
-                                              icon: Icon(
-                                                Icons.back_hand_outlined,
-                                                size: 30,
-                                                color: Color(0xff5b5b5c),
-                                              ),
+                                            child: Row(
+                                              children: [
+                                                IconCards(
+                                                  color: BODY_DARK_GRAY,
+                                                  text: 'СберПрайм',
+                                                  icon: Icon(
+                                                    Icons.back_hand_outlined,
+                                                    size: 30,
+                                                    color: Color(0xff5b5b5c),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           Padding(
@@ -566,6 +570,99 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 15.0, top: 30),
+            child: Text(
+              'Настройки',
+              style: TextStyle(
+                  letterSpacing: -0.5,
+                  color: Color(0xffffffff),
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          const Settings(
+              text: 'Уведомления',
+              icon: Icon(
+                Icons.notifications_none,
+                size: 30,
+                color: GREEN_MEDIUM,
+              )),
+          const Settings(
+              text: 'Безопастность',
+              icon: Icon(
+                Icons.lock_outline_rounded,
+                size: 30,
+                color: GREEN_MEDIUM,
+              )),
+          const Settings(
+              text: 'Оформление',
+              icon: Icon(
+                Icons.star_border_outlined,
+                size: 30,
+                color: GREEN_MEDIUM,
+              )),
+          const Settings(
+              text: 'Основные экраны',
+              icon: Icon(
+                Icons.phone_iphone,
+                size: 30,
+                color: GREEN_MEDIUM,
+              )),
+          const Settings(
+              text: 'Платежи и переводы',
+              icon: Icon(
+                Icons.wallet,
+                size: 30,
+                color: GREEN_MEDIUM,
+              )),
+        ],
+      ),
+    );
+  }
+}
+
+class Settings extends StatelessWidget {
+  final String text;
+  final Icon icon;
+  const Settings({
+    super.key,
+    required this.text,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              icon,
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                text,
+                style: const TextStyle(
+                    color: Color(0xffffffff),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 40.0, right: 15, top: 5, bottom: 10),
+            child: Divider(
+              thickness: 0.2,
+              color: Color(0xFF7d7d7d),
             ),
           ),
         ],

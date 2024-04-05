@@ -15,6 +15,9 @@ class _AddProfileDataState extends State<AddProfileData> {
   TextEditingController expirationDateController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController providerController = TextEditingController();
+  TextEditingController emailController =
+      TextEditingController(); // Добавлен контроллер для email
+
   @override
   void dispose() {
     // Освобождение ресурсов контроллеров
@@ -24,6 +27,7 @@ class _AddProfileDataState extends State<AddProfileData> {
     expirationDateController.dispose();
     phoneNumberController.dispose();
     providerController.dispose();
+    emailController.dispose(); // Освобождение ресурсов контроллера для email
     super.dispose();
   }
 
@@ -41,50 +45,63 @@ class _AddProfileDataState extends State<AddProfileData> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: cardNumberController,
-              decoration: const InputDecoration(labelText: 'Номер карты'),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: cardNumberController,
+                  decoration: const InputDecoration(labelText: 'Номер карты'),
+                ),
+                TextField(
+                  controller: cvcController,
+                  decoration: const InputDecoration(labelText: 'CVC'),
+                ),
+                TextField(
+                  controller: providerController,
+                  decoration:
+                      const InputDecoration(labelText: 'visa masterkard'),
+                ),
+                TextField(
+                  controller: balanceController,
+                  decoration: const InputDecoration(labelText: 'Имя'),
+                ),
+                TextField(
+                  controller: expirationDateController,
+                  decoration:
+                      const InputDecoration(labelText: 'До какого работает'),
+                ),
+                TextField(
+                  controller: phoneNumberController,
+                  decoration:
+                      const InputDecoration(labelText: 'Номер телефона'),
+                ),
+                TextField(
+                  controller: emailController, // Привязка контроллера для email
+                  decoration: const InputDecoration(
+                      labelText:
+                          'Электронная почта'), // Добавлено поле для ввода email
+                ),
+                const SizedBox(height: 20.0),
+                ElevatedButton(
+                  onPressed: () {
+                    saveCreditCardData();
+                  },
+                  child: const Text('Сохранить'),
+                ),
+              ],
             ),
-            TextField(
-              controller: cvcController,
-              decoration: const InputDecoration(labelText: 'CVC'),
-            ),
-            TextField(
-              controller: providerController,
-              decoration: const InputDecoration(labelText: 'visa masterkard'),
-            ),
-            TextField(
-              controller: balanceController,
-              decoration: const InputDecoration(labelText: 'Имя'),
-            ),
-            TextField(
-              controller: expirationDateController,
-              decoration:
-                  const InputDecoration(labelText: 'До какого работает'),
-            ),
-            TextField(
-              controller: phoneNumberController,
-              decoration: const InputDecoration(labelText: 'Номер телефона'),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                saveCreditCardData();
-              },
-              child: const Text('Сохранить'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Future<void> saveCreditCardData() async {
+    print(emailController.text);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('cardNumber', cardNumberController.text);
     await prefs.setString('cvc', cvcController.text);
@@ -92,6 +109,8 @@ class _AddProfileDataState extends State<AddProfileData> {
     await prefs.setString('expirationDate', expirationDateController.text);
     await prefs.setString('phoneNumber', phoneNumberController.text);
     await prefs.setString('provider', providerController.text);
+    await prefs.setString(
+        'email', emailController.text); // Сохранение email в SharedPreferences
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Данные сохранены'),
     ));
@@ -102,6 +121,7 @@ class _AddProfileDataState extends State<AddProfileData> {
     expirationDateController.clear();
     phoneNumberController.clear();
     providerController.clear();
+    emailController.clear(); // Очистка значения email
   }
 
   Future<void> deleteCreditCardData() async {
@@ -112,6 +132,7 @@ class _AddProfileDataState extends State<AddProfileData> {
     await prefs.remove('expirationDate');
     await prefs.remove('phoneNumber');
     await prefs.remove('provider');
+    await prefs.remove('email'); // Удаление email из SharedPreferences
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Данные карты удалены'),
     ));

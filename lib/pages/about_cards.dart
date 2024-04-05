@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
 import 'package:sber/theme/colors.dart';
 
@@ -138,14 +137,8 @@ class _AboutCardsState extends State<AboutCards>
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            SvgPicture.asset(
-                                              'assets/Сбер.svg',
-                                              width: 50,
-                                              // colorFilter:
-                                              //     const ColorFilter.mode(
-                                              //         BODY_DARK_GRAY,
-                                              //         BlendMode.srcIn),
-                                            ),
+                                            Image.asset('assets/LOGO.png',
+                                                width: 30),
                                             Container(
                                               decoration: BoxDecoration(
                                                   color: TEXT_GRAY
@@ -201,11 +194,13 @@ class _AboutCardsState extends State<AboutCards>
                                                             FontWeight.w500))
                                               ],
                                             ),
-                                            Container(
-                                              height: 30,
-                                              width: 50,
-                                              decoration: const BoxDecoration(
-                                                  color: BODY_DARK_GRAY),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              child: Image.asset(
+                                                'assets/mir.jpg',
+                                                width: 60,
+                                              ),
                                             )
                                           ],
                                         ),
