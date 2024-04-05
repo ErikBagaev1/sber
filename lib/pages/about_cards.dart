@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
+import 'package:sber/theme/colors.dart';
 
-import '../components/sceleton.dart';
+import '../animation/sceleton.dart';
 
 class AboutCards extends StatefulWidget {
   final String balance;
@@ -87,7 +88,7 @@ class _AboutCardsState extends State<AboutCards>
       body: Column(
         children: [
           SizedBox(
-            height: 250,
+            height: 220,
             child: Padding(
                 padding: const EdgeInsets.only(top: 8.0, right: 8),
                 child: GestureDetector(
@@ -127,6 +128,8 @@ class _AboutCardsState extends State<AboutCards>
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -138,11 +141,75 @@ class _AboutCardsState extends State<AboutCards>
                                             SvgPicture.asset(
                                               'assets/Сбер.svg',
                                               width: 50,
+                                              // colorFilter:
+                                              //     const ColorFilter.mode(
+                                              //         BODY_DARK_GRAY,
+                                              //         BlendMode.srcIn),
                                             ),
-                                            const Text('sberpay')
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  color: TEXT_GRAY
+                                                      .withOpacity(0.6),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
+                                                child: Text(
+                                                  'Pay',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: BODY_DARK_GRAY
+                                                          .withOpacity(0.6)),
+                                                ),
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                    ' ** ${widget.myCreditCard.cardNumber.substring((widget.myCreditCard.cardNumber.length) - 4)} * зарплатная',
+                                                    style: const TextStyle(
+                                                        color:
+                                                            Color(0xfff4f4f4),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500)),
+                                                const Text('Показать данные',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xfff4f4f4),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500))
+                                              ],
+                                            ),
+                                            Container(
+                                              height: 30,
+                                              width: 50,
+                                              decoration: const BoxDecoration(
+                                                  color: BODY_DARK_GRAY),
+                                            )
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   ),
                                 )

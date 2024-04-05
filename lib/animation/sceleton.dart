@@ -139,3 +139,63 @@ class _SkeletonIconContainerState extends State<SkeletonIconContainer>
     super.dispose();
   }
 }
+
+class SkeletonList extends StatelessWidget {
+  const SkeletonList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 2, // Здесь задаем количество элементов в списке
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(right: 40.0, top: 5, left: 10),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  SkeletonContainer(
+                    borderRadius: BorderRadius.circular(20),
+                    width: 70,
+                    height: 20,
+                    text: 'safafafasfasdfsfsfsfdsffd',
+                    style: const TextStyle(
+                        color: Colors.transparent, fontSize: 10),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [
+                  SkeletonIconContainer(
+                    height: 25,
+                    width: 25,
+                    borderRadius: BorderRadius.circular(40),
+                    style: const TextStyle(),
+                    text: '',
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  SkeletonContainer(
+                    borderRadius: BorderRadius.circular(3),
+                    width: 70,
+                    height: 20,
+                    text: 'safafafasfasdfsfsfsfdsffd',
+                    style: const TextStyle(
+                        color: Colors.transparent, fontSize: 10),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sber/components/date_and_history_chek.dart';
-import 'package:sber/components/sceleton.dart';
+import 'package:sber/animation/sceleton.dart';
 import 'package:sber/pages/home_page.dart';
 
 class TitleHistory extends StatelessWidget {

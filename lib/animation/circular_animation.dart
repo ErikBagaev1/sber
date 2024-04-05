@@ -20,32 +20,28 @@ class _CircleAnimationState extends State<CircleAnimation>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-          milliseconds:
-              1000), // Увеличиваем общую длительность анимации до 2 секунд
+      duration: const Duration(milliseconds: 1000),
     );
 
-    // Увеличение размеров кругов
-    _animation1 = Tween<double>(begin: 0.0, end: 80.0).animate(
+    _animation1 = Tween<double>(begin: 0.0, end: 120.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.4, 1.0, curve: Curves.easeInOut),
       ),
     );
-    _animation2 = Tween<double>(begin: 0.0, end: 60.0).animate(
+    _animation2 = Tween<double>(begin: 0.0, end: 90.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.2, 1, curve: Curves.easeInOut),
       ),
     );
-    _animation3 = Tween<double>(begin: 0.0, end: 40.0).animate(
+    _animation3 = Tween<double>(begin: 0.0, end: 60.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.0, 1, curve: Curves.easeInOut),
       ),
     );
 
-    // Запускаем анимацию
     _controller.forward();
   }
 
@@ -64,12 +60,18 @@ class _CircleAnimationState extends State<CircleAnimation>
           return Stack(
             alignment: Alignment.center,
             children: [
+              _buildCircle(const Color(0xff464749).withOpacity(0.7),
+                  _animation1.value, []),
+              _buildCircle(const Color(0xff919193).withOpacity(0.7),
+                  _animation2.value, []),
               _buildCircle(
-                  const Color(0xff464749), _animation1.value), // Меньший круг
-              _buildCircle(
-                  const Color(0xff919193), _animation2.value), // Средний круг
-              _buildCircle(const Color(0xffffffff),
-                  _animation3.value), // Наибольший круг
+                  const Color(0xffffffff).withOpacity(0.9), _animation3.value, [
+                const Center(
+                    child: Text(
+                  'L',
+                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+                ))
+              ]),
             ],
           );
         },
@@ -77,7 +79,7 @@ class _CircleAnimationState extends State<CircleAnimation>
     );
   }
 
-  Widget _buildCircle(Color color, double size) {
+  Widget _buildCircle(Color color, double size, List<Widget> children) {
     return Center(
       child: Container(
         width: size,
@@ -85,6 +87,38 @@ class _CircleAnimationState extends State<CircleAnimation>
         decoration: BoxDecoration(
           color: color,
           shape: BoxShape.circle,
+        ),
+        child: Stack(
+          children: children,
+        ),
+      ),
+    );
+  }
+}
+
+class ClockHand extends StatelessWidget {
+  final Color color;
+  final double size;
+  final double angleRadians;
+
+  const ClockHand({
+    Key? key,
+    required this.color,
+    required this.size,
+    required this.angleRadians,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: size / 2,
+      left: size / 2,
+      child: Transform.rotate(
+        angle: angleRadians,
+        child: Container(
+          width: 2.0,
+          height: size / 2,
+          color: color,
         ),
       ),
     );

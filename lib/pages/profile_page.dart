@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sber/pages/number_page.dart';
 import 'package:sber/theme/colors.dart';
 
-import '../components/sceleton.dart';
+import '../animation/sceleton.dart';
 import '../models/profile.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -187,7 +187,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       color: BODY_DARK_GRAY,
                                       text: 'СберПрайм',
                                       icon: Icon(
-                                        Icons.shopping_bag_outlined,
+                                        Icons.back_hand_outlined,
                                         size: 30,
                                         color: Color(0xff5b5b5c),
                                       ),
@@ -196,7 +196,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       color: GREEN_MEDIUM,
                                       text: 'Уведомления',
                                       icon: Icon(
-                                        Icons.shopping_bag_outlined,
+                                        Icons.paid_rounded,
                                         size: 30,
                                         color: Colors.white,
                                       ),
@@ -205,7 +205,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       color: GREEN_MEDIUM,
                                       text: 'Страховки',
                                       icon: Icon(
-                                        Icons.shopping_bag_outlined,
+                                        Icons.network_check_sharp,
                                         size: 30,
                                         color: Colors.white,
                                       ),
@@ -637,7 +637,10 @@ class IconCards extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-                color: WHITE_TEXT, fontWeight: FontWeight.w400, fontSize: 12),
+                letterSpacing: -0.5,
+                color: WHITE_TEXT,
+                fontWeight: FontWeight.w400,
+                fontSize: 12),
           )
         ],
       ),

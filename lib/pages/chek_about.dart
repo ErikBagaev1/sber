@@ -60,90 +60,260 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                 children: [
                   Column(
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xFF101113), // Night
-                              Color.fromARGB(255, 28, 29, 32), // Eerie Black
-                              Color.fromARGB(255, 38, 43, 44), // Eerie Black 2
-                              Color.fromARGB(255, 42, 46, 52), // Raisin Black
-                              Color.fromARGB(255, 61, 72, 76), // Gunmetal
-                            ],
-                          ),
-                        ),
-                        height: 350,
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            (widget.check.status == 'Исходящий перевод')
-                                ? Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 80,
-                                      ),
-                                      const SizedBox(
-                                          height: 100,
-                                          width: 100,
-                                          child: CircleAnimation()),
-                                      const Text(
-                                        'Перевод отправлен',
-                                        style: TextStyle(
-                                            letterSpacing: -0.5,
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        '$formattedCash ₽',
-                                        style: const TextStyle(
-                                            letterSpacing: -0.5,
-                                            fontSize: 28,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        'В ${widget.check.icon} через СПБ',
-                                        style: const TextStyle(
-                                            letterSpacing: -0.5,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        widget.check.fio,
-                                        style: const TextStyle(
-                                            letterSpacing: -0.5,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ],
-                                  )
-                                : const SafeArea(
-                                    child: Text(
-                                      'Перевод принят',
-                                      style: TextStyle(
-                                          letterSpacing: -0.5,
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  )
-                          ],
-                        ),
-                      ),
+                      (widget.check.icon != 'Сбербанк')
+                          ? Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xFF101113), // Night
+                                    Color.fromARGB(
+                                        255, 28, 29, 32), // Eerie Black
+                                    Color.fromARGB(
+                                        255, 38, 43, 44), // Eerie Black 2
+                                    Color.fromARGB(
+                                        255, 42, 46, 52), // Raisin Black
+                                    Color.fromARGB(255, 61, 72, 76), // Gunmetal
+                                  ],
+                                ),
+                              ),
+                              height: 380,
+                              width: double.infinity,
+                              child: Column(
+                                children: [
+                                  (widget.check.status == 'Исходящий перевод')
+                                      ? Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 60,
+                                            ),
+                                            const SizedBox(
+                                                height: 150,
+                                                width: 150,
+                                                child: CircleAnimation()),
+                                            const Text(
+                                              'Перевод отправлен',
+                                              style: TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              '$formattedCash ₽',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'В ${widget.check.icon} через СПБ',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              widget.check.fio,
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )
+                                      : Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 60,
+                                            ),
+                                            const SizedBox(
+                                                height: 150,
+                                                width: 150,
+                                                child: CircleAnimation()),
+                                            const Text(
+                                              'Перевод принят',
+                                              style: TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              '$formattedCash ₽',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'В ${widget.check.icon} через СПБ',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              widget.check.fio,
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )
+                                ],
+                              ),
+                            )
+                          : Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    GREEN_HIGHT,
+                                    GREEN_MEDIUM,
+                                    GREEN_LITE
+                                  ],
+                                ),
+                              ),
+                              height: 380,
+                              width: double.infinity,
+                              child: Column(
+                                children: [
+                                  (widget.check.status == 'Исходящий перевод')
+                                      ? Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 60,
+                                            ),
+                                            const SizedBox(
+                                                height: 150,
+                                                width: 150,
+                                                child: CircleAnimation()),
+                                            const Text(
+                                              'Перевод доставлен',
+                                              style: TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              '$formattedCash ₽',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'В ${widget.check.icon} через СПБ',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              widget.check.fio,
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )
+                                      : Column(
+                                          children: [
+                                            const SizedBox(
+                                              height: 60,
+                                            ),
+                                            const SizedBox(
+                                                height: 150,
+                                                width: 150,
+                                                child: CircleAnimation()),
+                                            const Text(
+                                              'Перевод принят',
+                                              style: TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              '$formattedCash ₽',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              'В ${widget.check.icon} через СПБ',
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              widget.check.fio,
+                                              style: const TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        )
+                                ],
+                              ),
+                            ),
                       const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
