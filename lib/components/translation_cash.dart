@@ -60,8 +60,8 @@ class TranslationCash extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 55,
-                                width: 55,
+                                height: 65,
+                                width: 65,
                                 child: ClipOval(
                                     child: Container(
                                         color: const Color(0xFF128f2b),

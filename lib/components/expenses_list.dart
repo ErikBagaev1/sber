@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sber/models/check.dart';
-import 'package:sber/pages/home_page.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 import 'Expenses_card.dart';
 
@@ -103,29 +101,27 @@ class _ExpensesListState extends State<ExpensesList> {
                   const SizedBox(
                     width: 18,
                   ),
-                  Skeletonizer(
-                    enabled: enabled1 ? true : false,
-                    child: Expenses(
-                      cash: Text(
-                        '$outgoing ₽',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                      cardNumber: Text(
-                        'Все расходы \nиз 0 ₽',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      widget: SvgPicture.asset(
-                        'assets/Расходы.svg',
-                        width: 40,
+                  Expenses(
+                    cash: Text(
+                      '$outgoing ₽',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
+                    cardNumber: Text(
+                      'Все расходы \nиз 0 ₽',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    widget: SvgPicture.asset(
+                      'assets/Расходы.svg',
+                      width: 40,
+                    ),
                   ),
+
                   const SizedBox(
                     width: 10,
                   ),

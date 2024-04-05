@@ -116,8 +116,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 'Документы и Сбер ID',
                                 style: TextStyle(
                                     letterSpacing: -0.5,
-                                    color: GREEN_LITE,
-                                    fontSize: 18,
+                                    color: GREEN_MEDIUM,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w300),
                                 textAlign: TextAlign.center,
                               ),
@@ -126,10 +126,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               width: 5,
                             ),
                             const Icon(
-                              weight: 30,
                               size: 16,
                               Icons.arrow_forward_ios_rounded,
-                              color: GREEN_HIGHT,
+                              color: Color.fromARGB(255, 57, 150, 61),
                             ),
                           ],
                         ),
@@ -183,13 +182,36 @@ class _ProfilePageState extends State<ProfilePage> {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    IconCards(
-                                      color: BODY_DARK_GRAY,
-                                      text: 'СберПрайм',
-                                      icon: Icon(
-                                        Icons.back_hand_outlined,
-                                        size: 30,
-                                        color: Color(0xff5b5b5c),
+                                    Expanded(
+                                      child: Stack(
+                                        alignment: Alignment.topRight,
+                                        children: [
+                                          Center(
+                                            child: IconCards(
+                                              color: BODY_DARK_GRAY,
+                                              text: 'СберПрайм',
+                                              icon: Icon(
+                                                Icons.back_hand_outlined,
+                                                size: 30,
+                                                color: Color(0xff5b5b5c),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                              right: 12.0,
+                                            ),
+                                            child: CircleAvatar(
+                                              backgroundColor: GREEN_MEDIUM,
+                                              radius: 12,
+                                              child: Icon(
+                                                size: 17,
+                                                Icons.add,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
                                     IconCards(
@@ -217,7 +239,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Container(
                           decoration: BoxDecoration(
                               color: BODY_DARK_GRAY,
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(10)),
                           child: const Column(
                             children: [
                               Padding(
@@ -399,7 +421,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 20,
           ),
           SizedBox(
-            height: 200,
+            height: 220,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -568,8 +590,8 @@ class WhatNew extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color(0xff333132),
           borderRadius: BorderRadiusDirectional.circular(15)),
-      height: 195,
-      width: 250,
+      height: 260,
+      width: 270,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -580,21 +602,23 @@ class WhatNew extends StatelessWidget {
                     topEnd: Radius.circular(15),
                     topStart: Radius.circular(15))),
             height: 125,
-            width: 250,
+            width: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 10.0, top: 10),
             child: Text(
               textWhite,
               style: const TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(
+              left: 10.0,
+            ),
             child: Text(
               textGray,
               style: const TextStyle(

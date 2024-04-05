@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Chek {
-  final String icon;
+  final String icon; // Путь к иконке (изображению)
   final String fio;
   final String status;
   final double cash;
-
   final String date;
+  final String image; // Путь к изображению
 
   Chek({
     required this.date,
@@ -16,6 +16,7 @@ class Chek {
     required this.fio,
     required this.status,
     required this.cash,
+    required this.image, // Добавляем поле для изображения
   });
 
   // Метод для преобразования объекта Chek в JSON
@@ -26,6 +27,7 @@ class Chek {
       'fio': fio,
       'status': status,
       'cash': cash,
+      'image': image, // Добавляем поле для изображения
     };
   }
 
@@ -37,6 +39,7 @@ class Chek {
       fio: json['fio'],
       status: json['status'],
       cash: json['cash'],
+      image: json['image'], // Добавляем поле для изображения
     );
   }
 }
@@ -47,9 +50,10 @@ class CheckRepository {
   // Метод для сохранения списка экземпляров класса Chek в SharedPreferences
   static Future<void> saveCheck(Chek check) async {
     final prefs = await SharedPreferences.getInstance();
-    final List<String>? checks = prefs.getStringList(_key);
-    checks?.add(jsonEncode(check.toJson()));
-    await prefs.setStringList(_key, checks ?? [jsonEncode(check.toJson())]);
+    List<String>? checks = prefs.getStringList(_key);
+    checks ??= [];
+    checks.add(jsonEncode(check.toJson()));
+    await prefs.setStringList(_key, checks);
   }
 
   // Метод для загрузки списка экземпляров класса Chek из SharedPreferences

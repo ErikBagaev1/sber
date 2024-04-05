@@ -5,7 +5,6 @@ import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:skeletons/skeletons.dart';
 
 import 'pages/add_profile_data.dart';
 import 'pages/home_page.dart';
@@ -19,42 +18,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SkeletonTheme(
-      // themeMode: ThemeMode.light,
-      shimmerGradient: const LinearGradient(
-        colors: [
-          Color(0xFFD8E3E7),
-          Color(0xFFC8D5DA),
-          Color(0xFFD8E3E7),
-        ],
-      ),
-      darkShimmerGradient: const LinearGradient(
-        colors: [
-          Color(0xFFD8E3E7),
-          Color(0xFFC8D5DA),
-          Color(0xFFD8E3E7),
-        ],
-        tileMode: TileMode.clamp,
-      ),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Сбербанк',
-        theme: ThemeData(
-          textTheme: const TextTheme(
-            bodyLarge: TextStyle(
-              letterSpacing:
-                  -0.5, // Здесь задайте нужное вам значение для letterSpacing
-            ),
-            // Добавьте другие стили, если нужно
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Сбербанк',
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            letterSpacing:
+                -0.5, // Здесь задайте нужное вам значение для letterSpacing
           ),
-          fontFamily: 'SPB',
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          useMaterial3: true,
+          // Добавьте другие стили, если нужно
         ),
-        home: const MyHomePage(title: 'Сбербанк'),
+        fontFamily: 'SPB',
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        useMaterial3: true,
       ),
+      home: const MyHomePage(title: 'Сбербанк'),
     );
   }
 }

@@ -59,7 +59,7 @@ class _NumberPageState extends State<NumberPage> {
             ),
           ),
           SizedBox(
-            height: 190,
+            height: 170,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -67,8 +67,7 @@ class _NumberPageState extends State<NumberPage> {
                   width: 10,
                 ),
                 Container(
-                  height: 170,
-                  width: 200,
+                  width: 170,
                   decoration: BoxDecoration(
                       color: isLoading
                           ? const Color.fromARGB(255, 49, 49, 49)
@@ -106,8 +105,7 @@ class _NumberPageState extends State<NumberPage> {
                   width: 10,
                 ),
                 Container(
-                  height: 170,
-                  width: 200,
+                  width: 180,
                   decoration: BoxDecoration(
                       color: isLoading
                           ? const Color.fromARGB(255, 49, 49, 49)
@@ -144,10 +142,11 @@ class _NumberPageState extends State<NumberPage> {
                   width: 10,
                 ),
                 Container(
-                  height: 170,
-                  width: 200,
+                  width: 180,
                   decoration: BoxDecoration(
-                      color: const Color(0xff1e1e1e),
+                      color: isLoading
+                          ? const Color.fromARGB(255, 49, 49, 49)
+                          : const Color(0xff1e1e1e),
                       borderRadius: BorderRadius.circular(10)),
                   child: const Padding(
                     padding: EdgeInsets.all(20.0),
@@ -321,7 +320,7 @@ class _NumberPageState extends State<NumberPage> {
                       child: Row(
                         children: [
                           Text(
-                            'Документы',
+                            'Телефоны',
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500,

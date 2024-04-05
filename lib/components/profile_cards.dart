@@ -19,8 +19,8 @@ class ProfileCards extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  height: 55,
-                  width: 55,
+                  height: 65,
+                  width: 65,
                   child: ClipOval(
                       child: Container(
                           color: const Color(0xFF383838),
@@ -53,7 +53,7 @@ class ProfileCards extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              width: 65,
+              width: 70,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,

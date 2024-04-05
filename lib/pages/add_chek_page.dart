@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sber/models/check.dart';
 
 const List<String> listBanks = <String>[
@@ -40,6 +43,7 @@ class _ChekAddState extends State<ChekAdd> {
   String _selectedStatus = listStatus.first;
   String _selectedBank = listBanks.first;
   String _successMessage = '';
+  File? _pickedImage;
   @override
   void dispose() {
     _dateController.dispose();
@@ -85,20 +89,42 @@ class _ChekAddState extends State<ChekAdd> {
               });
             },
           ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () async {
+                final pickedFile = await ImagePicker().pickImage(
+                  source: ImageSource.gallery,
+                );
+                if (pickedFile != null) {
+                  setState(() {
+                    _pickedImage = File(pickedFile.path);
+                    print(_pickedImage);
+                  });
+                }
+              },
+              child: const Text('Выбрать изображение'),
+            ),
+          ),
           const Spacer(),
           ElevatedButton(
             onPressed: () {
+              // Если изображение выбрано
               final newCheck = Chek(
                 date: _dateController.text,
                 fio: _fioController.text,
                 cash: double.parse(_cashController.text),
                 status: _selectedStatus,
-                icon: _selectedBank,
+                icon: _selectedBank, // Путь к иконке (не изображению)
+                image: _pickedImage?.path ?? '', // Путь к изображению
               );
-
+              print(newCheck.image);
+              print(newCheck.cash);
+              // Сохраняем новый чек
               CheckRepository.saveCheck(newCheck);
               setState(() {
                 _successMessage = 'Чек успешно добавлен!';
+                _pickedImage =
+                    null; // Сбрасываем выбранное изображение после сохранения
               });
 
               // Очищаем поля ввода после успешного добавления

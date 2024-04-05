@@ -150,31 +150,39 @@ class ChekHistory extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      fio,
-                                      softWrap: true,
-                                      overflow: TextOverflow
-                                          .ellipsis, // добавлено для случая переполнения
-                                      maxLines: 2,
-                                      style: const TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white),
-                                    ),
-                                    Text(
-                                      "Клиенту $icon",
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w300,
-                                          color: Color(0xFF7d7d7d)),
-                                    )
-                                  ],
-                                ),
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        fio,
+                                        softWrap: true,
+                                        overflow: TextOverflow
+                                            .ellipsis, // добавлено для случая переполнения
+                                        maxLines: 2,
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                      (type == 'Входящий перевод')
+                                          ? const Text(
+                                              "Входящий перевод",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Color(0xFF7d7d7d)),
+                                            )
+                                          : Text(
+                                              "Клиенту $icon",
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Color(0xFF7d7d7d)),
+                                            )
+                                    ]),
                               ),
-                              if (type !=
-                                  'Входящий перевод') // Проверяем статус чека
+                              if (type ==
+                                  'Исходящий перевод') // Проверяем статус чека
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 8.0),
                                   child: Column(
@@ -195,8 +203,8 @@ class ChekHistory extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              if (type !=
-                                  'Исходящий перевод') // Проверяем статус чека
+                              if (type ==
+                                  'Входящий перевод') // Проверяем статус чека
                                 Column(
                                   children: [
                                     Text(
@@ -242,7 +250,7 @@ class BanksIconIf extends StatelessWidget {
       children: [
         // Если входящий перевод из сберБанка
         if (type == 'Входящий перевод' &&
-            icon == 'СберБанк') // Проверяем статус чека
+            icon == 'Сбербанк') // Проверяем статус чека
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardBlock extends StatelessWidget {
-  final String cash;
-  final String cardNumber;
-  final Widget widget;
+  final String? cash;
+  final String? cardNumber;
+  final Widget? widget;
   const CardBlock({
     super.key,
     required this.cash,
@@ -42,14 +42,14 @@ class CardBlock extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cash,
+                  cash ?? '',
                   style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,
                   ),
                 ),
                 Text(
-                  cardNumber,
+                  cardNumber ?? '',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[400],

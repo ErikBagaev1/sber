@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/models/check.dart';
 import 'package:sber/models/profile.dart';
+import 'package:sber/pages/image_check.dart';
 import 'package:sber/theme/colors.dart';
 
 import '../animation/circular_animation.dart'; // Импортируем модель чека
@@ -202,7 +203,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                   ],
                                 ),
                               ),
-                              height: 380,
+                              // height: 380,
                               width: double.infinity,
                               child: Column(
                                 children: [
@@ -215,7 +216,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                             const SizedBox(
                                                 height: 150,
                                                 width: 150,
-                                                child: CircleAnimation()),
+                                                child: CircleAnimationWhite()),
                                             const Text(
                                               'Перевод доставлен',
                                               style: TextStyle(
@@ -238,24 +239,27 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Text(
-                                              'В ${widget.check.icon} через СПБ',
-                                              style: const TextStyle(
-                                                  letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
+                                            // Text(
+                                            //   'В ${widget.check.icon} через СПБ',
+                                            //   style: const TextStyle(
+                                            //       letterSpacing: -0.5,
+                                            //       fontSize: 16,
+                                            //       fontWeight: FontWeight.w500,
+                                            //       color: Colors.white),
+                                            // ),
+                                            // const SizedBox(
+                                            //   height: 5,
+                                            // ),
                                             Text(
                                               widget.check.fio,
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
                                                   fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w700,
                                                   color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
                                             ),
                                           ],
                                         )
@@ -314,67 +318,176 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                 ],
                               ),
                             ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 20.0, top: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Статус перевода',
-                                  style: TextStyle(
-                                      letterSpacing: -1,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20.0, top: 10),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Узнать о зачислениях денежных средств на счет \nвы можете у получателя перевода',
-                                  style: TextStyle(
-                                      letterSpacing: -1,
-                                      color: TEXT_GRAY,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w400),
+                          ((widget.check.status != 'Исходящий перевод') &&
+                                  (widget.check.icon != ''))
+                              ? const Column(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 20.0, top: 20),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Статус перевода',
+                                            style: TextStyle(
+                                                letterSpacing: -1,
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 20.0, top: 10),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Узнать о зачислениях денежных средств на счет \nвы можете у получателя перевода',
+                                            style: TextStyle(
+                                                letterSpacing: -1,
+                                                color: TEXT_GRAY,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                  ],
                                 )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.list_alt_sharp,
-                                  size: 35,
-                                  color: GREEN_MEDIUM,
+                              : const SizedBox(),
+                          ((widget.check.status != 'Исходящий перевод') &&
+                                  (widget.check.icon != ''))
+                              ? Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15.0),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.list_alt_sharp,
+                                        size: 35,
+                                        color: GREEN_MEDIUM,
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => ImageCheck(
+                                                    text:
+                                                        'Сохранить или отправить чек',
+                                                    chek: widget.check)),
+                                          );
+                                        },
+                                        child: const Text(
+                                          'Сохранить или отправить чек',
+                                          style: TextStyle(
+                                              letterSpacing: -0.5,
+                                              color: Color(0xffffffff),
+                                              fontSize: 19,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15.0),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          const Icon(
+                                            Icons.list_alt_sharp,
+                                            size: 35,
+                                            color: GREEN_MEDIUM,
+                                          ),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageCheck(
+                                                            text:
+                                                                'Сохранить чек',
+                                                            chek:
+                                                                widget.check)),
+                                              );
+                                            },
+                                            child: const Text(
+                                              'Сохранить чек',
+                                              style: TextStyle(
+                                                  letterSpacing: -0.5,
+                                                  color: Color(0xffffffff),
+                                                  fontSize: 19,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 60.0,
+                                          right: 15,
+                                          top: 5,
+                                          bottom: 10),
+                                      child: Divider(
+                                        thickness: 0.1,
+                                        color: Color(0xFF7d7d7d),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 15.0),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.star_border,
+                                            size: 35,
+                                            color: GREEN_MEDIUM,
+                                          ),
+                                          SizedBox(
+                                            width: 20,
+                                          ),
+                                          Text(
+                                            'Создать шаблон',
+                                            style: TextStyle(
+                                                letterSpacing: -0.5,
+                                                color: Color(0xffffffff),
+                                                fontSize: 19,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  'Сохранить или отправить чек',
-                                  style: TextStyle(
-                                      letterSpacing: -0.5,
-                                      color: Color(0xffffffff),
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(
                                 left: 60.0, right: 15, top: 5, bottom: 10),
                             child: Divider(
@@ -382,7 +495,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                               color: Color(0xFF7d7d7d),
                             ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -435,12 +548,16 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                             decoration: BoxDecoration(
                                 color: GREEN_MEDIUM,
                                 borderRadius: BorderRadius.circular(15)),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 12.0),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 12.0),
                               child: Center(
                                   child: Text(
-                                'Вернуться назад',
-                                style: TextStyle(
+                                ((widget.check.status == 'Исходящий перевод') &&
+                                        (widget.check.icon != 'Сбербанк'))
+                                    ? 'Вернуться назад'
+                                    : 'Повторить',
+                                style: const TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
                                     fontSize: 19,
