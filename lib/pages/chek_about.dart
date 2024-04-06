@@ -79,7 +79,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                   ],
                                 ),
                               ),
-                              height: 380,
+                              height: 360,
                               width: double.infinity,
                               child: Column(
                                 children: [
@@ -97,7 +97,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               'Перевод отправлен',
                                               style: TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 22,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
@@ -108,21 +108,33 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               '$formattedCash ₽',
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 28,
+                                                  fontSize: 23,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Text(
-                                              'В ${widget.check.icon} через СПБ',
-                                              style: const TextStyle(
-                                                  letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white),
-                                            ),
+                                            (widget.check.icon !=
+                                                    'Перевод по СПБ')
+                                                ? Text(
+                                                    'В ${widget.check.icon} через СПБ',
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  )
+                                                : Text(
+                                                    widget.check.icon,
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  ),
                                             const SizedBox(
                                               height: 5,
                                             ),
@@ -130,8 +142,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               widget.check.fio,
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white),
                                             ),
                                           ],
@@ -149,7 +161,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               'Перевод принят',
                                               style: TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 22,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
@@ -160,21 +172,33 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               '$formattedCash ₽',
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 28,
+                                                  fontSize: 23,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Text(
-                                              'В ${widget.check.icon} через СПБ',
-                                              style: const TextStyle(
-                                                  letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white),
-                                            ),
+                                            (widget.check.icon !=
+                                                    'Перевод по СПБ')
+                                                ? Text(
+                                                    'В ${widget.check.icon} через СПБ',
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  )
+                                                : Text(
+                                                    widget.check.icon,
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  ),
                                             const SizedBox(
                                               height: 5,
                                             ),
@@ -182,8 +206,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               widget.check.fio,
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white),
                                             ),
                                           ],
@@ -221,7 +245,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               'Перевод доставлен',
                                               style: TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 22,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
@@ -232,7 +256,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               '$formattedCash ₽',
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 28,
+                                                  fontSize: 23,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
@@ -254,8 +278,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               widget.check.fio,
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white),
                                             ),
                                             const SizedBox(
@@ -276,7 +300,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               'Перевод принят',
                                               style: TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 22,
+                                                  fontSize: 18,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
@@ -287,21 +311,33 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               '$formattedCash ₽',
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 28,
+                                                  fontSize: 23,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.white),
                                             ),
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Text(
-                                              'В ${widget.check.icon} через СПБ',
-                                              style: const TextStyle(
-                                                  letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white),
-                                            ),
+                                            (widget.check.icon !=
+                                                    'Перевод по СПБ')
+                                                ? Text(
+                                                    'В ${widget.check.icon} через СПБ',
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  )
+                                                : Text(
+                                                    widget.check.icon,
+                                                    style: const TextStyle(
+                                                        letterSpacing: -0.5,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: Colors.white),
+                                                  ),
                                             const SizedBox(
                                               height: 5,
                                             ),
@@ -309,8 +345,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               widget.check.fio,
                                               style: const TextStyle(
                                                   letterSpacing: -0.5,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white),
                                             ),
                                           ],
@@ -321,8 +357,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ((widget.check.status != 'Исходящий перевод') &&
-                                  (widget.check.icon != ''))
+                          ((widget.check.status == 'Исходящий перевод') &&
+                                  (widget.check.icon != 'Сбербанк'))
                               ? const Column(
                                   children: [
                                     Padding(
@@ -334,7 +370,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                             'Статус перевода',
                                             style: TextStyle(
                                                 letterSpacing: -1,
-                                                fontSize: 22,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.white),
                                           ),
@@ -363,8 +399,8 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                   ],
                                 )
                               : const SizedBox(),
-                          ((widget.check.status != 'Исходящий перевод') &&
-                                  (widget.check.icon != ''))
+                          ((widget.check.status == 'Исходящий перевод') &&
+                                  (widget.check.icon != 'Сбербанк'))
                               ? Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15.0),
@@ -374,7 +410,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                     children: [
                                       const Icon(
                                         Icons.list_alt_sharp,
-                                        size: 35,
+                                        size: 30,
                                         color: GREEN_MEDIUM,
                                       ),
                                       const SizedBox(
@@ -396,7 +432,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                           style: TextStyle(
                                               letterSpacing: -0.5,
                                               color: Color(0xffffffff),
-                                              fontSize: 19,
+                                              fontSize: 17,
                                               fontWeight: FontWeight.w500),
                                         ),
                                       ),
@@ -417,7 +453,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                         children: [
                                           const Icon(
                                             Icons.list_alt_sharp,
-                                            size: 35,
+                                            size: 30,
                                             color: GREEN_MEDIUM,
                                           ),
                                           const SizedBox(
@@ -441,7 +477,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                               style: TextStyle(
                                                   letterSpacing: -0.5,
                                                   color: Color(0xffffffff),
-                                                  fontSize: 19,
+                                                  fontSize: 17,
                                                   fontWeight: FontWeight.w500),
                                             ),
                                           ),
@@ -479,7 +515,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                             style: TextStyle(
                                                 letterSpacing: -0.5,
                                                 color: Color(0xffffffff),
-                                                fontSize: 19,
+                                                fontSize: 17,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         ],
@@ -502,7 +538,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                               children: [
                                 Icon(
                                   Icons.info_outline,
-                                  size: 35,
+                                  size: 30,
                                   color: GREEN_MEDIUM,
                                 ),
                                 SizedBox(
@@ -513,7 +549,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                   style: TextStyle(
                                       letterSpacing: -0.5,
                                       color: Color(0xffffffff),
-                                      fontSize: 19,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Spacer(),
@@ -560,7 +596,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                 style: const TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 19,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w500),
                               )),
                             )),

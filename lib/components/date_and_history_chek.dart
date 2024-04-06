@@ -153,16 +153,20 @@ class ChekHistory extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        fio,
-                                        softWrap: true,
-                                        overflow: TextOverflow
-                                            .ellipsis, // добавлено для случая переполнения
-                                        maxLines: 2,
-                                        style: const TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8.0),
+                                        child: Text(
+                                          fio,
+                                          softWrap: true,
+                                          overflow: TextOverflow
+                                              .ellipsis, // добавлено для случая переполнения
+                                          maxLines: 2,
+                                          style: const TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
+                                        ),
                                       ),
                                       (type == 'Входящий перевод')
                                           ? const Text(
@@ -172,13 +176,23 @@ class ChekHistory extends StatelessWidget {
                                                   fontWeight: FontWeight.w300,
                                                   color: Color(0xFF7d7d7d)),
                                             )
-                                          : Text(
-                                              "Клиенту $icon",
-                                              style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w300,
-                                                  color: Color(0xFF7d7d7d)),
-                                            )
+                                          : (icon != 'Перевод по СПБ')
+                                              ? Text(
+                                                  "Клиенту $icon",
+                                                  style: const TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      color: Color(0xFF7d7d7d)),
+                                                )
+                                              : Text(
+                                                  icon,
+                                                  style: const TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      color: Color(0xFF7d7d7d)),
+                                                )
                                     ]),
                               ),
                               if (type ==

@@ -17,7 +17,9 @@ class ImageCheck extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         iconTheme: const IconThemeData(color: GREEN_MEDIUM),
         backgroundColor: BODY_DARK_GRAY,
         title: Text(
@@ -25,31 +27,39 @@ class ImageCheck extends StatelessWidget {
           style: const TextStyle(color: Color(0xfff4f4f4), letterSpacing: -0.7),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            child: Stack(
-              children: [
-                Center(
+      body: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Center(
                     child: SizedBox(
-                        height: 900, child: ChekImageDisplay(chek: chek))),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    color: Colors.black,
-                    height: 100,
-                    width: double.infinity,
-                  ),
+                        height: 900,
+                        child: ListView(
+                          children: [
+                            ChekImageDisplay(chek: chek),
+                          ],
+                        ))),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  color: Colors.black,
+                  height: 100,
+                  width: double.infinity,
                 ),
-                Align(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Align(
                   alignment: Alignment.bottomCenter,
                   child: InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 0.0),
                         child: Container(
                             height: 50,
                             decoration: BoxDecoration(
@@ -64,15 +74,15 @@ class ImageCheck extends StatelessWidget {
                                 style: const TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 19,
+                                    fontSize: 17,
                                     fontWeight: FontWeight.w500),
                               )),
                             )),
                       )),
-                )
-              ],
-            )),
-      ),
+                ),
+              )
+            ],
+          )),
     );
   }
 }
@@ -98,7 +108,7 @@ class ChekImageDisplay extends StatelessWidget {
           return const Text('Ошибка загрузки изображения');
         } else if (snapshot.hasData) {
           return ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(10),
               child: FittedBox(
                 fit: BoxFit.fill,
                 child: Image.file(
