@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/pages/number_page.dart';
 import 'package:sber/theme/colors.dart';
 
@@ -171,17 +172,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ],
                                 )
-                              : const Row(
+                              : Row(
                                   children: [
                                     IconCards(
-                                      color: GREEN_MEDIUM,
-                                      text: 'Подписки',
-                                      icon: Icon(
-                                        Icons.shopping_bag_outlined,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                        color: GREEN_MEDIUM,
+                                        text: 'Подписки',
+                                        icon: SvgPicture.asset(
+                                          'assets/Icons/подписки.svg',
+                                          width: 22,
+                                        )),
                                     Expanded(
                                       child: Stack(
                                         alignment: Alignment.topRight,
@@ -190,18 +189,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                             child: Row(
                                               children: [
                                                 IconCards(
-                                                  color: BODY_DARK_GRAY,
-                                                  text: 'СберПрайм',
-                                                  icon: Icon(
-                                                    Icons.back_hand_outlined,
-                                                    size: 30,
-                                                    color: Color(0xff5b5b5c),
-                                                  ),
-                                                ),
+                                                    color: BODY_DARK_GRAY,
+                                                    text: 'СберПрайм',
+                                                    icon: SvgPicture.asset(
+                                                      'assets/Icons/СберПрайм.svg',
+                                                      width: 22,
+                                                    )),
                                               ],
                                             ),
                                           ),
-                                          Padding(
+                                          const Padding(
                                             padding: EdgeInsets.only(
                                               right: 12.0,
                                             ),
@@ -218,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ],
                                       ),
                                     ),
-                                    IconCards(
+                                    const IconCards(
                                       color: GREEN_MEDIUM,
                                       text: 'Уведомления',
                                       icon: Icon(
@@ -227,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    IconCards(
+                                    const IconCards(
                                       color: GREEN_MEDIUM,
                                       text: 'Страховки',
                                       icon: Icon(
@@ -257,7 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       style: TextStyle(
                                           letterSpacing: -0.5,
                                           color: GREEN_MEDIUM,
-                                          fontSize: 22,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.w600),
                                     )
                                   ],
@@ -750,7 +747,7 @@ class IconCards extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 color: color, borderRadius: BorderRadius.circular(20)),
-            child: Padding(padding: const EdgeInsets.all(15.0), child: icon),
+            child: Padding(padding: const EdgeInsets.all(20.0), child: icon),
           ),
           const SizedBox(
             height: 5,

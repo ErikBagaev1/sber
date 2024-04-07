@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddProfileData extends StatefulWidget {
@@ -89,6 +90,14 @@ class _AddProfileDataState extends State<AddProfileData> {
                 ElevatedButton(
                   onPressed: () {
                     saveCreditCardData();
+                    Future.delayed(Duration.zero, () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const MyApp()),
+                        (Route<dynamic> route) => false,
+                      );
+                    });
                   },
                   child: const Text('Сохранить'),
                 ),
@@ -101,6 +110,7 @@ class _AddProfileDataState extends State<AddProfileData> {
   }
 
   Future<void> saveCreditCardData() async {
+    final isMounted = mounted;
     print(emailController.text);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('cardNumber', cardNumberController.text);
@@ -111,17 +121,19 @@ class _AddProfileDataState extends State<AddProfileData> {
     await prefs.setString('provider', providerController.text);
     await prefs.setString(
         'email', emailController.text); // Сохранение email в SharedPreferences
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Данные сохранены'),
-    ));
-    // Очистка значений в текстовых полях
-    cardNumberController.clear();
-    cvcController.clear();
-    balanceController.clear();
-    expirationDateController.clear();
-    phoneNumberController.clear();
-    providerController.clear();
-    emailController.clear(); // Очистка значения email
+    if (isMounted) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Данные сохранены'),
+      ));
+      // Очистка значений в текстовых полях
+      cardNumberController.clear();
+      cvcController.clear();
+      balanceController.clear();
+      expirationDateController.clear();
+      phoneNumberController.clear();
+      providerController.clear();
+      emailController.clear(); // Очистка значения email
+    }
   }
 
   Future<void> deleteCreditCardData() async {
