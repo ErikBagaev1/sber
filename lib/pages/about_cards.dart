@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
 import 'package:sber/theme/colors.dart';
 
@@ -132,31 +133,64 @@ class _AboutCardsState extends State<AboutCards>
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 25.0, vertical: 25),
+                                            horizontal: 15.0, vertical: 15),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Image.asset('assets/LOGO.png',
-                                                width: 30),
+                                            SvgPicture.asset(
+                                                'assets/Icons/сбер.svg',
+                                                width: 37,
+                                                colorFilter:
+                                                    const ColorFilter.mode(
+                                                  Color(0xfff4f4f4),
+                                                  BlendMode.srcIn,
+                                                )),
                                             Container(
                                               decoration: BoxDecoration(
-                                                  color: TEXT_GRAY
-                                                      .withOpacity(0.6),
+                                                  color: const Color.fromARGB(
+                                                          255, 177, 177, 177)
+                                                      .withOpacity(0.4),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          10)),
+                                                          25)),
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(
                                                         horizontal: 8.0),
-                                                child: Text(
-                                                  'Pay',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: BODY_DARK_GRAY
-                                                          .withOpacity(0.6)),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 2.0,
+                                                      vertical: 6),
+                                                  child: Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'assets/Icons/сбер.svg',
+                                                        colorFilter:
+                                                            ColorFilter.mode(
+                                                          BODY_DARK_GRAY
+                                                              .withOpacity(0.7),
+                                                          BlendMode.srcIn,
+                                                        ),
+                                                        width: 12,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 3,
+                                                      ),
+                                                      Text(
+                                                        'Pay',
+                                                        style: TextStyle(
+                                                            letterSpacing: -0.5,
+                                                            fontSize: 10,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: BODY_DARK_GRAY
+                                                                .withOpacity(
+                                                                    0.6)),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             )
@@ -251,31 +285,30 @@ class _AboutCardsState extends State<AboutCards>
                       decoration: BoxDecoration(
                           color: const Color(0xff1e1e1e),
                           borderRadius: BorderRadius.circular(10)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Icon(
-                                Icons.access_time_filled_sharp,
-                                size: 30,
-                                color: Color(0xff32793d),
+                              SvgPicture.asset(
+                                'assets/перевод_.svg',
+                                width: 26,
                               ),
-                              Spacer(),
-                              Text(
+                              const Spacer(),
+                              const Text(
                                 'Оплатить \nили перевести',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300,
                                     fontSize: 16,
                                     color: Color(0xfff4f4f4)),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
-                              Text('ЖКХ, QR и другие',
+                              const Text('ЖКХ, QR и другие',
                                   style: TextStyle(
                                       color: Color(0xff898989), fontSize: 12))
                             ]),
@@ -338,20 +371,22 @@ class _AboutCardsState extends State<AboutCards>
                       decoration: BoxDecoration(
                           color: const Color(0xff1e1e1e),
                           borderRadius: BorderRadius.circular(10)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.list_alt_sharp,
-                                size: 30,
-                                color: Color(0xff32793d),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(
+                                  'assets/Icons/Чек.svg',
+                                  width: 21,
+                                ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
-                              Text(
+                              const Text(
                                 'О карте',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300,

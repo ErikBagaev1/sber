@@ -22,7 +22,6 @@ const List<String> listBanks = <String>[
   'Сургут Банк',
   'Газпром Банк',
   'Уралсиб Банк',
-  'Перевод по СПБ'
 ];
 const List<String> listStatus = <String>[
   'Входящий перевод',
@@ -98,7 +97,6 @@ class _ChekAddState extends State<ChekAdd> {
                 if (pickedFile != null) {
                   setState(() {
                     _pickedImage = File(pickedFile.path);
-                    print(_pickedImage);
                   });
                 }
               },
@@ -117,8 +115,7 @@ class _ChekAddState extends State<ChekAdd> {
                 icon: _selectedBank, // Путь к иконке (не изображению)
                 image: _pickedImage?.path ?? '', // Путь к изображению
               );
-              print(newCheck.image);
-              print(newCheck.cash);
+
               // Сохраняем новый чек
               CheckRepository.saveCheck(newCheck);
               setState(() {

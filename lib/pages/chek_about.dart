@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/models/check.dart';
 import 'package:sber/models/profile.dart';
@@ -295,7 +296,7 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                             const SizedBox(
                                                 height: 150,
                                                 width: 150,
-                                                child: CircleAnimation()),
+                                                child: CircleAnimationWhite()),
                                             const Text(
                                               'Перевод принят',
                                               style: TextStyle(
@@ -408,10 +409,13 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      const Icon(
-                                        Icons.list_alt_sharp,
-                                        size: 30,
-                                        color: GREEN_MEDIUM,
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/Icons/Чек.svg',
+                                          width: 21,
+                                        ),
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -451,10 +455,13 @@ class _CheckDetailsScreenState extends State<CheckDetailsScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          const Icon(
-                                            Icons.list_alt_sharp,
-                                            size: 30,
-                                            color: GREEN_MEDIUM,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: SvgPicture.asset(
+                                              'assets/Icons/Чек.svg',
+                                              width: 21,
+                                            ),
                                           ),
                                           const SizedBox(
                                             width: 20,

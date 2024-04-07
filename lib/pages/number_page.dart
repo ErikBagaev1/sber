@@ -73,18 +73,17 @@ class _NumberPageState extends State<NumberPage> {
                           ? const Color.fromARGB(255, 49, 49, 49)
                           : const Color(0xff1e1e1e),
                       borderRadius: BorderRadius.circular(10)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.add_circle_outline_sharp,
-                            size: 40,
-                            color: Color(0xff32793d),
+                          SvgPicture.asset(
+                            'assets/Icons/госуслуги.svg',
+                            width: 35,
                           ),
-                          Spacer(),
-                          Text(
+                          const Spacer(),
+                          const Text(
                             'Паспорт РФ',
                             style: TextStyle(
                                 letterSpacing: -0.5,
@@ -92,10 +91,10 @@ class _NumberPageState extends State<NumberPage> {
                                 fontSize: 16,
                                 color: Color(0xfff4f4f4)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
-                          Text('90 17 ****23',
+                          const Text('90 17 ****23',
                               style: TextStyle(
                                   color: Color(0xff898989), fontSize: 14))
                         ]),
@@ -111,28 +110,27 @@ class _NumberPageState extends State<NumberPage> {
                           ? const Color.fromARGB(255, 49, 49, 49)
                           : const Color(0xff1e1e1e),
                       borderRadius: BorderRadius.circular(10)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(20.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.list_alt_rounded,
-                            size: 40,
-                            color: Color(0xff32793d),
+                          SvgPicture.asset(
+                            'assets/Icons/ИНН.svg',
+                            width: 35,
                           ),
-                          Spacer(),
-                          Text(
+                          const Spacer(),
+                          const Text(
                             'ИНН',
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 16,
                                 color: Color(0xfff4f4f4)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
-                          Text('123121312341',
+                          const Text('123121312341',
                               style: TextStyle(
                                   color: Color(0xff898989), fontSize: 14))
                         ]),
@@ -153,14 +151,18 @@ class _NumberPageState extends State<NumberPage> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            Icons.add_circle_outline_sharp,
-                            size: 40,
-                            color: Color(0xff32793d),
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.green,
+                            child: Icon(
+                              Icons.directions_car,
+                              color: GREEN_HIGHT,
+                              size: 30,
+                            ),
                           ),
                           Spacer(),
                           Text(
-                            'Паспорт РФ',
+                            'Снилс РФ',
                             style: TextStyle(
                                 letterSpacing: -0.5,
                                 fontWeight: FontWeight.w300,
@@ -170,7 +172,7 @@ class _NumberPageState extends State<NumberPage> {
                           SizedBox(
                             height: 8,
                           ),
-                          Text('90 17 ****23',
+                          Text('21 31313112',
                               style: TextStyle(
                                   letterSpacing: -0.5,
                                   color: Color(0xff898989),
@@ -189,7 +191,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Госуслуги',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -198,10 +200,10 @@ class _NumberPageState extends State<NumberPage> {
           ),
           isLoading
               ? const SizedBox(height: 250, child: SkeletonList())
-              : const Column(
+              : Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: 10.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -210,23 +212,22 @@ class _NumberPageState extends State<NumberPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.star_border,
-                                  size: 35,
-                                  color: GREEN_MEDIUM,
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(
+                                  'assets/Icons/Добавить_из_госуслуг.svg',
+                                  width: 28,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -234,7 +235,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
@@ -242,7 +243,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: TEXT_GRAY,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
@@ -250,7 +251,7 @@ class _NumberPageState extends State<NumberPage> {
                         ],
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(
                           left: 80.0, right: 0, top: 5, bottom: 10),
                       child: Divider(
@@ -259,7 +260,7 @@ class _NumberPageState extends State<NumberPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.only(left: 10.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -268,23 +269,22 @@ class _NumberPageState extends State<NumberPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.accessible_forward,
-                                  size: 35,
-                                  color: GREEN_MEDIUM,
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(
+                                  'assets/Icons/госуслуги_без.svg',
+                                  width: 28,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Column(
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -292,7 +292,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
@@ -300,7 +300,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: TEXT_GRAY,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
@@ -322,7 +322,7 @@ class _NumberPageState extends State<NumberPage> {
                           Text(
                             'Телефоны',
                             style: TextStyle(
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),
@@ -336,79 +336,23 @@ class _NumberPageState extends State<NumberPage> {
           isLoading
               ? const SizedBox()
               : Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Container(
-                    // height: 180,
-                    decoration: BoxDecoration(
-                        color: BODY_DARK_GRAY,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.0, horizontal: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Подтвердите номер для уведомлений',
-                            style: TextStyle(
-                                letterSpacing: -0.5,
-                                color: Color(0xffffffff),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'СМС-коды для покупок и уведомления\nоб операциях будут приходить только \nот него',
-                            style: TextStyle(
-                                letterSpacing: -0.5,
-                                color: TEXT_GRAY,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'Подтвердить',
-                            style: TextStyle(
-                                letterSpacing: -0.5,
-                                color: GREEN_MEDIUM,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-          isLoading
-              ? const SizedBox()
-              : const SizedBox(
-                  height: 20,
-                ),
-          isLoading
-              ? const SizedBox()
-              : Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Column(
+                      Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.phone_android_rounded,
-                              size: 35,
-                              color: GREEN_MEDIUM,
+                            padding: const EdgeInsets.all(12.0),
+                            child: SvgPicture.asset(
+                              'assets/Icons/Номер.svg',
+                              width: 19,
                             ),
                           ),
                         ],
@@ -485,7 +429,7 @@ class _NumberPageState extends State<NumberPage> {
                         'Электронная почта',
                         style: TextStyle(
                             letterSpacing: -0.5,
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
@@ -510,7 +454,7 @@ class _NumberPageState extends State<NumberPage> {
                             padding: EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.email_outlined,
-                              size: 35,
+                              size: 30,
                               color: GREEN_MEDIUM,
                             ),
                           ),
@@ -549,7 +493,7 @@ class _NumberPageState extends State<NumberPage> {
                     style: TextStyle(
                         letterSpacing: -0.7,
                         color: GREEN_MEDIUM,
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -561,7 +505,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Адреса',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -579,40 +523,44 @@ class _NumberPageState extends State<NumberPage> {
                     decoration: BoxDecoration(
                         color: BODY_DARK_GRAY,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 15.0, horizontal: 15),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CircleAvatar(
                             radius: 18,
                             backgroundColor: GREEN_MEDIUM,
-                            child: Icon(
-                              Icons.list_alt_sharp,
-                              size: 30,
+                            child: SvgPicture.asset(
+                              'assets/Icons/Чек.svg',
+                              colorFilter: const ColorFilter.mode(
+                                BODY_DARK_GRAY,
+                                BlendMode.srcIn,
+                              ),
+                              width: 20,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             'Адрес регистрации',
                             style: TextStyle(
                                 letterSpacing: -0.5,
                                 color: Color(0xffffffff),
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w500),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
-                          Text(
-                            'СМС-коды для покупок и уведомления\nоб операциях будут приходить только ',
+                          const Text(
+                            'Северная Осетия - Алания Респ,\nПригородный р-н, с Михайловское, ***, **** ',
                             style: TextStyle(
                                 letterSpacing: -0.5,
                                 color: TEXT_GRAY,
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500),
                           ),
                         ],
@@ -627,7 +575,7 @@ class _NumberPageState extends State<NumberPage> {
               style: TextStyle(
                   letterSpacing: -0.7,
                   color: GREEN_MEDIUM,
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.w400),
             ),
           ),
@@ -665,6 +613,7 @@ class _NumberPageState extends State<NumberPage> {
                       backgroundColor: Colors.grey,
                       child: Icon(
                         Icons.directions_car,
+                        color: GREEN_HIGHT,
                         size: 30,
                       ),
                     ),

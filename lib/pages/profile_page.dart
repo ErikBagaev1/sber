@@ -179,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         text: 'Подписки',
                                         icon: SvgPicture.asset(
                                           'assets/Icons/подписки.svg',
-                                          width: 22,
+                                          width: 21,
                                         )),
                                     Expanded(
                                       child: Stack(
@@ -192,8 +192,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     color: BODY_DARK_GRAY,
                                                     text: 'СберПрайм',
                                                     icon: SvgPicture.asset(
-                                                      'assets/Icons/СберПрайм.svg',
-                                                      width: 22,
+                                                      'assets/Icons/Прайм.svg',
+                                                      width: 26,
                                                     )),
                                               ],
                                             ),
@@ -215,24 +215,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ],
                                       ),
                                     ),
-                                    const IconCards(
-                                      color: GREEN_MEDIUM,
-                                      text: 'Уведомления',
-                                      icon: Icon(
-                                        Icons.paid_rounded,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    const IconCards(
-                                      color: GREEN_MEDIUM,
-                                      text: 'Страховки',
-                                      icon: Icon(
-                                        Icons.network_check_sharp,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                    IconCards(
+                                        color: GREEN_MEDIUM,
+                                        text: 'Уведомления',
+                                        icon: SvgPicture.asset(
+                                          'assets/Icons/Уведомления-1.svg',
+                                          width: 26,
+                                        )),
+                                    IconCards(
+                                        color: GREEN_MEDIUM,
+                                        text: 'Страховки',
+                                        icon: SvgPicture.asset(
+                                          'assets/Icons/Страховки-1.svg',
+                                          width: 26,
+                                        )),
                                   ],
                                 )),
                       Padding(
@@ -241,9 +237,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           decoration: BoxDecoration(
                               color: BODY_DARK_GRAY,
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
+                          child: Column(
                             children: [
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 15.0, vertical: 10),
                                 child: Row(
@@ -260,10 +256,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,7 +276,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         Icon(
                                           Icons.star_border,
-                                          size: 25,
+                                          size: 28,
                                           color: GREEN_MEDIUM,
                                         ),
                                       ],
@@ -331,7 +327,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.only(
                                     left: 50.0, right: 15, top: 5, bottom: 10),
                                 child: Divider(
@@ -340,27 +336,35 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15.0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.question_mark_outlined,
-                                      size: 25,
-                                      color: GREEN_MEDIUM,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3.0),
+                                      child: SvgPicture.asset(
+                                        'assets/Icons/Поддержка сбера.svg',
+                                        width: 21,
+                                      ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
-                                    Text(
-                                      'Поддержка Сбера',
-                                      style: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 1.0),
+                                      child: Text(
+                                        'Поддержка Сбера',
+                                        style: TextStyle(
+                                            color: Color(0xffffffff),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
                                     ),
-                                    Spacer(),
-                                    Column(
+                                    const Spacer(),
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -375,7 +379,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               )
                             ],
@@ -414,7 +418,7 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -466,36 +470,52 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       )
-                    : const Row(
+                    : Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           WhatNew(
+                            image: Image.asset(
+                              'assets/Icons/img_1.png',
+                              fit: BoxFit.cover,
+                            ),
                             textWhite:
                                 'Приложения СберБанк \nОнлайн помогут установит...',
                             textGray: '26 марта * читать 2 минуты',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           WhatNew(
+                            image: Image.asset(
+                              'assets/Icons/img_2.png',
+                              fit: BoxFit.cover,
+                            ),
                             textWhite:
                                 'Приложения СберБанк \nОнлайн помогут установит...',
                             textGray: '26 марта * читать 2 минуты',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           WhatNew(
+                            image: Image.asset(
+                              'assets/Icons/img_3.png',
+                              fit: BoxFit.cover,
+                            ),
                             textWhite:
                                 'Приложения СберБанк \nОнлайн помогут установит...',
                             textGray: '26 марта * читать 2 минуты',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           WhatNew(
+                            image: Image.asset(
+                              'assets/Icons/img_1.png',
+                              fit: BoxFit.cover,
+                            ),
                             textWhite:
                                 'Приложения СберБанк \nОнлайн помогут установит...',
                             textGray: '26 марта * читать 2 минуты',
@@ -512,7 +532,7 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -583,12 +603,18 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(
             height: 15,
           ),
-          const Settings(
+          Settings(
               text: 'Уведомления',
-              icon: Icon(
-                Icons.notifications_none,
-                size: 30,
-                color: GREEN_MEDIUM,
+              icon: Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: SvgPicture.asset(
+                  'assets/Icons/Уведомления-1.svg',
+                  colorFilter: const ColorFilter.mode(
+                    GREEN_MEDIUM,
+                    BlendMode.srcIn,
+                  ),
+                  width: 22,
+                ),
               )),
           const Settings(
               text: 'Безопастность',
@@ -604,12 +630,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 size: 30,
                 color: GREEN_MEDIUM,
               )),
-          const Settings(
+          Settings(
               text: 'Основные экраны',
-              icon: Icon(
-                Icons.phone_iphone,
-                size: 30,
-                color: GREEN_MEDIUM,
+              icon: Padding(
+                padding: const EdgeInsets.only(left: 6.0),
+                child: SvgPicture.asset(
+                  'assets/Icons/Номер.svg',
+                  colorFilter: const ColorFilter.mode(
+                    GREEN_MEDIUM,
+                    BlendMode.srcIn,
+                  ),
+                  width: 19,
+                ),
               )),
           const Settings(
               text: 'Платежи и переводы',
@@ -626,7 +658,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 class Settings extends StatelessWidget {
   final String text;
-  final Icon icon;
+  final Widget icon;
   const Settings({
     super.key,
     required this.text,
@@ -669,6 +701,7 @@ class Settings extends StatelessWidget {
 }
 
 class WhatNew extends StatelessWidget {
+  final Widget image;
   final String textWhite;
   final String textGray;
 
@@ -676,6 +709,7 @@ class WhatNew extends StatelessWidget {
     super.key,
     required this.textWhite,
     required this.textGray,
+    required this.image,
   });
 
   @override
@@ -691,12 +725,17 @@ class WhatNew extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
-                color: GREEN_LITE,
                 borderRadius: BorderRadiusDirectional.only(
                     topEnd: Radius.circular(15),
                     topStart: Radius.circular(15))),
             height: 125,
             width: double.infinity,
+            child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                child: image),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10.0, top: 10),

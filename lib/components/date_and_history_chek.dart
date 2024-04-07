@@ -163,7 +163,7 @@ class ChekHistory extends StatelessWidget {
                                               .ellipsis, // добавлено для случая переполнения
                                           maxLines: 2,
                                           style: const TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 15,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.white),
                                         ),
@@ -172,7 +172,7 @@ class ChekHistory extends StatelessWidget {
                                           ? const Text(
                                               "Входящий перевод",
                                               style: TextStyle(
-                                                  fontSize: 14,
+                                                  fontSize: 13,
                                                   fontWeight: FontWeight.w300,
                                                   color: Color(0xFF7d7d7d)),
                                             )
@@ -180,7 +180,7 @@ class ChekHistory extends StatelessWidget {
                                               ? Text(
                                                   "Клиенту $icon",
                                                   style: const TextStyle(
-                                                      fontSize: 14,
+                                                      fontSize: 13,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       color: Color(0xFF7d7d7d)),
@@ -188,7 +188,7 @@ class ChekHistory extends StatelessWidget {
                                               : Text(
                                                   icon,
                                                   style: const TextStyle(
-                                                      fontSize: 14,
+                                                      fontSize: 13,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       color: Color(0xFF7d7d7d)),
@@ -206,7 +206,7 @@ class ChekHistory extends StatelessWidget {
                                       Text(
                                         '$formattedCash ₽',
                                         style: const TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 18,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.white),
                                       ),
@@ -224,7 +224,7 @@ class ChekHistory extends StatelessWidget {
                                     Text(
                                       '+$formattedCash ₽',
                                       style: const TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                           color: Color(0xFF08A652)),
                                     ),
@@ -270,7 +270,7 @@ class BanksIconIf extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 'assets/Перевод.svg',
-                width: 40,
+                width: 38,
               )
             ],
           ),
@@ -279,9 +279,12 @@ class BanksIconIf extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset(
-                'assets/перевод_.svg',
-                width: 40,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: SvgPicture.asset(
+                  'assets/перевод_.svg',
+                  width: 38,
+                ),
               )
             ],
           ),
@@ -297,7 +300,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/озон.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -313,7 +316,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/альфа.jpg',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -329,7 +332,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/втб.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -345,7 +348,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/тиньк.jpg',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -361,7 +364,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/райф.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -377,7 +380,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/газпром.jpg',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -393,7 +396,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/зенит.jpg',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -409,7 +412,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/открытие.webp',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -425,7 +428,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/почта.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -441,7 +444,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/рнкб.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -457,7 +460,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/росбанк.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -473,7 +476,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/россельхоз.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -489,7 +492,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/совком.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -505,7 +508,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/сургут.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -521,7 +524,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/убрир.jpg',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
@@ -537,7 +540,7 @@ class BanksIconIf extends StatelessWidget {
                     20), // Установите радиус, чтобы получить круглую форму
                 child: Image.asset(
                   'assets/banks/уралсиб.png',
-                  width: 40,
+                  width: 38,
                 ),
               )
             ],
