@@ -18,8 +18,8 @@ String? outgoing;
 List<Chek> _checks = [];
 
 class HomePage extends StatefulWidget {
-  final CreditCard myCreditCard;
-  const HomePage({
+  CreditCard? myCreditCard;
+  HomePage({
     super.key,
     required this.myCreditCard,
   });
@@ -151,7 +151,16 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(
                               left: 16, right: 16, top: 70),
                           child: CardBalanceWidget(
-                            myCreditCard: widget.myCreditCard,
+                            myCreditCard: widget.myCreditCard ??
+                                CreditCard(
+                                  // Присваиваем всем полям пустые строки
+                                  cardNumber: '0000 0000 0000 0000',
+                                  provider: '00000', name: 'no name',
+                                  cvc: '000',
+                                  expirationDate: '00000',
+                                  phoneNumber: '0000000000',
+                                  email: '0@0.0',
+                                ),
                             balance: (double.parse(incoming ?? '0') -
                                     double.parse(outgoing ?? '0'))
                                 .toString(),
@@ -330,7 +339,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 child: CustomAppBar(
-                  myCreditCard: widget.myCreditCard,
+                  myCreditCard: widget.myCreditCard ??
+                      CreditCard(
+                        // Присваиваем всем полям пустые строки
+                        cardNumber: '0000 0000 0000 0000',
+                        provider: '00000', name: 'no name', cvc: '000',
+                        expirationDate: '00000',
+                        phoneNumber: '0000000000',
+                        email: '0@0.0',
+                      ),
                 ),
               ),
             ],

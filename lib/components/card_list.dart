@@ -18,8 +18,33 @@ class _CardsListState extends State<CardsList> {
   CreditCard? myCreditCard;
   Future<void> initializeCreditCard() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    CreditCard loadedCreditCard = CreditCard.fromSharedPreferences(prefs);
+
+    // Проверяем каждое поле на пустоту и заполняем его, если оно пустое
+    if (loadedCreditCard.cardNumber.isEmpty) {
+      loadedCreditCard.cardNumber = '0000 0000 0000 0000';
+    }
+    if (loadedCreditCard.provider.isEmpty) {
+      loadedCreditCard.provider = '00000';
+    }
+    if (loadedCreditCard.name.isEmpty) {
+      loadedCreditCard.name = 'no name';
+    }
+    if (loadedCreditCard.cvc.isEmpty) {
+      loadedCreditCard.cvc = '000';
+    }
+    if (loadedCreditCard.expirationDate.isEmpty) {
+      loadedCreditCard.expirationDate = '00000';
+    }
+    if (loadedCreditCard.phoneNumber.isEmpty) {
+      loadedCreditCard.phoneNumber = '0000000000';
+    }
+    if (loadedCreditCard.email.isEmpty) {
+      loadedCreditCard.email = '0@0.0';
+    }
+
     setState(() {
-      myCreditCard = CreditCard.fromSharedPreferences(prefs);
+      myCreditCard = loadedCreditCard;
     });
   }
 
@@ -33,6 +58,15 @@ class _CardsListState extends State<CardsList> {
   @override
   Widget build(BuildContext context) {
     if (myCreditCard == null) {
+      myCreditCard = CreditCard(
+        // Присваиваем всем полям пустые строки
+        cardNumber: '0000 0000 0000 0000',
+        provider: '00000', name: 'no name',
+        cvc: '000',
+        expirationDate: '00000',
+        phoneNumber: '0000000000',
+        email: '0@0.0',
+      );
       // Если myCreditCard еще не инициализирована, показываем индикатор загрузки
       return const Center(
         child: CircularProgressIndicator(),

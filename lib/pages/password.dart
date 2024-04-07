@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sber/pages/animation_page.dart';
 import 'package:sber/theme/colors.dart';
 
@@ -55,26 +56,55 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          // showSelectedLabels: true,
+          // showUnselectedLabels: true,
+          // elevation: 0,
+          enableFeedback: true,
+
+          backgroundColor: const Color(0xFF1E1E1E),
+          selectedItemColor: const Color(0xFF08A652),
+          unselectedItemColor: const Color(0xFF888888),
+          items: items1, type: BottomNavigationBarType.fixed,
+          currentIndex: 0, //New
+          onTap: null,
+        ),
         backgroundColor: BODY_BLACK,
         appBar: AppBar(
-          actions: const [
-            Icon(
-              Icons.question_mark_outlined,
-              color: GREEN_MEDIUM,
+          actions: [
+            Container(
+              width: 25, // Ширина рамки
+              height: 25, // Высота рамки
+              decoration: BoxDecoration(
+                shape: BoxShape.circle, // Форма - круг
+                border: Border.all(
+                  color: const Color(0xff04931f), // Цвет рамки
+                  width: 2, // Толщина рамки
+                ),
+              ),
+              child: const Center(
+                child: Icon(
+                  size: 20,
+                  Icons.question_mark_outlined,
+                  color: Color(0xff04931f), // Цвет значка
+                ),
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
-            Icon(
-              Icons.exit_to_app_outlined,
-              color: Colors.red,
+            const Icon(
+              Icons.logout_outlined,
+              color: Color(0xffc55d20),
+              size: 28,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
           ],
-          backgroundColor: BODY_DARK_GRAY,
+          backgroundColor: const Color(0xff1e1e1e),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Image.asset(
@@ -110,12 +140,15 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Container(
-                              width: 8,
-                              height: 8,
+                              width: 9,
+                              height: 9,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: filledDots[i] ? GREEN_LITE : TEXT_GRAY,
-                                border: Border.all(color: Colors.grey),
+                                color: filledDots[i]
+                                    ? const Color(0xff04931f)
+                                    : const Color(0xff4b4b4b),
+                                border:
+                                    Border.all(color: const Color(0xff4b4b4b)),
                               ),
                             ),
                           ),
@@ -158,7 +191,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     padding: EdgeInsets.only(bottom: 20.0),
                     child: Icon(
                       Icons.fingerprint,
-                      color: Colors.green,
+                      color: GREEN_MEDIUM,
                       size: 35,
                     ),
                   )),
@@ -170,7 +203,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         // Иконка "удалить последний символ"
                         child: const Icon(
                           Icons.keyboard_return_sharp,
-                          color: Colors.green,
+                          color: GREEN_MEDIUM,
                           size: 35,
                         ),
                         onTap: () {
@@ -191,7 +224,31 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 ],
               ),
               const SizedBox(
-                height: 200,
+                height: 20,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Не могу войти',
+                    style: TextStyle(color: Color(0xff04931f), fontSize: 18),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Версия 15.7.0.',
+                    style: TextStyle(color: TEXT_GRAY, fontSize: 14),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 40,
               ),
             ],
           ),
@@ -275,3 +332,54 @@ class PinKey extends StatelessWidget {
     );
   }
 }
+
+final items1 = <BottomNavigationBarItem>[
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.login_rounded),
+    label: 'Вход',
+  ),
+  BottomNavigationBarItem(
+    icon: Container(
+      width: 25, // Ширина фона
+      height: 20, // Высота фона
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Color(0xFF8a8a8a), // Цвет фона
+      ),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 3.0),
+        child: Icon(
+          Icons.signal_cellular_alt,
+          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+        ),
+      ),
+    ),
+    label: 'Уведомления',
+  ),
+  BottomNavigationBarItem(
+    icon: SvgPicture.asset(
+      'assets/Ассистент.svg',
+      width: 25,
+    ),
+    label: 'На карте',
+  ),
+  BottomNavigationBarItem(
+    icon: Container(
+      width: 20, // Ширина фона
+      height: 20, // Высота фона
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Color(0xFF8a8a8a), // Цвет фона
+      ),
+      child: const Icon(
+        Icons.arrow_forward,
+        color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+      ),
+    ),
+    label: 'Оплата',
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.watch_later),
+    label: 'SberPay',
+  ),
+];

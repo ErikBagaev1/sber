@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sber/models/profile.dart';
 import 'package:sber/pages/add_chek_page.dart';
+import 'package:sber/pages/add_profile_data.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
 import 'package:sber/pages/password.dart';
@@ -57,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     creditCardFuture = initializeCreditCard();
-    pageController = PageController(initialPage: 3);
+    pageController = PageController(initialPage: 0);
   }
 
-  int selectedIndex = 3;
+  int selectedIndex = 0;
   Future<CreditCard> initializeCreditCard() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return CreditCard.fromSharedPreferences(prefs);
@@ -113,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 HomePage(myCreditCard: myCreditCard),
                 const ClearDataScreen(),
                 const ChekAdd(),
-                const PinCodeScreen(),
+                const AddProfileData(),
                 HistoryPage(myCreditCard: myCreditCard),
               ],
             );
