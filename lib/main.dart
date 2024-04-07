@@ -4,9 +4,9 @@ import 'package:sber/models/profile.dart';
 import 'package:sber/pages/add_chek_page.dart';
 import 'package:sber/pages/clean_page.dart';
 import 'package:sber/pages/history_page.dart';
+import 'package:sber/pages/password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'pages/add_profile_data.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Сбербанк'),
+      home: const PinCodeScreen(),
     );
   }
 }
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 HomePage(myCreditCard: myCreditCard),
                 const ClearDataScreen(),
                 const ChekAdd(),
-                const AddProfileData(),
+                const PinCodeScreen(),
                 HistoryPage(myCreditCard: myCreditCard),
               ],
             );
