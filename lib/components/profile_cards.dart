@@ -19,8 +19,8 @@ class ProfileCards extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  height: 65,
-                  width: 65,
+                  height: 60,
+                  width: 60,
                   child: ClipOval(
                       child: Container(
                           color: const Color(0xFF383838),
@@ -30,7 +30,7 @@ class ProfileCards extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF8c8c8c)),
+                                color: Color(0xFF959595)),
                           )))),
                 ),
                 const SizedBox(
@@ -41,27 +41,29 @@ class ProfileCards extends StatelessWidget {
                   softWrap: true,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                  style:
+                      const TextStyle(color: Color(0xfff8f8f8), fontSize: 12),
                 ),
                 Text(
                   text2,
                   softWrap: true,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                  style:
+                      const TextStyle(color: Color(0xfff8f8f8), fontSize: 12),
                 )
               ],
             ),
             const SizedBox(
               width: 70,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Icon(
                     Icons.close,
-                    color: Color.fromARGB(255, 96, 96, 96),
-                    size: 16,
+                    color: Color(0xff828282),
+                    size: 17,
                   )
                 ],
               ),

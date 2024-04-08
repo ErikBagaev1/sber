@@ -45,15 +45,16 @@ class _NextScreenState extends State<NextScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Stack(
           children: [
             Center(
               child: Hero(
-                tag: 'photo',
+                tag: '',
                 child: Image.asset(
-                  'assets/animation_page.jpg',
-                  fit: BoxFit.cover,
+                  'assets/Animation_page.jpg',
+                  fit: BoxFit.fill,
                 ),
               ),
             ),

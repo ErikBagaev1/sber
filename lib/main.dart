@@ -81,9 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         // showSelectedLabels: true,
         // showUnselectedLabels: true,
-        // elevation: 0,
+        elevation: 5,
         enableFeedback: true,
-
+        unselectedLabelStyle: const TextStyle(letterSpacing: -0.5),
+        selectedLabelStyle: const TextStyle(letterSpacing: -0.5),
         backgroundColor: const Color(0xFF1E1E1E),
         selectedItemColor: const Color(0xFF08A652),
         unselectedItemColor: const Color(0xFF888888),
@@ -126,16 +127,19 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 final items = <BottomNavigationBarItem>[
-  const BottomNavigationBarItem(
-    icon: Icon(Icons.home_filled),
+  BottomNavigationBarItem(
+    icon: SvgPicture.asset(
+      'assets/home.svg',
+      width: 20,
+    ),
     label: 'Главный',
   ),
   BottomNavigationBarItem(
     icon: Container(
-      width: 25, // Ширина фона
-      height: 20, // Высота фона
+      width: 23, // Ширина фона
+      height: 18, // Высота фона
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: BorderRadius.all(Radius.circular(2)),
         color: Color(0xFF8a8a8a), // Цвет фона
       ),
       child: const Padding(
@@ -157,8 +161,8 @@ final items = <BottomNavigationBarItem>[
   ),
   BottomNavigationBarItem(
     icon: Container(
-      width: 20, // Ширина фона
-      height: 20, // Высота фона
+      width: 23, // Ширина фона
+      height: 18, // Высота фона
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         color: Color(0xFF8a8a8a), // Цвет фона
@@ -178,6 +182,6 @@ final items = <BottomNavigationBarItem>[
       padding: EdgeInsets.only(right: 8),
       child: Icon(Icons.watch_later),
     ),
-    label: 'История  ',
+    label: 'История',
   ),
 ];

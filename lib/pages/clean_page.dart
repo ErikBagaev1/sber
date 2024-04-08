@@ -8,7 +8,7 @@ class ClearDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Clear Data'),
+        title: const Text('Очистка данных'),
       ),
       body: Center(
         child: Column(
@@ -34,10 +34,11 @@ class ClearDataScreen extends StatelessWidget {
 
   Future<void> _clearAllData(BuildContext context) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+    // Устанавливаем пустой список для ключа 'checks', чтобы удалить все чеки
+    await prefs.setStringList('checks', []);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Очистить все чеки'),
+        content: Text('Очищены все чеки'),
       ),
     );
   }
@@ -50,7 +51,7 @@ class ClearDataScreen extends StatelessWidget {
       await prefs.setStringList('checks', checks);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Очистить последний чек'),
+          content: Text('Очистить все данные'),
         ),
       );
     } else {

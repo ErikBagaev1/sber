@@ -170,8 +170,8 @@ class ChekHistory extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8.0),
+                                        padding: const EdgeInsets.only(
+                                            right: 8.0, top: 3),
                                         child: Text(
                                           fio,
                                           softWrap: true,
@@ -179,7 +179,7 @@ class ChekHistory extends StatelessWidget {
                                               .ellipsis, // добавлено для случая переполнения
                                           maxLines: 2,
                                           style: const TextStyle(
-                                              fontSize: 15,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.white),
                                         ),
@@ -188,7 +188,7 @@ class ChekHistory extends StatelessWidget {
                                           ? const Text(
                                               "Входящий перевод",
                                               style: TextStyle(
-                                                  fontSize: 13,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w300,
                                                   color: Color(0xFF7d7d7d)),
                                             )
@@ -196,7 +196,7 @@ class ChekHistory extends StatelessWidget {
                                               ? Text(
                                                   "Клиенту $icon",
                                                   style: const TextStyle(
-                                                      fontSize: 13,
+                                                      fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       color: Color(0xFF7d7d7d)),
@@ -204,7 +204,7 @@ class ChekHistory extends StatelessWidget {
                                               : Text(
                                                   icon,
                                                   style: const TextStyle(
-                                                      fontSize: 13,
+                                                      fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       color: Color(0xFF7d7d7d)),
@@ -229,7 +229,7 @@ class ChekHistory extends StatelessWidget {
                                       SvgPicture.asset(
                                         'assets/arrow.svg',
                                         width: 18,
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -256,13 +256,21 @@ class ChekHistory extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 50.0, right: 5, top: 10),
-            child: Divider(
-              thickness: 0.2,
-              color: Color(0xFF7d7d7d),
-            ),
-          )
+          (type == 'Исходящий перевод')
+              ? const Padding(
+                  padding: EdgeInsets.only(left: 50.0, right: 5, top: 0),
+                  child: Divider(
+                    thickness: 0.3,
+                    color: Color(0xFF7d7d7d),
+                  ),
+                )
+              : const Padding(
+                  padding: EdgeInsets.only(left: 50.0, right: 5, top: 10),
+                  child: Divider(
+                    thickness: 0.2,
+                    color: Color(0xFF7d7d7d),
+                  ),
+                )
         ],
       ),
     );
@@ -296,7 +304,7 @@ class BanksIconIf extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(bottom: 4.0),
                 child: SvgPicture.asset(
                   'assets/перевод_.svg',
                   width: 38,

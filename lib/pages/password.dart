@@ -63,7 +63,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
           // showUnselectedLabels: true,
           // elevation: 0,
           enableFeedback: true,
-
+          unselectedLabelStyle: const TextStyle(letterSpacing: -0.5),
+          selectedLabelStyle:
+              const TextStyle(letterSpacing: -0.5, fontSize: 13),
           backgroundColor: const Color(0xFF1E1E1E),
           selectedItemColor: const Color(0xFF08A652),
           unselectedItemColor: const Color(0xFF888888),
@@ -186,26 +188,20 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Expanded(
+                  Expanded(
                       child: Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Icon(
-                      Icons.fingerprint,
-                      color: GREEN_MEDIUM,
-                      size: 35,
-                    ),
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: SvgPicture.asset('assets/finger.svg', width: 31),
                   )),
                   PinKey(text: '     ', digit: 0, onPressed: inputDigit),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: InkWell(
+                        splashColor: Colors.transparent, // Убираем сплеш
+                        highlightColor: Colors.transparent,
                         // Иконка "удалить последний символ"
-                        child: const Icon(
-                          Icons.keyboard_return_sharp,
-                          color: GREEN_MEDIUM,
-                          size: 35,
-                        ),
+                        child: SvgPicture.asset('assets/delete.svg', width: 27),
                         onTap: () {
                           if (pin.isNotEmpty) {
                             setState(() {
@@ -336,52 +332,42 @@ class PinKey extends StatelessWidget {
 }
 
 final items1 = <BottomNavigationBarItem>[
-  const BottomNavigationBarItem(
-    icon: Icon(Icons.login_rounded),
+  BottomNavigationBarItem(
+    icon: SvgPicture.asset(
+      'assets/LOGIN.svg',
+      width: 20,
+    ),
     label: 'Вход',
   ),
   BottomNavigationBarItem(
-    icon: Container(
-      width: 25, // Ширина фона
-      height: 20, // Высота фона
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: Color(0xFF8a8a8a), // Цвет фона
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3.0),
-        child: Icon(
-          Icons.signal_cellular_alt,
-          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
-        ),
+    icon: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3.0),
+      child: SvgPicture.asset(
+        'assets/notifaciton.svg',
+        width: 18,
       ),
     ),
     label: 'Уведомления',
   ),
   BottomNavigationBarItem(
     icon: SvgPicture.asset(
-      'assets/Ассистент.svg',
-      width: 25,
+      'assets/map.svg',
+      width: 18,
     ),
     label: 'На карте',
   ),
   BottomNavigationBarItem(
-    icon: Container(
-      width: 20, // Ширина фона
-      height: 20, // Высота фона
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: Color(0xFF8a8a8a), // Цвет фона
-      ),
-      child: const Icon(
-        Icons.arrow_forward,
-        color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
-      ),
+    icon: SvgPicture.asset(
+      'assets/qr_code_.svg',
+      width: 18,
     ),
     label: 'Оплата',
   ),
-  const BottomNavigationBarItem(
-    icon: Icon(Icons.watch_later),
+  BottomNavigationBarItem(
+    icon: SvgPicture.asset(
+      'assets/sberPay.svg',
+      width: 20,
+    ),
     label: 'SberPay',
   ),
 ];

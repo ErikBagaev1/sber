@@ -60,11 +60,11 @@ class TranslationCash extends StatelessWidget {
                           Column(
                             children: [
                               SizedBox(
-                                height: 65,
-                                width: 65,
+                                height: 60,
+                                width: 60,
                                 child: ClipOval(
                                     child: Container(
-                                        color: const Color(0xFF128f2b),
+                                        color: const Color(0xFF168e2a),
                                         child: const Icon(
                                           Icons.arrow_forward,
                                           color: Color(0xFFf7ffff),
@@ -80,7 +80,8 @@ class TranslationCash extends StatelessWidget {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
+                                    color: Color.fromARGB(255, 67, 140, 84),
+                                    fontSize: 12),
                               ),
                               const Text(
                                 'Перевод',
@@ -88,7 +89,8 @@ class TranslationCash extends StatelessWidget {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 12),
+                                    color: Color.fromARGB(255, 67, 140, 84),
+                                    fontSize: 12),
                               )
                             ],
                           ),
@@ -96,31 +98,31 @@ class TranslationCash extends StatelessWidget {
                             width: 15,
                           ),
                           const ProfileCards(
-                            text: 'Руха',
+                            text: 'Максим',
+                            text2: 'Михайлов',
+                            iconText: 'ММ',
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const ProfileCards(
+                            text: 'Сергей',
                             text2: '',
-                            iconText: 'Р',
+                            iconText: 'С',
                           ),
                           const SizedBox(
                             width: 10,
                           ),
                           const ProfileCards(
-                            text: 'Алик',
-                            text2: 'Артурович',
-                            iconText: 'AР',
+                            text: 'Азамат',
+                            text2: 'Болатаев',
+                            iconText: 'AБ',
                           ),
                           const SizedBox(
                             width: 10,
                           ),
                           const ProfileCards(
-                            text: 'Kinder',
-                            text2: '',
-                            iconText: 'K',
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const ProfileCards(
-                            text: 'Taison',
+                            text: 'Kiril',
                             text2: '',
                             iconText: 'T',
                           ),
@@ -128,9 +130,9 @@ class TranslationCash extends StatelessWidget {
                             width: 10,
                           ),
                           const ProfileCards(
-                            text: 'Bagaev',
-                            text2: 'Dima',
-                            iconText: 'BD',
+                            text: 'Максим',
+                            text2: 'Битаров',
+                            iconText: 'МБ',
                           ),
                           const SizedBox(
                             width: 5,
