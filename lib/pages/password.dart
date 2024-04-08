@@ -75,8 +75,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         appBar: AppBar(
           actions: [
             Container(
-              width: 25, // Ширина рамки
-              height: 25, // Высота рамки
+              width: 20, // Ширина рамки
+              height: 20, // Высота рамки
               decoration: BoxDecoration(
                 shape: BoxShape.circle, // Форма - круг
                 border: Border.all(
@@ -86,7 +86,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
               ),
               child: const Center(
                 child: Icon(
-                  size: 20,
+                  size: 15,
                   Icons.question_mark_outlined,
                   color: Color(0xff04931f), // Цвет значка
                 ),
@@ -98,7 +98,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             const Icon(
               Icons.logout_outlined,
               color: Color(0xffc55d20),
-              size: 28,
+              size: 25,
             ),
             const SizedBox(
               width: 10,
@@ -109,7 +109,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Image.asset(
               'assets/LOGO.png',
-              width: 40,
+              width: 36,
             ),
           ),
           centerTitle: true,
@@ -296,6 +296,8 @@ class PinKey extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(50),
         onTap: () => onPressed(digit),
+        splashColor: Colors.transparent, // Убираем сплеш
+        highlightColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -309,7 +311,7 @@ class PinKey extends StatelessWidget {
                       digit.toString(),
                       style: const TextStyle(
                         fontSize: 30,
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w700,
                         color: Color(0xfff4f4f4),
                       ),
                     ),

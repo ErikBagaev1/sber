@@ -53,6 +53,22 @@ String formatIntNumberWithSpaces(int number) {
   return result;
 }
 
+String formatStringNumberWithSpaces(String formattedString) {
+  String result = '';
+  int count = 0;
+
+  // Проходим по строке справа налево и добавляем пробел каждые 3 символа
+  for (int i = formattedString.length - 1; i >= 0; i--) {
+    result = formattedString[i] + result;
+    count++;
+    if (count % 3 == 0 && i > 0) {
+      result = ' $result';
+    }
+  }
+  result = result.replaceAll(' ,', '.');
+  return result;
+}
+
 class DateChek extends StatelessWidget {
   final String date;
   final String cash;

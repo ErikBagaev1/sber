@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/models/check.dart';
 
 import 'Expenses_card.dart';
@@ -103,7 +104,7 @@ class _ExpensesListState extends State<ExpensesList> {
                   ),
                   Expenses(
                     cash: Text(
-                      '$outgoing ₽',
+                      '${formatIntNumberWithSpaces(int.parse((((double.parse((outgoing ?? '0'))).round()).toString()).replaceAll('.', '')))} ₽',
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -135,7 +136,7 @@ class _ExpensesListState extends State<ExpensesList> {
                       ),
                     ),
                     cardNumber: Text(
-                      '${double.parse(outgoing ?? '0') - 120} ₽',
+                      '${formatIntNumberWithSpaces(int.parse((((double.parse((outgoing ?? '0')) - 120).round()).toString()).replaceAll('.', '')))} ₽',
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.white,

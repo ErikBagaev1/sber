@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/models/profile.dart';
 import 'package:sber/theme/colors.dart';
 
@@ -260,7 +261,7 @@ class _AboutCardsState extends State<AboutCards>
           ),
           Column(
             children: [
-              Text('${widget.balance} ₽',
+              Text('${formatNumberWithSpaces(double.parse(widget.balance))} ₽',
                   style: const TextStyle(
                       color: Color(0xfff4f4f4),
                       fontSize: 21,
@@ -529,6 +530,7 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                                 isCardNumberHidden = !isCardNumberHidden;
                                 isLoading = true;
                               });
+
                               Future.delayed(const Duration(seconds: 1), () {
                                 setState(() {
                                   isLoading =
@@ -543,11 +545,94 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                                 if (isCardCvcHidden == false) {
                                   isCardCvcHidden = !isCardCvcHidden;
                                   isCardNumberHidden = !isCardNumberHidden;
-                                  isLoading =
-                                      true; // Toggle visibility of card number
+                                  isLoading = true;
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), // Задаем радиус закругления
+                                      ),
+                                      backgroundColor: Colors
+                                          .white, // Цвет фона белого Snackbar
+                                      content: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5, horizontal: 10.0),
+                                            child: SvgPicture.asset(
+                                              'assets/Icons/Поддержка сбера.svg',
+                                              width: 21,
+                                            ),
+                                          ),
+                                          const Text(
+                                            'Номер карты скопирован',
+                                            style: TextStyle(
+                                                color: Colors
+                                                    .black), // Цвет текста
+                                          ),
+                                        ],
+                                      ),
+                                      margin: const EdgeInsets.all(
+                                          16), // Отступы с плавающим поведением
+                                      behavior: SnackBarBehavior.floating,
+                                    ),
+                                  );
                                 } else if (isCardCvcHidden == true) {
                                   isCardNumberHidden = !isCardNumberHidden;
                                   isLoading = true;
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), // Задаем радиус закругления
+                                      ),
+                                      backgroundColor: Colors
+                                          .white, // Цвет фона белого Snackbar
+                                      content: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5, horizontal: 10.0),
+                                            child: SvgPicture.asset(
+                                              'assets/Icons/Поддержка сбера.svg',
+                                              width: 21,
+                                            ),
+                                          ),
+                                          const Text(
+                                            'Номер карты скопирован',
+                                            style: TextStyle(
+                                                color: Colors
+                                                    .black), // Цвет текста
+                                          ),
+                                        ],
+                                      ),
+                                      margin: const EdgeInsets.all(
+                                          16), // Отступы с плавающим поведением
+                                      behavior: SnackBarBehavior.floating,
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            20), // Задаем радиус закругления
+                                      ),
+                                      backgroundColor: Colors.grey.withOpacity(
+                                          0.7), // Цвет фона белого Snackbar
+                                      content: const Text(
+                                        'Скопированно в буфер обмена',
+                                        style: TextStyle(
+                                            color: Colors.white), // Цвет текста
+                                      ),
+                                      margin: const EdgeInsets.all(
+                                          26), // Отступы с плавающим поведением
+                                      behavior: SnackBarBehavior.floating,
+                                    ),
+                                  );
                                 }
                                 Future.delayed(const Duration(seconds: 1), () {
                                   setState(() {
@@ -639,11 +724,54 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                                     if (isCardNumberHidden == false) {
                                       isCardCvcHidden = !isCardCvcHidden;
                                       isCardNumberHidden = !isCardNumberHidden;
-                                      isLoading =
-                                          true; // Toggle visibility of card number
+                                      isLoading = true;
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                                10), // Задаем радиус закругления
+                                          ),
+                                          backgroundColor: Colors
+                                              .white, // Цвет фона белого Snackbar
+                                          content: const Text(
+                                            'CVC2/CVV2-код скопирован',
+                                            style: TextStyle(
+                                                color: Colors
+                                                    .black), // Цвет текста
+                                          ),
+                                          margin: const EdgeInsets.all(
+                                              16), // Отступы с плавающим поведением
+                                          behavior: SnackBarBehavior.floating,
+                                        ),
+                                      ); // Toggle visibility of card number
                                     } else if (isCardNumberHidden == true) {
                                       isCardCvcHidden = !isCardCvcHidden;
                                       isLoading = true;
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                                10), // Задаем радиус закругления
+                                          ),
+                                          backgroundColor: Colors
+                                              .white, // Цвет фона белого Snackbar
+                                          content: const Text(
+                                            'CVC2/CVV2-код скопирован',
+                                            style: TextStyle(
+                                                color: Colors
+                                                    .black), // Цвет текста
+                                          ),
+                                          margin: const EdgeInsets.all(
+                                              16), // Отступы с плавающим поведением
+                                          behavior: SnackBarBehavior.floating,
+                                        ),
+                                      ); // Toggle visibility of card number
                                     } // Toggle visibility of card number
                                     Future.delayed(const Duration(seconds: 1),
                                         () {

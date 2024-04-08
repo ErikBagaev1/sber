@@ -13,6 +13,22 @@ class CardBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formatCashBlock(String cash) {
+      // Разделяем число на дробную и целую части
+      List<String> parts = cash.split('.');
+
+      // Форматируем целую часть, добавляя разделение разрядов пробелами
+      String integerPart = parts[0].replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ');
+
+      // Если есть дробная часть, добавляем ее к отформатированной целой части
+      if (parts.length > 1) {
+        return '$integerPart,${parts[1]}';
+      } else {
+        return integerPart;
+      }
+    }
+
     return AspectRatio(
       aspectRatio: 1.1,
       child: Container(
@@ -42,7 +58,7 @@ class CardBlock extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cash ?? '',
+                  formatCashBlock(cash ?? '0'),
                   style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,

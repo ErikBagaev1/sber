@@ -60,8 +60,8 @@ class ProfileCards extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.close,
-                    color: Colors.grey,
-                    size: 15,
+                    color: Color.fromARGB(255, 96, 96, 96),
+                    size: 16,
                   )
                 ],
               ),

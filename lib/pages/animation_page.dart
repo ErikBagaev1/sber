@@ -51,7 +51,10 @@ class _NextScreenState extends State<NextScreen>
             Center(
               child: Hero(
                 tag: 'photo',
-                child: Image.asset('assets/animation_page.jpg'),
+                child: Image.asset(
+                  'assets/animation_page.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SlideTransition(

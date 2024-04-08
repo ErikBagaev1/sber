@@ -179,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         text: 'Подписки',
                                         icon: SvgPicture.asset(
                                           'assets/Icons/подписки.svg',
-                                          width: 21,
+                                          width: 17,
                                         )),
                                     Expanded(
                                       child: Stack(
@@ -193,7 +193,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     text: 'СберПрайм',
                                                     icon: SvgPicture.asset(
                                                       'assets/Icons/Прайм.svg',
-                                                      width: 26,
+                                                      width: 22,
                                                     )),
                                               ],
                                             ),
@@ -220,14 +220,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                         text: 'Уведомления',
                                         icon: SvgPicture.asset(
                                           'assets/Icons/Уведомления-1.svg',
-                                          width: 26,
+                                          width: 22,
                                         )),
                                     IconCards(
                                         color: GREEN_MEDIUM,
                                         text: 'Страховки',
                                         icon: SvgPicture.asset(
                                           'assets/Icons/Страховки-1.svg',
-                                          width: 26,
+                                          width: 22,
                                         )),
                                   ],
                                 )),
@@ -293,7 +293,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           style: TextStyle(
                                               letterSpacing: -0.5,
                                               color: Color(0xffffffff),
-                                              fontSize: 18,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         Text(
@@ -301,7 +301,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           style: TextStyle(
                                               letterSpacing: -0.5,
                                               color: TEXT_GRAY,
-                                              fontSize: 12,
+                                              fontSize: 11,
                                               fontWeight: FontWeight.w500),
                                         )
                                       ],
@@ -359,7 +359,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         'Поддержка Сбера',
                                         style: TextStyle(
                                             color: Color(0xffffffff),
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
@@ -418,7 +418,7 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -532,7 +532,7 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -579,7 +579,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           style: TextStyle(
                               letterSpacing: -0.5,
                               color: TEXT_GRAY,
-                              fontSize: 16,
+                              fontSize: 12,
                               fontWeight: FontWeight.w500),
                         )
                       ],
@@ -596,7 +596,7 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -620,7 +620,7 @@ class _ProfilePageState extends State<ProfilePage> {
               text: 'Безопастность',
               icon: Icon(
                 Icons.lock_outline_rounded,
-                size: 30,
+                size: 28,
                 color: GREEN_MEDIUM,
               )),
           const Settings(
@@ -634,13 +634,20 @@ class _ProfilePageState extends State<ProfilePage> {
               text: 'Основные экраны',
               icon: Padding(
                 padding: const EdgeInsets.only(left: 6.0),
-                child: SvgPicture.asset(
-                  'assets/Icons/Номер.svg',
-                  colorFilter: const ColorFilter.mode(
-                    GREEN_MEDIUM,
-                    BlendMode.srcIn,
-                  ),
-                  width: 19,
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/Icons/Номер.svg',
+                      colorFilter: const ColorFilter.mode(
+                        GREEN_MEDIUM,
+                        BlendMode.srcIn,
+                      ),
+                      width: 17,
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    )
+                  ],
                 ),
               )),
           const Settings(
@@ -682,7 +689,7 @@ class Settings extends StatelessWidget {
                 text,
                 style: const TextStyle(
                     color: Color(0xffffffff),
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500),
               ),
             ],
@@ -744,7 +751,7 @@ class WhatNew extends StatelessWidget {
               style: const TextStyle(
                   letterSpacing: -0.5,
                   color: Color(0xffffffff),
-                  fontSize: 17,
+                  fontSize: 15,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -757,7 +764,7 @@ class WhatNew extends StatelessWidget {
               style: const TextStyle(
                   letterSpacing: -0.5,
                   color: TEXT_GRAY,
-                  fontSize: 14,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500),
             ),
           ),

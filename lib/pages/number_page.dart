@@ -49,7 +49,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Документы',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 22,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -191,7 +191,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Госуслуги',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -219,7 +219,7 @@ class _NumberPageState extends State<NumberPage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: SvgPicture.asset(
                                   'assets/Icons/Добавить_из_госуслуг.svg',
-                                  width: 28,
+                                  width: 26,
                                 ),
                               ),
                             ],
@@ -235,7 +235,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
@@ -243,7 +243,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: TEXT_GRAY,
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
@@ -276,7 +276,7 @@ class _NumberPageState extends State<NumberPage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: SvgPicture.asset(
                                   'assets/Icons/госуслуги_без.svg',
-                                  width: 28,
+                                  width: 26,
                                 ),
                               ),
                             ],
@@ -292,7 +292,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: Color(0xffffffff),
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
@@ -300,7 +300,7 @@ class _NumberPageState extends State<NumberPage> {
                                 style: TextStyle(
                                     letterSpacing: -0.5,
                                     color: TEXT_GRAY,
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
@@ -322,7 +322,7 @@ class _NumberPageState extends State<NumberPage> {
                           Text(
                             'Телефоны',
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),
@@ -352,7 +352,7 @@ class _NumberPageState extends State<NumberPage> {
                             padding: const EdgeInsets.all(12.0),
                             child: SvgPicture.asset(
                               'assets/Icons/Номер.svg',
-                              width: 19,
+                              width: 17,
                             ),
                           ),
                         ],
@@ -374,7 +374,7 @@ class _NumberPageState extends State<NumberPage> {
                                       style: const TextStyle(
                                           letterSpacing: -0.5,
                                           color: Color(0xffffffff),
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Container(
@@ -388,6 +388,7 @@ class _NumberPageState extends State<NumberPage> {
                                         child: Text(
                                           'Сбер ID',
                                           style: TextStyle(
+                                              fontSize: 14,
                                               color: Color(0xfff8f8f8)),
                                         ),
                                       ),
@@ -402,7 +403,7 @@ class _NumberPageState extends State<NumberPage> {
                                       style: TextStyle(
                                           letterSpacing: -0.5,
                                           color: TEXT_GRAY,
-                                          fontSize: 15,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(
@@ -410,7 +411,7 @@ class _NumberPageState extends State<NumberPage> {
                                     ),
                                     SvgPicture.asset(
                                       'assets/Card.svg',
-                                      width: 30,
+                                      width: 28,
                                     ),
                                   ],
                                 )
@@ -429,7 +430,7 @@ class _NumberPageState extends State<NumberPage> {
                         'Электронная почта',
                         style: TextStyle(
                             letterSpacing: -0.5,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
@@ -454,7 +455,7 @@ class _NumberPageState extends State<NumberPage> {
                             padding: EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.email_outlined,
-                              size: 30,
+                              size: 28,
                               color: GREEN_MEDIUM,
                             ),
                           ),
@@ -468,7 +469,7 @@ class _NumberPageState extends State<NumberPage> {
                         style: const TextStyle(
                             letterSpacing: -0.5,
                             color: Color(0xffffffff),
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
                     ],
@@ -505,7 +506,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Адреса',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -538,7 +539,7 @@ class _NumberPageState extends State<NumberPage> {
                                 BODY_DARK_GRAY,
                                 BlendMode.srcIn,
                               ),
-                              width: 20,
+                              width: 18,
                             ),
                           ),
                           const SizedBox(
@@ -587,7 +588,7 @@ class _NumberPageState extends State<NumberPage> {
                   'Гараж',
                   style: TextStyle(
                       letterSpacing: -0.5,
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -625,7 +626,7 @@ class _NumberPageState extends State<NumberPage> {
                       style: TextStyle(
                           letterSpacing: -0.5,
                           color: Color(0xffffffff),
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
@@ -636,7 +637,7 @@ class _NumberPageState extends State<NumberPage> {
                       style: TextStyle(
                           letterSpacing: -0.5,
                           color: TEXT_GRAY,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500),
                     ),
                   ],
