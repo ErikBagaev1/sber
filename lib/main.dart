@@ -88,7 +88,70 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: const Color(0xFF1E1E1E),
         selectedItemColor: const Color(0xFF2d8246),
         unselectedItemColor: const Color(0xFF888888),
-        items: items, type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/home.svg',
+              width: 20,
+              colorFilter: ColorFilter.mode(
+                selectedIndex == 0
+                    ? const Color(0xFF2d8246)
+                    : const Color(0xFF888888),
+                BlendMode.srcIn,
+              ),
+            ),
+            label: 'Главный',
+          ),
+          
+          BottomNavigationBarItem(
+            icon: Container(
+              width: 23, // Ширина фона
+              height: 18, // Высота фона
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(2)),
+                color: Color(0xFF8a8a8a), // Цвет фона
+              ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3.0),
+                child: Icon(
+                  Icons.signal_cellular_alt,
+                  color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+                ),
+              ),
+            ),
+            label: 'Накопления',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/Ассистент.svg',
+              width: 25,
+            ),
+            label: 'Aссистент',
+          ),
+          BottomNavigationBarItem(
+            icon: Container(
+              width: 23, // Ширина фона
+              height: 18, // Высота фона
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                color: Color(0xFF8a8a8a), // Цвет фона
+              ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3.0),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
+                ),
+              ),
+            ),
+            label: 'Платежи',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.watch_later),
+            label: 'История',
+          ),
+        ],
+        type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex, //New
         onTap: _onItemTapped,
       ),
@@ -125,60 +188,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-final items = <BottomNavigationBarItem>[
-  BottomNavigationBarItem(
-    icon: SvgPicture.asset(
-      'assets/home.svg',
-      width: 20,
-    ),
-    label: 'Главный',
-  ),
-  BottomNavigationBarItem(
-    icon: Container(
-      width: 23, // Ширина фона
-      height: 18, // Высота фона
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(2)),
-        color: Color(0xFF8a8a8a), // Цвет фона
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3.0),
-        child: Icon(
-          Icons.signal_cellular_alt,
-          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
-        ),
-      ),
-    ),
-    label: 'Накопления',
-  ),
-  BottomNavigationBarItem(
-    icon: SvgPicture.asset(
-      'assets/Ассистент.svg',
-      width: 25,
-    ),
-    label: 'Aссистент',
-  ),
-  BottomNavigationBarItem(
-    icon: Container(
-      width: 23, // Ширина фона
-      height: 18, // Высота фона
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: Color(0xFF8a8a8a), // Цвет фона
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3.0),
-        child: Icon(
-          Icons.arrow_forward,
-          color: Color(0xFF1c1c1c), size: 16, // Цвет стрелки
-        ),
-      ),
-    ),
-    label: 'Платежи',
-  ),
-  const BottomNavigationBarItem(
-    icon: Icon(Icons.watch_later),
-    label: 'История',
-  ),
-];

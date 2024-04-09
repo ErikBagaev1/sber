@@ -72,7 +72,7 @@ class _ExpensesListState extends State<ExpensesList> {
           child: Row(
             children: [
               Text(
-                'Расходы в марте',
+                'Расходы в апреле',
                 style: TextStyle(
                     letterSpacing: -0.5,
                     fontSize: 22,

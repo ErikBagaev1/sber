@@ -51,7 +51,7 @@ class _NextScreenState extends State<NextScreen>
           children: [
             Center(
               child: Image.asset(
-                'assets/Animation_page.jpeg',
+                'assets/Animation_page2.jpg',
                 fit: BoxFit.fill,
               ),
             ),
