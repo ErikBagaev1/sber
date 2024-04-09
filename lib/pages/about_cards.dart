@@ -381,7 +381,7 @@ class _AboutCardsState extends State<AboutCards>
                                 padding: const EdgeInsets.all(8.0),
                                 child: SvgPicture.asset(
                                   'assets/Icons/Чек.svg',
-                                  width: 21,
+                                  width: 20,
                                 ),
                               ),
                               const SizedBox(
@@ -391,7 +391,7 @@ class _AboutCardsState extends State<AboutCards>
                                 'О карте',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Color(0xfff4f4f4)),
                               ),
                             ]),
@@ -414,7 +414,7 @@ class _AboutCardsState extends State<AboutCards>
                             children: [
                               Icon(
                                 Icons.settings,
-                                size: 30,
+                                size: 28,
                                 color: Color(0xff32793d),
                               ),
                               SizedBox(
@@ -424,7 +424,7 @@ class _AboutCardsState extends State<AboutCards>
                                 'Настройки',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: Color(0xfff4f4f4)),
                               ),
                             ]),
@@ -485,7 +485,7 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 8),
+                            horizontal: 15.0, vertical: 3),
                         child: isCardNumberHidden
                             ? RichText(
                                 text: TextSpan(
@@ -513,7 +513,8 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                                 widget.numberCards,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w300,
-                                    fontSize: 14,
+                                    letterSpacing: 1,
+                                    fontSize: 13,
                                     color: Color(0xfff4f4f4)),
                               )),
                     const Spacer(),
@@ -522,7 +523,7 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                             icon: const Icon(
                               Icons.close,
                               color: Color(0xff939393),
-                              size: 23,
+                              size: 20,
                               weight: 15,
                             ),
                             onPressed: () {
@@ -682,27 +683,31 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                       children: [
                         Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15.0, vertical: 6),
+                                horizontal: 15.0, vertical: 2),
                             child: isCardCvcHidden
-                                ? RichText(
-                                    text: const TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: '***',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14,
-                                            color: Color(0xfff4f4f4),
+                                ? Padding(
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 2),
+                                    child: RichText(
+                                      text: const TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '***',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 14,
+                                              color: Color(0xfff4f4f4),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   )
                                 : const Text(
                                     '343',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w300,
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Color(0xfff4f4f4)),
                                   )),
                         !isCardCvcHidden
@@ -710,7 +715,7 @@ class _AboutCardsDataState extends State<AboutCardsData> {
                                 icon: const Icon(
                                   Icons.close,
                                   color: Color(0xff939393),
-                                  size: 23,
+                                  size: 20,
                                   weight: 15,
                                 ),
                                 onPressed: () {

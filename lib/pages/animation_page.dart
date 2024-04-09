@@ -32,7 +32,7 @@ class _NextScreenState extends State<NextScreen>
     _controller.forward();
 
     // Ждем 3 секунды перед переходом на другой экран
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -50,12 +50,9 @@ class _NextScreenState extends State<NextScreen>
         child: Stack(
           children: [
             Center(
-              child: Hero(
-                tag: '',
-                child: Image.asset(
-                  'assets/Animation_page.jpg',
-                  fit: BoxFit.fill,
-                ),
+              child: Image.asset(
+                'assets/Animation_page.jpeg',
+                fit: BoxFit.fill,
               ),
             ),
             SlideTransition(
@@ -78,7 +75,7 @@ class _NextScreenState extends State<NextScreen>
                       ),
                     ),
                     Text(
-                      'хозяин!',
+                      'Максим!',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,

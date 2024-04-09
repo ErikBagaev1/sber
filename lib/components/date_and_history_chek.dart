@@ -242,7 +242,7 @@ class ChekHistory extends StatelessWidget {
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xFF08A652)),
+                                          color: Color(0xFF2d8246)),
                                     ),
                                   ],
                                 )

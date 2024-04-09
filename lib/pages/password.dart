@@ -142,15 +142,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Container(
-                              width: 9,
-                              height: 9,
+                              width: 10,
+                              height: 10,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: filledDots[i]
-                                    ? const Color(0xff04931f)
+                                    ? const Color(0xff109421)
                                     : const Color(0xff4b4b4b),
-                                border:
-                                    Border.all(color: const Color(0xff4b4b4b)),
                               ),
                             ),
                           ),

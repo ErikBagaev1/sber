@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         unselectedLabelStyle: const TextStyle(letterSpacing: -0.5),
         selectedLabelStyle: const TextStyle(letterSpacing: -0.5),
         backgroundColor: const Color(0xFF1E1E1E),
-        selectedItemColor: const Color(0xFF08A652),
+        selectedItemColor: const Color(0xFF2d8246),
         unselectedItemColor: const Color(0xFF888888),
         items: items, type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex, //New
@@ -178,10 +178,7 @@ final items = <BottomNavigationBarItem>[
     label: 'Платежи',
   ),
   const BottomNavigationBarItem(
-    icon: Padding(
-      padding: EdgeInsets.only(right: 8),
-      child: Icon(Icons.watch_later),
-    ),
+    icon: Icon(Icons.watch_later),
     label: 'История',
   ),
 ];

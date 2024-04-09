@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sber/components/date_and_history_chek.dart';
 import 'package:sber/animation/sceleton.dart';
+import 'package:sber/components/date_and_history_chek.dart';
+import 'package:sber/models/month.dart';
 import 'package:sber/pages/home_page.dart';
 
 class TitleHistory extends StatelessWidget {
@@ -14,6 +15,8 @@ class TitleHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentDate = DateTime.now();
+    final currentMonth = russianMonths[currentDate.month - 1];
     final incomingP = formatIntNumberWithSpaces(int.parse(
         (((double.parse(outgoing)).round()).toString()).replaceAll('.', '')));
     final outgoingP = formatIntNumberWithSpaces(int.parse(
@@ -88,7 +91,7 @@ class TitleHistory extends StatelessWidget {
                                     Row(
                                       children: [
                                         SkeletonContainer(
-                                          text: 'Расходы в марте',
+                                          text: 'Расходы в $currentMonth',
                                           style: const TextStyle(
                                             fontSize: 12,
                                             color: Color(0xFF313131),
@@ -125,7 +128,7 @@ class TitleHistory extends StatelessWidget {
                                     Row(
                                       children: [
                                         SkeletonContainer(
-                                          text: 'Расходы в марте',
+                                          text: 'Расходы в $currentMonth',
                                           style: const TextStyle(
                                             fontSize: 14,
                                             color: Color(0xFF313131),
@@ -145,7 +148,7 @@ class TitleHistory extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          'Расходы в марте',
+                                          'Расходы в $currentMonth',
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.grey[400],
