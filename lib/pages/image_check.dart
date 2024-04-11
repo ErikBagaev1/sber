@@ -35,10 +35,13 @@ class ImageCheck extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Center(
                     child: SizedBox(
-                        height: 900,
+                        height: 2500,
                         child: ListView(
                           children: [
                             ChekImageDisplay(chek: chek),
+                            const SizedBox(
+                              height: 150,
+                            )
                           ],
                         ))),
               ),

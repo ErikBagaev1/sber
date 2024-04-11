@@ -69,12 +69,6 @@ class CheckRepository {
     }
   }
 
-  // Метод для сортировки списка экземпляров класса Chek по дате
-  static List<Chek> sortChecksByDate(List<Chek> checks) {
-    checks.sort((a, b) => a.date.compareTo(b.date));
-    return checks;
-  }
-
 // Метод для очистки данных в SharedPreferences
   Future<void> clearSharedPreferences() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

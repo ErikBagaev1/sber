@@ -8,6 +8,7 @@ import 'package:sber/models/check.dart';
 import 'package:sber/models/profile.dart';
 import 'package:sber/pages/chek_about.dart';
 import 'package:sber/pages/home_page.dart';
+import 'package:sber/pages/incoming_page.dart';
 
 import '../components/select_bar.dart';
 
@@ -71,7 +72,7 @@ class _HistoryPageState extends State<HistoryPage> {
   void _loadChecks() async {
     try {
       List<Chek> loadedChecks = await CheckRepository.loadChecks();
-
+      // _checks = sortChecksByDate(loadedChecks);
       setState(() {
         _checks = loadedChecks;
       });
@@ -184,15 +185,33 @@ class _HistoryPageState extends State<HistoryPage> {
     });
   }
 
+  static int extractFirstNumberFromString(String input) {
+    RegExp regex = RegExp(r'\d+');
+    Match? match = regex.firstMatch(input);
+    if (match != null) {
+      return int.parse(match.group(0)!);
+    } else {
+      return 0; // Возвращаем 0, если не найдено ни одного числа
+    }
+  }
+
+  // Метод для сортировки списка экземпляров класса Chek по дате
+  static List<Chek> sortChecksByDate(List<Chek> checks) {
+    checks.sort((a, b) => extractFirstNumberFromString(a.date)
+        .compareTo(extractFirstNumberFromString(b.date)));
+    return checks;
+  }
+
   @override
   Widget build(BuildContext context) {
     // Сортируем список чеков по дате
-    _checks.sort((a, b) => b.date.compareTo(a.date));
+    _checks = sortChecksByDate(_checks);
 
     // Создаем список уникальных дат
     List<String> uniqueDates =
         _checks.map((check) => check.date).toSet().toList();
-    uniqueDates.sort((a, b) => b.compareTo(a));
+    // uniqueDates.sort((a, b) => b.compareTo(a));
+    uniqueDates = uniqueDates.reversed.toList();
     return SafeArea(
       child: Stack(
         children: [
@@ -230,16 +249,28 @@ class _HistoryPageState extends State<HistoryPage> {
                 List<Widget> chekHistoryWidgets = filteredChecks
                     .map((check) => InkWell(
                           onTap: () {
-                            // При нажатии на чек открываем экран с подробной информацией о чеке
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CheckDetailsScreen(
-                                  check: check,
-                                  myCreditCart: widget.myCreditCard,
-                                ),
-                              ),
-                            );
+                            check.status == "Исходящий перевод"
+                                ?
+                                // При нажатии на чек открываем экран с подробной информацией о чеке
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CheckDetailsScreen(
+                                        check: check,
+                                        myCreditCart: widget.myCreditCard,
+                                      ),
+                                    ),
+                                  )
+                                : // При нажатии на чек открываем экран с подробной информацией о чеке
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => IncomingPage(
+                                        chek: check,
+                                        myCreditCard: widget.myCreditCard,
+                                      ),
+                                    ),
+                                  );
                           },
                           splashColor: Colors.grey, // Цвет всплеска при нажатии
                           highlightColor: Colors.transparent,
