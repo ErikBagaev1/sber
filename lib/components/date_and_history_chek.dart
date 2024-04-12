@@ -260,7 +260,7 @@ class ChekHistory extends StatelessWidget {
               ? const Padding(
                   padding: EdgeInsets.only(left: 50.0, right: 5, top: 0),
                   child: Divider(
-                    thickness: 0.3,
+                    thickness: 0.2,
                     color: Color(0xFF7d7d7d),
                   ),
                 )

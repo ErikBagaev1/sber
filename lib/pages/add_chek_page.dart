@@ -39,6 +39,10 @@ class _ChekAddState extends State<ChekAdd> {
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _fioController = TextEditingController();
   final TextEditingController _cashController = TextEditingController();
+  final TextEditingController _timeController =
+      TextEditingController(); // Новое поле для времени
+  final TextEditingController _balanceController =
+      TextEditingController(); // Новое поле для баланса
   String _selectedStatus = listStatus.first;
   String _selectedBank = listBanks.first;
   String _successMessage = '';
@@ -48,7 +52,8 @@ class _ChekAddState extends State<ChekAdd> {
     _dateController.dispose();
     _fioController.dispose();
     _cashController.dispose();
-
+    _timeController.dispose(); // Освобождение контроллера времени
+    _balanceController.dispose(); // Освобождение контроллера баланса
     // TODO: implement dispose
     super.dispose();
   }
@@ -69,6 +74,14 @@ class _ChekAddState extends State<ChekAdd> {
           AddChekTextField(
             text: 'Сумма',
             controller: _cashController,
+          ),
+          AddChekTextField(
+            text: 'Время',
+            controller: _timeController,
+          ),
+          AddChekTextField(
+            text: 'Баланс',
+            controller: _balanceController,
           ),
           DropdownButtonExample(
             dropdown: listStatus,
@@ -114,6 +127,9 @@ class _ChekAddState extends State<ChekAdd> {
                 status: _selectedStatus,
                 icon: _selectedBank, // Путь к иконке (не изображению)
                 image: _pickedImage?.path ?? '', // Путь к изображению
+                time: _timeController
+                    .text, // Присваиваем значение времени из текстового поля
+                balance: _balanceController.text,
               );
 
               // Сохраняем новый чек
@@ -128,6 +144,8 @@ class _ChekAddState extends State<ChekAdd> {
               _dateController.clear();
               _fioController.clear();
               _cashController.clear();
+              _timeController.clear(); // Очищаем текстовое поле времени
+              _balanceController.clear(); // Очищаем текстовое поле баланса
 
               // Задержка перед скрытием сообщения
               Future.delayed(const Duration(seconds: 2), () {
